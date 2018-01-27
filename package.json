@@ -1,0 +1,40 @@
+{
+  "name": "@dxcli/help",
+  "description": "standard help for dxcli",
+  "version": "0.0.0",
+  "author": "Jeff Dickey @jdxcode",
+  "bugs": "https://github.com/jdxcode/help/issues",
+  "dependencies": {
+    "@dxcli/command": "^0.1.19",
+    "cli-ux": "^3.2.1"
+  },
+  "devDependencies": {
+    "@dxcli/config": "^0.1.26",
+    "@dxcli/dev": "^2.0.3",
+    "@dxcli/dev-test": "^0.9.11",
+    "@dxcli/engine": "^0.1.12",
+    "husky": "^0.14.3",
+    "nps-utils": "^1.5.0"
+  },
+  "dxcli": {
+    "commands": "./lib/commands"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/lib"
+  ],
+  "homepage": "https://github.com/jdxcode/help",
+  "keywords": [
+    "dxcli-plugin"
+  ],
+  "license": "MIT",
+  "repository": "dxcli/help",
+  "scripts": {
+    "commitmsg": "dxcli-dev-commitmsg",
+    "precommit": "nps lint -l warn",
+    "prepare": "rm -rf lib && tsc",
+    "test": "nps test -l warn"
+  }
+}
