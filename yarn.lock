@@ -148,11 +148,11 @@
     semantic-release "^12.2.5"
     shelljs "^0.8.1"
 
-"@dxcli/dev-test@^0.9.11":
-  version "0.9.11"
-  resolved "https://registry.yarnpkg.com/@dxcli/dev-test/-/dev-test-0.9.11.tgz#86330132cb149fb825538498082dd581b81d14f7"
+"@dxcli/dev-test@^0.9.12":
+  version "0.9.12"
+  resolved "https://registry.yarnpkg.com/@dxcli/dev-test/-/dev-test-0.9.12.tgz#a944edef971a6a9a22974936854e6c38edcdedc7"
   dependencies:
-    fancy-test "^0.5.1"
+    fancy-test "^0.5.5"
     lodash "^4.17.4"
 
 "@dxcli/dev-tslint@^0.0.17":
@@ -162,9 +162,9 @@
     tslint "^5.9.1"
     tslint-xo "^0.5.0"
 
-"@dxcli/dev@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@dxcli/dev/-/dev-2.0.3.tgz#84e3fc690d80a832acf3dd9fab6b59122a08ad60"
+"@dxcli/dev@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@dxcli/dev/-/dev-2.0.4.tgz#a86a2ad1ee98a533468bd16a711af3cd6597d58a"
   dependencies:
     "@dxcli/dev-nyc-config" "^0.0.3"
     "@dxcli/dev-semantic-release" "^0.2.0"
@@ -179,14 +179,9 @@
     "@types/read-pkg" "^3.0.0"
     "@types/strip-ansi" "^3.0.0"
     "@types/supports-color" "^3.1.0"
-    chai "^4.1.2"
     eslint "^4.16.0"
-    eslint-config-dxcli "^1.1.4"
-    lodash "^4.17.4"
-    mocha "^5.0.0"
+    eslint-config-dxcli "^1.1.5"
     mocha-junit-reporter "^1.17.0"
-    nps "^5.7.1"
-    nps-utils "^1.5.0"
     nyc "^11.4.1"
     ts-node "^4.1.0"
     typescript "^2.6.2"
@@ -1486,9 +1481,9 @@ eslint-ast-utils@^1.0.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-dxcli@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-dxcli/-/eslint-config-dxcli-1.1.4.tgz#e74a6be724d4de72f116d87f300afb5aacd25fe9"
+eslint-config-dxcli@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-dxcli/-/eslint-config-dxcli-1.1.5.tgz#ac7bf9acaef94bbeb34bb57ff4ffbcbc71ea475a"
   dependencies:
     eslint-config-xo-space "^0.17.0"
     eslint-plugin-node "^5.2.1"
@@ -1748,9 +1743,9 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
 
-fancy-test@^0.5.1:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-0.5.4.tgz#1c12e5b6c0f2bf94bc1c041dfabea0f39dc4577d"
+fancy-test@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-0.5.5.tgz#e87b189a853af335c76bbcb98704db5ec8380c27"
   dependencies:
     lodash "^4.17.4"
     stdout-stderr "^0.1.4"
