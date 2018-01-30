@@ -39,7 +39,7 @@ export interface HelpOptions {
   markdown?: boolean
 }
 
-function renderList(input: (string | undefined)[][], opts: {multiline?: boolean} = {}): string {
+function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean}): string {
   if (input.length === 0) {
     return ''
   }
@@ -48,15 +48,15 @@ function renderList(input: (string | undefined)[][], opts: {multiline?: boolean}
     for (let [left, right] of input) {
       if (!left && !right) continue
       if (left) {
-        output += indent(wrap(left.trim(), screen.stdtermwidth - 2, {hard: true, trim: false}), 2)
+        output += wrap(left.trim(), opts.maxWidth, {hard: true, trim: false})
       }
       if (right) {
         output += '\n'
-        output += indent(wrap(right.trim(), screen.stdtermwidth - 4, {hard: true, trim: false}), 6)
+        output += indent(wrap(right.trim(), opts.maxWidth - 2, {hard: true, trim: false}), 4)
       }
       output += '\n\n'
     }
-    return output
+    return output.trim()
   }
   const maxLength = widestLine(input.map(i => i[0]).join('\n'))
   let spacer = '\n'
@@ -71,7 +71,7 @@ function renderList(input: (string | undefined)[][], opts: {multiline?: boolean}
       cur = cur.trim()
       continue
     }
-    right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
+    right = wrap(right.trim(), opts.maxWidth - (maxLength + 2), {hard: true, trim: false})
     // right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
     const [first, ...lines] = right!.split('\n').map(s => s.trim())
     cur += ' '.repeat(maxLength - width(cur) + 2)
@@ -80,7 +80,7 @@ function renderList(input: (string | undefined)[][], opts: {multiline?: boolean}
       continue
     }
     // if we start putting too many lines down, render in multiline format
-    // if (lines.length > 4) return renderList(input, {...opts, multiline: true})
+    if (lines.length > 4) return renderList(input, {...opts, multiline: true})
     spacer = '\n\n'
     cur += '\n'
     cur += indent(lines.join('\n'), maxLength + 2)
@@ -95,13 +95,43 @@ function renderList(input: (string | undefined)[][], opts: {multiline?: boolean}
 export default class Help {
   constructor(public config: IConfig) {}
 
-  command(command: ICachedCommand, _: HelpOptions = {}): string {
+  command(command: ICachedCommand, opts: HelpOptions = {}): string {
     const help = new CommandHelp(this.config)
     const article = help.command(command)
-    return this.render(article)
+    return this.render(article, opts)
   }
 
-  protected render(article: Article): string {
+  protected render(article: Article, opts: HelpOptions): string {
+    if (opts.markdown) return this.renderMarkdown(article)
+    return this.renderScreen(article)
+  }
+
+  protected renderMarkdown(article: Article): string {
+    const maxWidth = 120
+    return _([
+      article.title,
+      '='.repeat(width(article.title)),
+      ...article.sections
+      .map(s => {
+        let body
+        if (s.body.length === 0) {
+          body = ''
+        } else if (_.isArray(s.body[0])) {
+          body = renderList(s.body as any, {maxWidth: maxWidth - 2})
+        } else {
+          body = _.castArray(s.body as string).join('\n')
+          body = wrap(body, maxWidth - 2, {trim: false, hard: true})
+        }
+        return _([
+          bold(s.heading.toUpperCase()),
+          indent(body, 2),
+        ]).compact().join('\n')
+      })
+    ]).compact().join('\n')
+  }
+
+  protected renderScreen(article: Article): string {
+    const maxWidth = screen.stdtermwidth
     return _([
       article.title,
       ...article.sections
@@ -110,10 +140,10 @@ export default class Help {
         if (s.body.length === 0) {
           body = ''
         } else if (_.isArray(s.body[0])) {
-          body = renderList(s.body as any)
+          body = renderList(s.body as any, {maxWidth: maxWidth - 2})
         } else {
           body = _.castArray(s.body as string).join('\n')
-          body = wrap(body, screen.stdtermwidth - 2, {trim: false, hard: true})
+          body = wrap(body, maxWidth - 2, {trim: false, hard: true})
         }
         return _([
           bold(s.heading.toUpperCase()),

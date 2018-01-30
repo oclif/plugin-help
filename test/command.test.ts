@@ -41,7 +41,7 @@ describe('command help', () => {
       ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
       remote: flags.string({char: 'r'}),
     }})
-  .it(ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ dxcli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
@@ -83,7 +83,7 @@ ALIASES
       ss: flags.boolean({description: 'newliney\n'.repeat(5)}),
       remote: flags.string({char: 'r'}),
     }})
-  .it(ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
+  .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
 
 USAGE
   $ dxcli apps:create [APP_NAME] [OPTIONS]
@@ -92,24 +92,52 @@ ARGUMENTS
   APP_NAME  app to use
 
 OPTIONS
-  -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoo
-                       barfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar
-                       foobar
+  -f, --foo=foo
+      foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoob
+      arfoobarfoobarfoobarfoobarfoobarfoobarfoobar
 
   -r, --remote=remote
 
-  --force              force  it force  it force  it force  it force  it force
-                       it force  it force  it force  it force  it force  it
-                       force  it force  it force  it force  it force  it force
-                       it force  it force  it force  it force  it force  it
-                       force  it force  it force  it force  it force  it force
-                       it force  it
+  --force
+      force  it force  it force  it force  it force  it force  it force  it force
+      it force  it force  it force  it force  it force  it force  it force  it
+      force  it force  it force  it force  it force  it force  it force  it force
+      it force  it force  it force  it force  it force  it force  it
 
-  --ss                 newliney
-                       newliney
-                       newliney
-                       newliney
-                       newliney
+  --ss
+      newliney
+      newliney
+      newliney
+      newliney
+      newliney
+
+ALIASES
+  $ dxcli app:init
+  $ dxcli create`))
+
+  test
+  .commandHelp(class extends Command {
+    static id = 'apps:create'
+    static title = 'description of apps:create'
+    static aliases = ['app:init', 'create']
+    static description = `some
+
+  multiline help
+  `
+    static args = [{name: 'app_name', description: 'app to use'}]
+    static flags = {
+      force: flags.boolean({description: 'forces'}),
+    }})
+  .it('outputs with title', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
+
+USAGE
+  $ dxcli apps:create [APP_NAME] [OPTIONS]
+
+ARGUMENTS
+  APP_NAME  app to use
+
+OPTIONS
+  --force  forces
 
 ALIASES
   $ dxcli app:init
