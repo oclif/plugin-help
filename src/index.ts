@@ -35,32 +35,67 @@ const widestLine = require('widest-line')
 //   }
 // }
 
-function renderList(input: (string | undefined)[][]): string {
+export interface HelpOptions {
+  markdown?: boolean
+}
+
+function renderList(input: (string | undefined)[][], opts: {multiline?: boolean} = {}): string {
   if (input.length === 0) {
     return ''
   }
-  const maxLength = widestLine(input.map(i => i[0]).join('\n'))
-  let multiline = false
-  return input.map(i => {
-    let output = i[0] || ''
-    let right = i[1]
-    if (!right) return output.trim()
-    right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
-    const [first, ...lines] = right!.split('\n').map(s => s.trim())
-    output += ' '.repeat(maxLength - width(output) + 2)
-    output += first
-    if (lines.length === 0) return output
-    multiline = true
-    output += '\n'
-    output += indent(lines.join('\n'), maxLength + 2)
+  let output = ''
+  if (opts.multiline) {
+    for (let [left, right] of input) {
+      if (!left && !right) continue
+      if (left) {
+        output += indent(wrap(left.trim(), screen.stdtermwidth - 2, {hard: true, trim: false}), 2)
+      }
+      if (right) {
+        output += '\n'
+        output += indent(wrap(right.trim(), screen.stdtermwidth - 4, {hard: true, trim: false}), 6)
+      }
+      output += '\n\n'
+    }
     return output
-  }).join('\n'.repeat(multiline ? 2 : 1))
+  }
+  const maxLength = widestLine(input.map(i => i[0]).join('\n'))
+  let spacer = '\n'
+  let cur = ''
+  for (let [left, right] of input) {
+    if (cur) {
+      output += spacer
+      output += cur
+    }
+    cur = left || ''
+    if (!right) {
+      cur = cur.trim()
+      continue
+    }
+    right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
+    // right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
+    const [first, ...lines] = right!.split('\n').map(s => s.trim())
+    cur += ' '.repeat(maxLength - width(cur) + 2)
+    cur += first
+    if (lines.length === 0) {
+      continue
+    }
+    // if we start putting too many lines down, render in multiline format
+    // if (lines.length > 4) return renderList(input, {...opts, multiline: true})
+    spacer = '\n\n'
+    cur += '\n'
+    cur += indent(lines.join('\n'), maxLength + 2)
+  }
+  if (cur) {
+    output += spacer
+    output += cur
+  }
+  return output.trim()
 }
 
 export default class Help {
   constructor(public config: IConfig) {}
 
-  command(command: ICachedCommand): string {
+  command(command: ICachedCommand, _: HelpOptions = {}): string {
     const help = new CommandHelp(this.config)
     const article = help.command(command)
     return this.render(article)

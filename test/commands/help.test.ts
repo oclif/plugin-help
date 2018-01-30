@@ -8,7 +8,10 @@ describe('help command', () => {
      expect(ctx.stdout).to.equal(`display help for dxcli
 
 USAGE
-  $ dxcli help [COMMAND]
+  $ dxcli help [COMMAND] [OPTIONS]
+
+OPTIONS
+  --all  see all commands in CLI
 `)
   })
 })

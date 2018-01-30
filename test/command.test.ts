@@ -36,9 +36,9 @@ describe('command help', () => {
     static args = [{name: 'app_name', description: 'app to use'}]
     static flags = {
       app: flags.string({char: 'a', hidden: true}),
-      foo: flags.string({char: 'f', description: 'foobar'.repeat(20)}),
-      force: flags.boolean({description: 'force  it '.repeat(29)}),
-      ss: flags.boolean({description: 'newliney\n'.repeat(5)}),
+      foo: flags.string({char: 'f', description: 'foobar'.repeat(18)}),
+      force: flags.boolean({description: 'force  it '.repeat(15)}),
+      ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
       remote: flags.string({char: 'r'}),
     }})
   .it(ctx => expect(ctx.commandHelp).to.equal(`USAGE
@@ -49,20 +49,15 @@ ARGUMENTS
 
 OPTIONS
   -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoo
-                       barfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar
-                       foobar
+                       barfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar
 
   -r, --remote=remote
 
   --force              force  it force  it force  it force  it force  it force
                        it force  it force  it force  it force  it force  it
-                       force  it force  it force  it force  it force  it force
-                       it force  it force  it force  it force  it force  it
-                       force  it force  it force  it force  it force  it force
-                       it force  it
+                       force  it force  it force  it force  it
 
   --ss                 newliney
-                       newliney
                        newliney
                        newliney
                        newliney

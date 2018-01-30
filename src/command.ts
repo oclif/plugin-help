@@ -7,6 +7,7 @@ import {Article, Section} from '.'
 const {
   underline,
   dim,
+  blueBright,
 } = chalk
 
 export default class CommandHelp {
@@ -48,7 +49,7 @@ export default class CommandHelp {
       this.config.bin,
       command.id,
       command.args.map(a => this.arg(a)).join(' '),
-      flags.length && dim('[OPTIONS]'),
+      flags.length && blueBright('[OPTIONS]'),
     ])
     .compact()
     .join(' ')
@@ -98,9 +99,9 @@ export default class CommandHelp {
 
   protected flag(flag: ICachedFlag): [string, string | undefined] {
     const label = []
-    if (flag.char) label.push(`-${flag.char}`)
-    if (flag.name) label.push(` --${flag.name}`)
-    let left = label.join(',').trim()
+    if (flag.char) label.push(blueBright(`-${flag.char[0]}`))
+    if (flag.name) label.push(blueBright(`--${flag.name.trim()}`))
+    let left = label.join(', ')
     if (flag.type === 'option') left += `=${underline(flag.name)}`
 
     let right = flag.description || ''
