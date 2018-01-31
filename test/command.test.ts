@@ -44,11 +44,6 @@ describe('command help', () => {
   .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
 
-DESCRIPTION
-  some
-
-     multiline help
-
 ARGUMENTS
   APP_NAME  app to use
 
@@ -66,6 +61,11 @@ OPTIONS
                        newliney
                        newliney
                        newliney
+
+DESCRIPTION
+  some
+
+     multiline help
 
 ALIASES
   $ anycli app:init

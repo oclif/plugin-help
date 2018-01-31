@@ -22,7 +22,7 @@ const test = base
   }
 }))
 
-describe('command help', () => {
+describe('markdown', () => {
   test
   .commandHelp(class extends Command {
     static title = 'the title'
@@ -40,32 +40,56 @@ describe('command help', () => {
       ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
       remote: flags.string({char: 'r'}),
     }})
-  .skip()
   .it(ctx => expect(ctx.commandHelp).to.equal(`the title
 =========
 
-USAGE
-  $ anycli apps:create [APP_NAME] [OPTIONS]
+Usage
+-----
 
-ARGUMENTS
+  \`\`\`sh-session
+  $ anycli apps:create [APP_NAME] [OPTIONS]
+  $ anycli apps:create [APP_NAME] [OPTIONS]
+  \`\`\`
+
+Arguments
+---------
+
   APP_NAME  app to use
 
-OPTIONS
-  -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoo
-                       barfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar
+Options
+-------
+
+  -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarf
+                       oobarfoobar
 
   -r, --remote=remote
 
-  --force              force  it force  it force  it force  it force  it force
+  --force              force  it force  it force  it force  it force  it force  it force  it force  it force  it force
                        it force  it force  it force  it force  it force  it
-                       force  it force  it force  it force  it
 
   --ss                 newliney
                        newliney
                        newliney
                        newliney
 
-ALIASES
+Description
+-----------
+
+  some
+
+    multiline help
+  some
+
+     multiline help
+
+Aliases
+-------
+
+  \`\`\`sh-session
   $ anycli app:init
-  $ anycli create`))
+  $ anycli create
+  $ anycli app:init
+  $ anycli create
+  \`\`\`
+`))
 })

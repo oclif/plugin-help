@@ -3,6 +3,7 @@ import * as screen from '@anycli/screen'
 import chalk from 'chalk'
 import indent = require('indent-string')
 import * as _ from 'lodash'
+import stripAnsi = require('strip-ansi')
 
 import CommandHelp from './command'
 import RootHelp from './root'
@@ -17,6 +18,7 @@ export interface Article {
 
 export interface Section {
   heading: string
+  type?: 'plain' | 'code'
   body: string | string[] | (string | undefined)[][]
 }
 
@@ -40,7 +42,7 @@ export interface HelpOptions {
   markdown?: boolean
 }
 
-function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean}): string {
+function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {
   if (input.length === 0) {
     return ''
   }
@@ -49,9 +51,11 @@ function renderList(input: (string | undefined)[][], opts: {maxWidth: number, mu
     for (let [left, right] of input) {
       if (!left && !right) continue
       if (left) {
+        if (opts.stripAnsi) left = stripAnsi(left)
         output += wrap(left.trim(), opts.maxWidth, {hard: true, trim: false})
       }
       if (right) {
+        if (opts.stripAnsi) right = stripAnsi(right)
         output += '\n'
         output += indent(wrap(right.trim(), opts.maxWidth - 2, {hard: true, trim: false}), 4)
       }
@@ -68,10 +72,12 @@ function renderList(input: (string | undefined)[][], opts: {maxWidth: number, mu
       output += cur
     }
     cur = left || ''
+    if (opts.stripAnsi) cur = stripAnsi(cur)
     if (!right) {
       cur = cur.trim()
       continue
     }
+    if (opts.stripAnsi) right = stripAnsi(right)
     right = wrap(right.trim(), opts.maxWidth - (maxLength + 2), {hard: true, trim: false})
     // right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
     const [first, ...lines] = right!.split('\n').map(s => s.trim())
@@ -116,25 +122,29 @@ export default class Help {
   protected renderMarkdown(article: Article): string {
     const maxWidth = 120
     return _([
-      article.title,
+      stripAnsi(article.title || ''),
       '='.repeat(width(article.title)),
+      '',
       ...article.sections
       .map(s => {
-        let body
+        let body = '\n'
         if (s.body.length === 0) {
-          body = ''
+          body += ''
         } else if (_.isArray(s.body[0])) {
-          body = renderList(s.body as any, {maxWidth: maxWidth - 2})
+          body += renderList(s.body as any, {maxWidth: maxWidth - 2, stripAnsi: true})
         } else {
-          body = _.castArray(s.body as string).join('\n')
-          body = wrap(body, maxWidth - 2, {trim: false, hard: true})
+          body += _.castArray(s.body as string).join('\n')
+          body += wrap(stripAnsi(body), maxWidth - 2, {trim: false, hard: true})
+        }
+        if (s.type === 'code') {
+          body = `\n\`\`\`sh-session${body}\n\`\`\``
         }
         return _([
-          bold(s.heading.toUpperCase()),
+          `${_.capitalize(s.heading)}\n${'-'.repeat(width(s.heading))}`,
           indent(body, 2),
-        ]).compact().join('\n')
+        ]).compact().join('\n') + '\n'
       })
-    ]).compact().join('\n')
+    ]).join('\n')
   }
 
   protected renderScreen(article: Article): string {

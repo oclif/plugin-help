@@ -26,9 +26,9 @@ export default class CommandHelp {
       title: cmd.title,
       sections: _([
         this.usage(cmd, flags),
-        this.description(cmd),
         this.args(args),
         this.flags(flags),
+        this.description(cmd),
         this.aliases(cmd.aliases),
       ]).compact().value(),
     }
@@ -41,6 +41,7 @@ export default class CommandHelp {
   protected usage(cmd: ICachedCommand, flags: ICachedFlag[]): Section {
     return {
       heading: 'usage',
+      type: 'code',
       body: cmd.usage ? _.castArray(cmd.usage) : this.defaultUsage(cmd, flags)
     }
   }
@@ -68,6 +69,7 @@ export default class CommandHelp {
     if (!aliases || !aliases.length) return
     return {
       heading: 'aliases',
+      type: 'code',
       body: aliases.map(a => ['$', this.config.bin, a].join(' ')),
     }
   }
