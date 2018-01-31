@@ -1,3 +1,16 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/anycli/help/compare/258a5b3873f6557959b72c1d116f44d0e5111e94...v0.3.0) (2018-01-31)
+
+
+### Bug Fixes
+
+* add dev plugins ([7d8a3c7](https://github.com/anycli/help/commit/7d8a3c7))
+
+
+### Features
+
+* added basic root command support ([af7eb9b](https://github.com/anycli/help/commit/af7eb9b))
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/anycli/help/compare/1d28ed1244d6ac74fbd0a4fce9e1a74b1523c081...v0.2.3) (2018-01-31)
 
