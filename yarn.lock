@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@anycli/command@^0.2.8":
+"@anycli/command@^0.2.6", "@anycli/command@^0.2.8", "@anycli/command@^0.2.9":
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/@anycli/command/-/command-0.2.9.tgz#658ea8c623e047bc924582d5a885434aed22ed41"
   dependencies:
@@ -51,6 +51,22 @@
     chalk "^2.3.0"
     lodash "^4.17.4"
 
+"@anycli/plugins@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@anycli/plugins/-/plugins-0.1.7.tgz#968ca28a99d0b715164c2a8cdbd48da220814851"
+  dependencies:
+    "@anycli/command" "^0.2.6"
+    "@anycli/config" "^0.2.0"
+    "@anycli/manifest-file" "^0.2.0"
+    "@heroku-cli/color" "^1.1.1"
+    cli-ux "^3.3.8"
+    debug "^3.1.0"
+    fs-extra "^5.0.0"
+    lodash "^4.17.4"
+    npm-run-path "^2.0.2"
+    tslib "^1.9.0"
+    yarn "^1.3.2"
+
 "@anycli/screen@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@anycli/screen/-/screen-0.0.3.tgz#f0afd970c3ed725702948a45a874ede1fdd9362e"
@@ -68,6 +84,14 @@
   dependencies:
     tslint "^5.9.1"
     tslint-xo "^0.5.0"
+
+"@anycli/version@^0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@anycli/version/-/version-0.1.15.tgz#81751d98c9f431833ca5b29e2b08aabc17edf44b"
+  dependencies:
+    "@anycli/command" "^0.2.9"
+    "@anycli/config" "^0.2.0"
+    cli-ux "^3.3.9"
 
 "@commitlint/cli@^6.0.2":
   version "6.0.2"
@@ -168,6 +192,15 @@
   resolved "https://registry.yarnpkg.com/@commitlint/top-level/-/top-level-6.0.2.tgz#fffc584d7275868b884439e5ab02969dee3d62f5"
   dependencies:
     find-up "^2.1.0"
+
+"@heroku-cli/color@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@heroku-cli/color/-/color-1.1.1.tgz#a2c25239ff1196733a79cabc7a750cd46b96dc30"
+  dependencies:
+    ansi-styles "^3.2.0"
+    chalk "^2.3.0"
+    strip-ansi "^4.0.0"
+    supports-color "^5.1.0"
 
 "@heroku/linewrap@^1.0.0":
   version "1.0.0"
@@ -1661,7 +1694,7 @@ normalize-path@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-1.0.0.tgz#32d0e472f91ff345701c15a8311018d3b0a90379"
 
-npm-run-path@^2.0.0:
+npm-run-path@^2.0.0, npm-run-path@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
   dependencies:
@@ -2573,6 +2606,10 @@ yargs@^8.0.2:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
+
+yarn@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.3.2.tgz#5939762581b5b4ddcd3418c0f6be42df3aee195f"
 
 yn@^2.0.0:
   version "2.0.0"
