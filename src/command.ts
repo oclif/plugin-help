@@ -26,6 +26,7 @@ export default class CommandHelp {
       title: cmd.title,
       sections: _([
         this.usage(cmd, flags),
+        this.description(cmd),
         this.args(args),
         this.flags(flags),
         this.aliases(cmd.aliases),

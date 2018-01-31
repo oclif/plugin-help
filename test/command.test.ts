@@ -44,6 +44,11 @@ describe('command help', () => {
   .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
 
+DESCRIPTION
+  some
+
+     multiline help
+
 ARGUMENTS
   APP_NAME  app to use
 
@@ -71,10 +76,6 @@ ALIASES
     static id = 'apps:create'
     static title = 'description of apps:create'
     static aliases = ['app:init', 'create']
-    static description = `some
-
-  multiline help
-  `
     static args = [{name: 'app_name', description: 'app to use'}]
     static flags = {
       app: flags.string({char: 'a', hidden: true}),
@@ -120,10 +121,6 @@ ALIASES
     static id = 'apps:create'
     static title = 'description of apps:create'
     static aliases = ['app:init', 'create']
-    static description = `some
-
-  multiline help
-  `
     static args = [{name: 'app_name', description: 'app to use'}]
     static flags = {
       force: flags.boolean({description: 'forces'}),

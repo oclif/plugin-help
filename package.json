@@ -16,10 +16,10 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^0.2.0",
-    "@anycli/engine": "^0.1.27",
+    "@anycli/config": "^0.2.1",
+    "@anycli/engine": "^0.1.29",
     "@anycli/plugins": "^0.1.7",
-    "@anycli/test": "^0.9.19",
+    "@anycli/test": "^0.10.0",
     "@anycli/tslint": "^0.1.3",
     "@anycli/version": "^0.1.15",
     "@commitlint/cli": "^6.0.2",

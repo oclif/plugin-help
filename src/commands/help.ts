@@ -22,8 +22,13 @@ export default class HelpCommand extends Command {
   async run() {
     let id = this.args.command as string
     let help = new Help(this.config)
-    let command = this.config.engine!.findCommand(id, true)
-    let commandHelp = help.command(command)
-    cli.info(commandHelp)
+    if (!id) {
+      let rootHelp = help.root()
+      cli.info(rootHelp)
+    } else {
+      let command = this.config.engine!.findCommand(id, true)
+      let commandHelp = help.command(command)
+      cli.info(commandHelp)
+    }
   }
 }

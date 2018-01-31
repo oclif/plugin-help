@@ -8,9 +8,11 @@ describe(command, () => {
   .command([command])
   .it(ctx => {
     expect(ctx.stdout).to.equal(`commands
-commands
 help
-help
+plugins
+plugins:install
+plugins:uninstall
+version
 `)
   })
 })

@@ -22,9 +22,20 @@
     lodash "^4.17.4"
     read-pkg "^3.0.0"
 
-"@anycli/engine@^0.1.27":
-  version "0.1.27"
-  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.1.27.tgz#47fd2b5bf5aaf686d386453c47fde95d12c043bd"
+"@anycli/config@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-0.2.1.tgz#d32fe5036cd194c34ca32ee6bc5e1a4b0ca3c86f"
+  dependencies:
+    cli-ux "^3.3.8"
+    debug "^3.1.0"
+    fs-extra "^5.0.0"
+    load-json-file "^4.0.0"
+    lodash "^4.17.4"
+    read-pkg "^3.0.0"
+
+"@anycli/engine@^0.1.29":
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.1.29.tgz#fcc83ca4b8ef5c0f0f9f01a16579d3ef24cfdce7"
   dependencies:
     "@anycli/manifest-file" "^0.2.0"
     cli-ux "^3.3.9"
@@ -71,9 +82,9 @@
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@anycli/screen/-/screen-0.0.3.tgz#f0afd970c3ed725702948a45a874ede1fdd9362e"
 
-"@anycli/test@^0.9.19":
-  version "0.9.20"
-  resolved "https://registry.yarnpkg.com/@anycli/test/-/test-0.9.20.tgz#8b9dda015416409d5fb1f6e6e284bf0859e0aba8"
+"@anycli/test@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@anycli/test/-/test-0.10.0.tgz#0861a7bf0cb063a42adb0f086cf984c14024ce46"
   dependencies:
     fancy-test "^0.6.4"
     lodash "^4.17.4"

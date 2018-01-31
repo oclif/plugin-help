@@ -5,6 +5,7 @@ import indent = require('indent-string')
 import * as _ from 'lodash'
 
 import CommandHelp from './command'
+import RootHelp from './root'
 
 const width = require('string-width')
 const wrap = require('wrap-ansi')
@@ -94,6 +95,12 @@ function renderList(input: (string | undefined)[][], opts: {maxWidth: number, mu
 
 export default class Help {
   constructor(public config: IConfig) {}
+
+  root(opts: HelpOptions = {}): string {
+    const help = new RootHelp(this.config)
+    const article = help.root()
+    return this.render(article, opts)
+  }
 
   command(command: ICachedCommand, opts: HelpOptions = {}): string {
     const help = new CommandHelp(this.config)
