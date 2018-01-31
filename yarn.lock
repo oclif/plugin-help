@@ -22,9 +22,9 @@
     lodash "^4.17.4"
     read-pkg "^3.0.0"
 
-"@anycli/engine@^0.1.23":
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.1.24.tgz#05a01a37e4978196125385cc7768be3c6df92364"
+"@anycli/engine@^0.1.26":
+  version "0.1.26"
+  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.1.26.tgz#7c7d06a2527f5b3176eda34e9ef0c0d89d347f40"
   dependencies:
     "@anycli/manifest-file" "^0.1.0"
     cli-ux "^3.3.9"
