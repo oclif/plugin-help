@@ -16,7 +16,7 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^0.1.40",
+    "@anycli/config": "^0.2.0",
     "@anycli/engine": "^0.1.26",
     "@anycli/test": "^0.9.19",
     "@anycli/tslint": "^0.1.3",
