@@ -1,3 +1,11 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/anycli/help/compare/b4bed623435a2f4ea73d2ad813589f3105e4299e...v0.2.2) (2018-01-31)
+
+
+### Bug Fixes
+
+* updated engine ([1d28ed1](https://github.com/anycli/help/commit/1d28ed1))
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/dxcli/help/compare/bc53900d424978ab143773eae4651e0ee591ee2f...v0.2.1) (2018-01-30)
 
