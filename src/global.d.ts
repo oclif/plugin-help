@@ -3,7 +3,7 @@
 declare namespace NodeJS {
   interface Global {
     'columns': number
-    dxcli: {
+    anycli: {
       config: any
     }
   }

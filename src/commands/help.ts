@@ -1,10 +1,10 @@
-import Command, {flags} from '@dxcli/command'
-import {IConfig} from '@dxcli/config'
+import Command, {flags} from '@anycli/command'
+import {IConfig} from '@anycli/config'
 import cli from 'cli-ux'
 
 import Help from '..'
 
-const config: IConfig = global.dxcli.config
+const config: IConfig = global.anycli.config
 
 export default class HelpCommand extends Command {
   static title = `display help for ${config.bin}`

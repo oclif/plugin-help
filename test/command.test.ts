@@ -1,6 +1,6 @@
-import {Command as Base, flags} from '@dxcli/command'
-import {ICommand} from '@dxcli/config'
-import {expect, test as base} from '@dxcli/test'
+import {Command as Base, flags} from '@anycli/command'
+import {ICommand} from '@anycli/config'
+import {expect, test as base} from '@anycli/test'
 import stripAnsi = require('strip-ansi')
 
 // const chalk = require('chalk')
@@ -42,7 +42,7 @@ describe('command help', () => {
       remote: flags.string({char: 'r'}),
     }})
   .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ dxcli apps:create [APP_NAME] [OPTIONS]
+  $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -63,8 +63,8 @@ OPTIONS
                        newliney
 
 ALIASES
-  $ dxcli app:init
-  $ dxcli create`))
+  $ anycli app:init
+  $ anycli create`))
 
   test
   .commandHelp(class extends Command {
@@ -86,7 +86,7 @@ ALIASES
   .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
 
 USAGE
-  $ dxcli apps:create [APP_NAME] [OPTIONS]
+  $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -112,8 +112,8 @@ OPTIONS
       newliney
 
 ALIASES
-  $ dxcli app:init
-  $ dxcli create`))
+  $ anycli app:init
+  $ anycli create`))
 
   test
   .commandHelp(class extends Command {
@@ -131,7 +131,7 @@ ALIASES
   .it('outputs with title', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
 
 USAGE
-  $ dxcli apps:create [APP_NAME] [OPTIONS]
+  $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -140,8 +140,8 @@ OPTIONS
   --force  forces
 
 ALIASES
-  $ dxcli app:init
-  $ dxcli create`))
+  $ anycli app:init
+  $ anycli create`))
 
   // class AppsCreate3 extends Command {
   //   static id = 'apps:create'

@@ -1,5 +1,5 @@
-import {ICachedCommand, IConfig} from '@dxcli/config'
-import * as screen from '@dxcli/screen'
+import {ICachedCommand, IConfig} from '@anycli/config'
+import * as screen from '@anycli/screen'
 import chalk from 'chalk'
 import indent = require('indent-string')
 import * as _ from 'lodash'

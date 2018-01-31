@@ -1,4 +1,4 @@
-import {ICachedArg, ICachedCommand, ICachedFlag, IConfig} from '@dxcli/config'
+import {ICachedArg, ICachedCommand, ICachedFlag, IConfig} from '@anycli/config'
 import chalk from 'chalk'
 import * as _ from 'lodash'
 

@@ -1,6 +1,6 @@
-import {Command as Base, flags} from '@dxcli/command'
-import {ICommand} from '@dxcli/config'
-import {expect, test as base} from '@dxcli/test'
+import {Command as Base, flags} from '@anycli/command'
+import {ICommand} from '@anycli/config'
+import {expect, test as base} from '@anycli/test'
 import stripAnsi = require('strip-ansi')
 
 global.columns = 80
@@ -45,7 +45,7 @@ describe('command help', () => {
 =========
 
 USAGE
-  $ dxcli apps:create [APP_NAME] [OPTIONS]
+  $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -66,6 +66,6 @@ OPTIONS
                        newliney
 
 ALIASES
-  $ dxcli app:init
-  $ dxcli create`))
+  $ anycli app:init
+  $ anycli create`))
 })
