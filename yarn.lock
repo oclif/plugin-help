@@ -2,7 +2,17 @@
 # yarn lockfile v1
 
 
-"@anycli/command@^0.2.6", "@anycli/command@^0.2.8", "@anycli/command@^0.2.9":
+"@anycli/command@^0.2.21":
+  version "0.2.21"
+  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-0.2.21.tgz#68a725cddb0dece1d7dd69965de4ae7e3908b61c"
+  dependencies:
+    "@anycli/parser" "^3.0.1"
+    cli-ux "^3.3.10"
+    debug "^3.1.0"
+    lodash "^4.17.4"
+    tslib "^1.9.0"
+
+"@anycli/command@^0.2.8", "@anycli/command@^0.2.9":
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/@anycli/command/-/command-0.2.9.tgz#658ea8c623e047bc924582d5a885434aed22ed41"
   dependencies:
@@ -27,6 +37,17 @@
   resolved "https://registry.yarnpkg.com/@anycli/config/-/config-0.2.1.tgz#d32fe5036cd194c34ca32ee6bc5e1a4b0ca3c86f"
   dependencies:
     cli-ux "^3.3.8"
+    debug "^3.1.0"
+    fs-extra "^5.0.0"
+    load-json-file "^4.0.0"
+    lodash "^4.17.4"
+    read-pkg "^3.0.0"
+
+"@anycli/config@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-0.2.4.tgz#957e4f174cadd397d9bdd81d3552544a8214273e"
+  dependencies:
+    cli-ux "^3.3.10"
     debug "^3.1.0"
     fs-extra "^5.0.0"
     load-json-file "^4.0.0"
@@ -62,17 +83,26 @@
     chalk "^2.3.0"
     lodash "^4.17.4"
 
-"@anycli/plugins@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@anycli/plugins/-/plugins-0.1.7.tgz#968ca28a99d0b715164c2a8cdbd48da220814851"
+"@anycli/parser@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@anycli/parser/-/parser-3.0.1.tgz#24a2bca4abe1e1ffb91b0210b709b3ec15ee4ea4"
   dependencies:
-    "@anycli/command" "^0.2.6"
-    "@anycli/config" "^0.2.0"
+    "@anycli/screen" "^0.0.3"
+    chalk "^2.3.0"
+    lodash "^4.17.4"
+
+"@anycli/plugins@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@anycli/plugins/-/plugins-0.2.0.tgz#890149c067c3105614ce7a2bec81fcfcba1051a9"
+  dependencies:
+    "@anycli/command" "^0.2.21"
+    "@anycli/config" "^0.2.4"
     "@anycli/manifest-file" "^0.2.0"
     "@heroku-cli/color" "^1.1.1"
-    cli-ux "^3.3.8"
+    cli-ux "^3.3.10"
     debug "^3.1.0"
     fs-extra "^5.0.0"
+    http-call "^5.0.2"
     lodash "^4.17.4"
     npm-run-path "^2.0.2"
     tslib "^1.9.0"
@@ -536,6 +566,26 @@ cli-cursor@^2.1.0:
   dependencies:
     restore-cursor "^2.0.0"
 
+cli-ux@^3.3.10:
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-3.3.10.tgz#54fad2bc9e1fcb56cdbd7d41682373e0fb7ce447"
+  dependencies:
+    "@anycli/screen" "^0.0.3"
+    "@heroku/linewrap" "^1.0.0"
+    ansi-styles "^3.2.0"
+    cardinal "^1.0.0"
+    chalk "^2.3.0"
+    clean-stack "^1.3.0"
+    extract-stack "^1.0.0"
+    fs-extra "^5.0.0"
+    indent-string "^3.2.0"
+    lodash "^4.17.4"
+    node-notifier "^5.2.1"
+    password-prompt "^1.0.4"
+    semver "^5.5.0"
+    strip-ansi "^4.0.0"
+    supports-color "^5.1.0"
+
 cli-ux@^3.3.8, cli-ux@^3.3.9:
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-3.3.9.tgz#b3d09bb9057d2ef75cfd492d58359dd923c0a16b"
@@ -635,6 +685,10 @@ concurrently@^3.4.0:
     spawn-command "^0.0.2-1"
     supports-color "^3.2.3"
     tree-kill "^1.1.0"
+
+content-type@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
 
 conventional-changelog-angular@^1.3.3:
   version "1.6.1"
@@ -1223,6 +1277,17 @@ hosted-git-info@^2.1.4:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
 
+http-call@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/http-call/-/http-call-5.0.2.tgz#21bec3655f1631de128c0cdaa470777b1fbbc365"
+  dependencies:
+    content-type "^1.0.4"
+    debug "^3.1.0"
+    is-retry-allowed "^1.1.0"
+    is-stream "^1.1.0"
+    tslib "^1.8.1"
+    tunnel-agent "^0.6.0"
+
 husky@^0.14.3:
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/husky/-/husky-0.14.3.tgz#c69ed74e2d2779769a17ba8399b54ce0b63c12c3"
@@ -1372,6 +1437,10 @@ is-promise@^2.1.0:
 is-resolvable@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-resolvable/-/is-resolvable-1.1.0.tgz#fb18f87ce1feb925169c9a407c19318a3206ed88"
+
+is-retry-allowed@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/is-retry-allowed/-/is-retry-allowed-1.1.0.tgz#11a060568b67339444033d0125a61a20d564fb34"
 
 is-stream@^1.1.0:
   version "1.1.0"
@@ -2129,7 +2198,7 @@ rx@2.3.24:
   version "2.3.24"
   resolved "https://registry.yarnpkg.com/rx/-/rx-2.3.24.tgz#14f950a4217d7e35daa71bbcbe58eff68ea4b2b7"
 
-safe-buffer@~5.1.0, safe-buffer@~5.1.1:
+safe-buffer@^5.0.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
@@ -2486,6 +2555,12 @@ tsutils@^2.12.1, tsutils@^2.12.2:
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.19.1.tgz#76d7ebdea9d7a7bf4a05f50ead3701b0168708d7"
   dependencies:
     tslib "^1.8.1"
+
+tunnel-agent@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
+  dependencies:
+    safe-buffer "^5.0.1"
 
 type-check@~0.3.2:
   version "0.3.2"
