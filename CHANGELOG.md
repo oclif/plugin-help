@@ -1,3 +1,11 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/anycli/help/compare/8046612a23df4c73910a6624781ab0ae96a0998e...v0.3.2) (2018-02-01)
+
+
+### Bug Fixes
+
+* hide commands command ([8c13ae4](https://github.com/anycli/help/commit/8c13ae4))
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/anycli/help/compare/af7eb9b155fa44f2e7261b25b94dc76d05040422...v0.3.1) (2018-02-01)
 
