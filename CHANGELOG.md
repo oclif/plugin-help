@@ -1,3 +1,11 @@
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/anycli/help/compare/608ba929331f1b5353e226d043c91863e2d60595...v0.3.5) (2018-02-01)
+
+
+### Bug Fixes
+
+* remove blue color ([945ccc5](https://github.com/anycli/help/commit/945ccc5))
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/anycli/help/compare/85ec92fc619517934f62d365a2610e6e04661cec...v0.3.4) (2018-02-01)
 
