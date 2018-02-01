@@ -19,8 +19,9 @@ export default class HelpCommand extends Command {
   options = parse(this.argv, HelpCommand)
 
   async run() {
+    const format = this.options.flags.format as any || 'screen'
     let id = this.options.args.command
-    let help = new Help(this.config, {format: this.options.flags.format as any})
+    let help = new Help(this.config, {format})
     if (!id) {
       let rootHelp = help.root()
       cli.info(rootHelp)
@@ -29,5 +30,6 @@ export default class HelpCommand extends Command {
       let commandHelp = help.command(command)
       cli.info(commandHelp)
     }
+    if (format === 'screen') cli.info()
   }
 }

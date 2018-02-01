@@ -10,6 +10,10 @@ const test = base
 .register('rootHelp', () => ({
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
     let help = ctx.help.root()
+    if (process.env.TEST_OUTPUT === '1') {
+      // tslint:disable-next-line
+      console.log(help)
+    }
     ctx.commandHelp = stripAnsi(help).split('\n').map(s => s.trimRight()).join('\n')
   }
 }))

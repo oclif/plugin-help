@@ -13,6 +13,29 @@ USAGE
 OPTIONS
   --all                    see all commands in CLI
   --format=(markdown|man)  output in a different format
+
+`)
+  })
+
+  test
+  .stdout()
+  .command(['help'])
+  .it('shows root help', ctx => {
+     expect(ctx.stdout).to.equal(`standard help for anycli
+
+USAGE
+  $ anycli [COMMAND]
+
+DESCRIPTION
+  standard help for anycli
+
+COMMANDS
+  help               display help for anycli
+  plugins
+  plugins:install
+  plugins:uninstall
+  version
+
 `)
   })
 })

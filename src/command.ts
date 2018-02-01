@@ -105,7 +105,11 @@ export default class CommandHelp {
     if (flag.char) label.push(blueBright(`-${flag.char[0]}`))
     if (flag.name) label.push(blueBright(`--${flag.name.trim()}`))
     let left = label.join(', ')
-    if (flag.type === 'option') left += `=${underline(flag.helpValue || flag.name)}`
+    if (flag.type === 'option') {
+      let value = flag.helpValue || flag.name
+      if (!value.includes('(')) value = underline(value)
+      left += `=${value}`
+    }
 
     let right = flag.description || ''
     if (flag.required) right = `(required) ${right}`

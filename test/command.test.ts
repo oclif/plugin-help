@@ -19,6 +19,10 @@ const test = base
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
     const cached = command!.convertToCached()
     let help = ctx.help.command(cached)
+    if (process.env.TEST_OUTPUT === '1') {
+      // tslint:disable-next-line
+      console.log(help)
+    }
     ctx.commandHelp = stripAnsi(help).split('\n').map(s => s.trimRight()).join('\n')
     ctx.expectation = 'has commandHelp'
   }
