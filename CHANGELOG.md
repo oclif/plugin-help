@@ -1,3 +1,12 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/anycli/help/compare/af7eb9b155fa44f2e7261b25b94dc76d05040422...v0.3.1) (2018-02-01)
+
+
+### Bug Fixes
+
+* updated engine ([8046612](https://github.com/anycli/help/commit/8046612))
+* work on markdown generator ([0c50c69](https://github.com/anycli/help/commit/0c50c69))
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/anycli/help/compare/258a5b3873f6557959b72c1d116f44d0e5111e94...v0.3.0) (2018-01-31)
 
