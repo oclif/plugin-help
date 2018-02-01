@@ -12,9 +12,9 @@
     lodash "^4.17.4"
     tslib "^1.9.0"
 
-"@anycli/command@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-0.3.0.tgz#ae393eb12d4bb2687f5357d5ef2fc497765e82ce"
+"@anycli/command@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-0.3.1.tgz#d3b1e547b3c06bbca4e6e09acf95a379f5bf7dc2"
   dependencies:
     "@anycli/parser" "^3.0.4"
     cli-ux "^3.3.12"
