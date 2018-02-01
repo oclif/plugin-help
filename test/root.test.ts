@@ -26,7 +26,6 @@ DESCRIPTION
   standard help for anycli
 
 COMMANDS
-  commands
   help               display help for anycli
   plugins
   plugins:install
