@@ -3,12 +3,20 @@
   "description": "standard help for anycli",
   "version": "0.3.3",
   "author": "Jeff Dickey @jdxcode",
+  "anycli": {
+    "bin": "anycli",
+    "commands": "./lib/commands",
+    "devPlugins": [
+      "@anycli/version",
+      "@anycli/plugins"
+    ]
+  },
   "bugs": "https://github.com/jdxcode/help/issues",
   "dependencies": {
-    "@anycli/command": "^0.2.22",
+    "@anycli/command": "^0.2.25",
     "@anycli/screen": "^0.0.3",
     "chalk": "^2.3.0",
-    "cli-ux": "^3.3.10",
+    "cli-ux": "^3.3.12",
     "indent-string": "^3.2.0",
     "lodash": "^4.17.4",
     "string-width": "^2.1.1",
@@ -16,9 +24,9 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^0.2.6",
+    "@anycli/config": "^0.2.10",
     "@anycli/engine": "^0.1.38",
-    "@anycli/plugins": "^0.2.0",
+    "@anycli/plugins": "^0.2.1",
     "@anycli/test": "^0.10.1",
     "@anycli/tslint": "^0.2.1",
     "@anycli/version": "^0.1.19",
@@ -46,14 +54,6 @@
     "ts-node": "^4.1.0",
     "typescript": "^2.7.1"
   },
-  "anycli": {
-    "bin": "anycli",
-    "commands": "./lib/commands",
-    "devPlugins": [
-      "@anycli/version",
-      "@anycli/plugins"
-    ]
-  },
   "engines": {
     "node": ">=8.0.0"
   },
@@ -65,11 +65,13 @@
     "anycli-plugin"
   ],
   "license": "MIT",
+  "main": "./lib/index.js",
   "repository": "anycli/help",
   "scripts": {
     "commitmsg": "commitlint -x @commitlint/config-conventional -e $GIT_PARAMS",
     "precommit": "nps lint -l warn",
     "prepublishOnly": "nps build",
     "test": "nps test -l warn"
-  }
+  },
+  "types": "./lib/index.d.ts"
 }
