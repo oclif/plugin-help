@@ -1,3 +1,11 @@
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/anycli/help/compare/8c13ae47789018ad093f1fb6d3a248da10e8ac86...v0.3.3) (2018-02-01)
+
+
+### Bug Fixes
+
+* hide underline if complex value ([85ec92f](https://github.com/anycli/help/commit/85ec92f))
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/anycli/help/compare/8046612a23df4c73910a6624781ab0ae96a0998e...v0.3.2) (2018-02-01)
 
