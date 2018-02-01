@@ -12,11 +12,11 @@ class Command extends Base {
 
 const test = base
 .loadConfig()
-.add('help', ctx => new Help(ctx.config))
+.add('help', ctx => new Help(ctx.config, {format: 'markdown'}))
 .register('commandHelp', (command?: ICommand) => ({
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
     const cached = command!.convertToCached()
-    let help = ctx.help.command(cached, {markdown: true})
+    let help = ctx.help.command(cached)
     ctx.commandHelp = stripAnsi(help).split('\n').map(s => s.trimRight()).join('\n')
     ctx.expectation = 'has commandHelp'
   }
@@ -41,55 +41,47 @@ describe('markdown', () => {
       remote: flags.string({char: 'r'}),
     }})
   .it(ctx => expect(ctx.commandHelp).to.equal(`the title
-=========
-
-Usage
------
-
-  \`\`\`sh-session
-  $ anycli apps:create [APP_NAME] [OPTIONS]
-  $ anycli apps:create [APP_NAME] [OPTIONS]
-  \`\`\`
-
-Arguments
 ---------
 
-  APP_NAME  app to use
+**Usage**
 
-Options
--------
+\`\`\`sh-session
+$ anycli apps:create [APP_NAME] [OPTIONS]
+\`\`\`
 
-  -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarf
-                       oobarfoobar
+**Arguments**
 
-  -r, --remote=remote
+\`\`\`
+APP_NAME  app to use
+\`\`\`
 
-  --force              force  it force  it force  it force  it force  it force  it force  it force  it force  it force
-                       it force  it force  it force  it force  it force  it
+**Options**
 
-  --ss                 newliney
-                       newliney
-                       newliney
-                       newliney
+\`\`\`
+-f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfooba
+                     rfoobarfoobarfoobarfoobarfoobar
 
-Description
------------
+-r, --remote=remote
 
-  some
+--force              force  it force  it force  it force  it force  it force  it force  it force
+                     it force  it force  it force  it force  it force  it force  it force  it
 
-    multiline help
-  some
+--ss                 newliney
+                     newliney
+                     newliney
+                     newliney
+\`\`\`
 
-     multiline help
+**Description**
 
-Aliases
--------
+some
 
-  \`\`\`sh-session
-  $ anycli app:init
-  $ anycli create
-  $ anycli app:init
-  $ anycli create
-  \`\`\`
-`))
+   multiline help
+
+**Aliases**
+
+\`\`\`sh-session
+$ anycli app:init
+$ anycli create
+\`\`\``))
 })

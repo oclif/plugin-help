@@ -2,7 +2,7 @@ import {ICachedArg, ICachedCommand, ICachedFlag, IConfig} from '@anycli/config'
 import chalk from 'chalk'
 import * as _ from 'lodash'
 
-import {Article, Section} from '.'
+import {Article, HelpOptions, Section} from '.'
 
 const {
   underline,
@@ -11,7 +11,7 @@ const {
 } = chalk
 
 export default class CommandHelp {
-  constructor(public config: IConfig) {}
+  constructor(public config: IConfig, public opts: HelpOptions) {}
 
   command(cmd: ICachedCommand): Article {
     const flagDefs = cmd.flags || {}
@@ -105,7 +105,7 @@ export default class CommandHelp {
     if (flag.char) label.push(blueBright(`-${flag.char[0]}`))
     if (flag.name) label.push(blueBright(`--${flag.name.trim()}`))
     let left = label.join(', ')
-    if (flag.type === 'option') left += `=${underline(flag.name)}`
+    if (flag.type === 'option') left += `=${underline(flag.helpValue || flag.name)}`
 
     let right = flag.description || ''
     if (flag.required) right = `(required) ${right}`

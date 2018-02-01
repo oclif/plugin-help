@@ -2,7 +2,7 @@ import {IConfig} from '@anycli/config'
 // import chalk from 'chalk'
 import * as _ from 'lodash'
 
-import {Article, Section} from '.'
+import {Article, HelpOptions, Section} from '.'
 
 // const {
 //   underline,
@@ -10,17 +10,10 @@ import {Article, Section} from '.'
 //   blueBright,
 // } = chalk
 
-export interface RootOptions {
-  all?: boolean
-}
-
 export default class RootHelp {
-  opts: RootOptions
+  constructor(public config: IConfig, public opts: HelpOptions = {}) {}
 
-  constructor(public config: IConfig) {}
-
-  root(opts: RootOptions = {}): Article {
-    this.opts = opts
+  root(): Article {
     return {
       title: this.config.pjson.anycli.title || this.config.pjson.description,
       sections: _([

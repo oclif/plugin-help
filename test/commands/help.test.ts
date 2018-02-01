@@ -11,7 +11,8 @@ USAGE
   $ anycli help [COMMAND] [OPTIONS]
 
 OPTIONS
-  --all  see all commands in CLI
+  --all                    see all commands in CLI
+  --format=(markdown|man)  output in a different format
 `)
   })
 })

@@ -1,4 +1,4 @@
-import Command, {flags} from '@anycli/command'
+import {Command, flags, parse} from '@anycli/command'
 import {IConfig} from '@anycli/config'
 import cli from 'cli-ux'
 
@@ -8,20 +8,19 @@ const config: IConfig = global.anycli.config
 
 export default class HelpCommand extends Command {
   static title = `display help for ${config.bin}`
-  static flags: flags.Input<HelpCommand['flags']> = {
+  static flags = {
     all: flags.boolean({description: 'see all commands in CLI'}),
-    // format: flags.enum({description: 'output in a different format'}),
+    format: flags.enum({description: 'output in a different format', options: ['markdown', 'man']}),
   }
   static args = [
     {name: 'command', required: false}
   ]
-  flags: {
-    all?: boolean
-  }
+
+  options = parse(this.argv, HelpCommand)
 
   async run() {
-    let id = this.args.command as string
-    let help = new Help(this.config)
+    let id = this.options.args.command
+    let help = new Help(this.config, {format: this.options.flags.format as any})
     if (!id) {
       let rootHelp = help.root()
       cli.info(rootHelp)

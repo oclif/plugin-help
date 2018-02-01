@@ -140,6 +140,18 @@ ALIASES
   $ anycli app:init
   $ anycli create`))
 
+  test
+  .commandHelp(class extends Command {
+    static id = 'apps:create'
+    static flags = {
+      myenum: flags.enum({options: ['a', 'b', 'c']}),
+    }})
+  .it('outputs with title', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ anycli apps:create [OPTIONS]
+
+OPTIONS
+  --myenum=(a|b|c)`))
+
   // class AppsCreate3 extends Command {
   //   static id = 'apps:create'
   //   static flags = {

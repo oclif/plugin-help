@@ -39,7 +39,8 @@ const widestLine = require('widest-line')
 // }
 
 export interface HelpOptions {
-  markdown?: boolean
+  format?: 'markdown' | 'screen' | 'man'
+  all?: boolean
 }
 
 function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {
@@ -100,30 +101,34 @@ function renderList(input: (string | undefined)[][], opts: {maxWidth: number, mu
 }
 
 export default class Help {
-  constructor(public config: IConfig) {}
+  constructor(public config: IConfig, public opts: HelpOptions = {}) {}
 
-  root(opts: HelpOptions = {}): string {
-    const help = new RootHelp(this.config)
+  root(): string {
+    const help = new RootHelp(this.config, this.opts)
     const article = help.root()
-    return this.render(article, opts)
+    return this.render(article)
   }
 
-  command(command: ICachedCommand, opts: HelpOptions = {}): string {
-    const help = new CommandHelp(this.config)
+  command(command: ICachedCommand): string {
+    const help = new CommandHelp(this.config, this.opts)
     const article = help.command(command)
-    return this.render(article, opts)
+    return this.render(article)
   }
 
-  protected render(article: Article, opts: HelpOptions): string {
-    if (opts.markdown) return this.renderMarkdown(article)
-    return this.renderScreen(article)
+  protected render(article: Article): string {
+    switch (this.opts.format) {
+      case 'markdown': return this.renderMarkdown(article)
+      case 'man':
+      case 'screen':
+      default: return this.renderScreen(article)
+    }
   }
 
   protected renderMarkdown(article: Article): string {
-    const maxWidth = 120
+    const maxWidth = 100
     return _([
       stripAnsi(article.title || ''),
-      '='.repeat(width(article.title)),
+      '-'.repeat(width(article.title)),
       '',
       ...article.sections
       .map(s => {
@@ -131,20 +136,22 @@ export default class Help {
         if (s.body.length === 0) {
           body += ''
         } else if (_.isArray(s.body[0])) {
+          body += '```\n'
           body += renderList(s.body as any, {maxWidth: maxWidth - 2, stripAnsi: true})
+          body += '\n```'
         } else {
-          body += _.castArray(s.body as string).join('\n')
-          body += wrap(stripAnsi(body), maxWidth - 2, {trim: false, hard: true})
+          let output = _.castArray(s.body as string).join('\n')
+          body += wrap(stripAnsi(output), maxWidth - 2, {trim: false, hard: true})
         }
         if (s.type === 'code') {
           body = `\n\`\`\`sh-session${body}\n\`\`\``
         }
         return _([
-          `${_.capitalize(s.heading)}\n${'-'.repeat(width(s.heading))}`,
-          indent(body, 2),
+          `**${_.capitalize(s.heading)}**`,
+          body,
         ]).compact().join('\n') + '\n'
       })
-    ]).join('\n')
+    ]).join('\n').trim()
   }
 
   protected renderScreen(article: Article): string {
