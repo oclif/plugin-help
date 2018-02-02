@@ -156,6 +156,33 @@ ALIASES
 OPTIONS
   --myenum=(a|b|c)`))
 
+  test
+  .commandHelp(class extends Command {
+    static id = 'apps:create'
+    static args = [
+      {name: 'arg1', default: '.'},
+      {name: 'arg2', default: '.', description: 'arg2 desc'},
+      {name: 'arg3', description: 'arg3 desc'},
+    ]
+    static flags = {
+      flag1: flags.string({default: '.'}),
+      flag2: flags.string({default: '.', description: 'flag2 desc'}),
+      flag3: flags.string({description: 'flag3 desc'}),
+    }
+  })
+  .it('outputs with default options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ anycli apps:create [ARG1] [ARG2] [ARG3] [OPTIONS]
+
+ARGUMENTS
+  ARG1  [default: .]
+  ARG2  [default: .] arg2 desc
+  ARG3  arg3 desc
+
+OPTIONS
+  --flag1=flag1  [default: .]
+  --flag2=flag2  [default: .] flag2 desc
+  --flag3=flag3  flag3 desc`))
+
   // class AppsCreate3 extends Command {
   //   static id = 'apps:create'
   //   static flags = {

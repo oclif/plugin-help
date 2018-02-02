@@ -13,10 +13,10 @@
   },
   "bugs": "https://github.com/anycli/plugin-help/issues",
   "dependencies": {
-    "@anycli/command": "^0.3.6",
+    "@anycli/command": "^0.3.7",
     "@anycli/screen": "^0.0.3",
     "chalk": "^2.3.0",
-    "cli-ux": "^3.3.12",
+    "cli-ux": "^3.3.13",
     "indent-string": "^3.2.0",
     "lodash": "^4.17.4",
     "string-width": "^2.1.1",
@@ -24,10 +24,10 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^0.2.11",
-    "@anycli/engine": "^0.1.47",
-    "@anycli/plugin-plugins": "^0.2.3",
-    "@anycli/plugin-version": "^0.1.19",
+    "@anycli/config": "^0.3.0",
+    "@anycli/engine": "^0.3.0",
+    "@anycli/plugin-plugins": "^0.2.4",
+    "@anycli/plugin-version": "^0.1.20",
     "@anycli/test": "^0.10.3",
     "@anycli/tslint": "^0.2.2",
     "@types/chai": "^4.1.2",

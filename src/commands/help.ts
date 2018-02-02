@@ -13,7 +13,7 @@ export default class HelpCommand extends Command {
     format: flags.enum({description: 'output in a different format', options: ['markdown', 'man']}),
   }
   static args = [
-    {name: 'command', required: false}
+    {name: 'command', required: false, description: 'command to show help for'}
   ]
 
   options = parse(this.argv, HelpCommand)

@@ -50,7 +50,7 @@ export default class CommandHelp {
       '$',
       this.config.bin,
       command.id,
-      command.args.map(a => this.arg(a)).join(' '),
+      command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
       flags.length && '[OPTIONS]',
     ])
     .compact()
@@ -75,11 +75,14 @@ export default class CommandHelp {
   }
 
   protected args(args: ICachedCommand['args']): Section | undefined {
-    if (!args.find(f => !!f.description)) return
+    if (!args.length) return
     return {
       heading: 'arguments',
       body: args.map(a => {
-        return [a.name!.toUpperCase(), a.description ? dim(a.description) : undefined]
+        const name = a.name.toUpperCase()
+        let description = a.description || ''
+        if (a.default) description = `[default: ${a.default}] ${description}`
+        return [name, description ? dim(description) : undefined]
       })
     }
   }
@@ -112,6 +115,9 @@ export default class CommandHelp {
     }
 
     let right = flag.description || ''
+    if (flag.type === 'option' && flag.default) {
+      right = `[default: ${flag.default}] ${right}`
+    }
     if (flag.required) right = `(required) ${right}`
 
     return [left, dim(right.trim())]
