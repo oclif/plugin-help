@@ -1,3 +1,11 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/anycli/plugin-help/compare/64df8c5c7b792285348af0e55a30887bc7dbab96...v0.5.0) (2018-02-02)
+
+
+### Features
+
+* use lodash template on help strings ([fcc41a0](https://github.com/anycli/plugin-help/commit/fcc41a0))
+
 <a name="0.4.7"></a>
 ## [0.4.7](https://github.com/anycli/plugin-help/compare/3d73da87de46d9f80bd2b2ce510a89f9930f8a7a...v0.4.7) (2018-02-02)
 
