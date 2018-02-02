@@ -1,3 +1,11 @@
+<a name="0.4.7"></a>
+## [0.4.7](https://github.com/anycli/plugin-help/compare/3d73da87de46d9f80bd2b2ce510a89f9930f8a7a...v0.4.7) (2018-02-02)
+
+
+### Bug Fixes
+
+* add showHelp method ([64df8c5](https://github.com/anycli/plugin-help/commit/64df8c5))
+
 <a name="0.4.6"></a>
 ## [0.4.6](https://github.com/anycli/plugin-help/compare/cf0d4b42149d39aeb7e3956a6c94fb1c63d68d72...v0.4.6) (2018-02-02)
 
