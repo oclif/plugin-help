@@ -1,3 +1,11 @@
+<a name="0.4.6"></a>
+## [0.4.6](https://github.com/anycli/plugin-help/compare/cf0d4b42149d39aeb7e3956a6c94fb1c63d68d72...v0.4.6) (2018-02-02)
+
+
+### Bug Fixes
+
+* cache bust ([3d73da8](https://github.com/anycli/plugin-help/commit/3d73da8))
+
 <a name="0.4.5"></a>
 ## [0.4.5](https://github.com/anycli/plugin-help/compare/30ca7c144bafb2e1ee6a701a559e755614115b76...v0.4.5) (2018-02-02)
 
