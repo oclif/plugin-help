@@ -1,3 +1,11 @@
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/anycli/plugin-help/compare/7bedad5eb4865c8b3c2264a06f52dd99af6b74dc...v0.4.1) (2018-02-02)
+
+
+### Bug Fixes
+
+* prep for lodash templating ([67c842d](https://github.com/anycli/plugin-help/commit/67c842d))
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/anycli/plugin-help/compare/d8df03bee99d520c51bf1754c00ed084b6a01170...v0.4.0) (2018-02-02)
 
