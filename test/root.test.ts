@@ -30,7 +30,7 @@ DESCRIPTION
   standard help for anycli
 
 COMMANDS
-  help               display help for anycli
+  help               display help for <%= config.bin %>
   plugins
   plugins:install
   plugins:uninstall

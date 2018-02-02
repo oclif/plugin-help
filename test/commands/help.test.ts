@@ -5,7 +5,7 @@ describe('help command', () => {
   .stdout()
   .command(['help', 'help'])
   .it('shows help command help', ctx => {
-     expect(ctx.stdout).to.equal(`display help for anycli
+     expect(ctx.stdout).to.equal(`display help for <%= config.bin %>
 
 USAGE
   $ anycli help [COMMAND] [OPTIONS]
@@ -33,7 +33,7 @@ DESCRIPTION
   standard help for anycli
 
 COMMANDS
-  help               display help for anycli
+  help               display help for <%= config.bin %>
   plugins
   plugins:install
   plugins:uninstall

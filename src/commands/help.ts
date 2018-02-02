@@ -1,13 +1,10 @@
 import {Command, flags, parse} from '@anycli/command'
-import {IConfig} from '@anycli/config'
 import cli from 'cli-ux'
 
 import Help from '..'
 
-const config: IConfig = global.anycli.config
-
 export default class HelpCommand extends Command {
-  static title = `display help for ${config.bin}`
+  static title = 'display help for <%= config.bin %>'
   static flags = {
     all: flags.boolean({description: 'see all commands in CLI'}),
     format: flags.enum({description: 'output in a different format', options: ['markdown', 'man']}),
