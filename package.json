@@ -24,7 +24,7 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^0.2.11",
+    "@anycli/config": "^0.3.0",
     "@anycli/engine": "^0.1.47",
     "@anycli/plugin-plugins": "^0.2.3",
     "@anycli/plugin-version": "^0.1.19",
