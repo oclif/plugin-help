@@ -25,9 +25,11 @@
   },
   "devDependencies": {
     "@anycli/config": "^0.3.0",
+    "@anycli/dev-cli": "^0.1.2",
     "@anycli/engine": "^0.3.0",
+    "@anycli/plugin-help": "^0.4.1",
     "@anycli/plugin-plugins": "^0.2.4",
-    "@anycli/plugin-version": "^0.1.20",
+    "@anycli/plugin-version": "^0.1.29",
     "@anycli/test": "^0.10.3",
     "@anycli/tslint": "^0.2.2",
     "@types/chai": "^4.1.2",
@@ -53,6 +55,7 @@
     "node": ">=8.0.0"
   },
   "files": [
+    ".anycli.manifest.json",
     "/lib"
   ],
   "homepage": "https://github.com/anycli/plugin-help",
@@ -65,8 +68,9 @@
   "scripts": {
     "build": "rm -rf lib && tsc",
     "lint": "concurrently -p command \"eslint .\" \"tsc -p test --noEmit\" \"tslint -p test\"",
+    "postpublish": "rm .anycli.manifest.json",
     "posttest": "yarn run lint",
-    "prepublishOnly": "yarn run build",
+    "prepublishOnly": "yarn run build && anycli-dev manifest > .anycli.manifest.json",
     "test": "mocha --forbid-only \"test/**/*.test.ts\""
   },
   "types": "./lib/index.d.ts"
