@@ -12,6 +12,16 @@
     lodash "^4.17.4"
     tslib "^1.9.0"
 
+"@anycli/command@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-0.3.6.tgz#02aadc38cee7bc4acb2069732cb1591dfc339c29"
+  dependencies:
+    "@anycli/parser" "^3.0.4"
+    cli-ux "^3.3.12"
+    debug "^3.1.0"
+    lodash "^4.17.4"
+    tslib "^1.9.0"
+
 "@anycli/config@^0.2.11":
   version "0.2.11"
   resolved "https://registry.yarnpkg.com/@anycli/config/-/config-0.2.11.tgz#1b043946b18e159e6e44195aa4fef309b79f8ede"
@@ -23,9 +33,9 @@
     lodash "^4.17.4"
     read-pkg "^3.0.0"
 
-"@anycli/engine@^0.1.46":
-  version "0.1.46"
-  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.1.46.tgz#89ed1b587f5fc83f8ca865786420684d319d04fa"
+"@anycli/engine@^0.1.47":
+  version "0.1.47"
+  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.1.47.tgz#c266e74ed3d1f372065d6329c7a08be04be158ff"
   dependencies:
     "@anycli/manifest-file" "^0.3.8"
     cli-ux "^3.3.12"
@@ -53,13 +63,14 @@
     chalk "^2.3.0"
     lodash "^4.17.4"
 
-"@anycli/plugin-plugins@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-plugins/-/plugin-plugins-0.2.2.tgz#d2118406cf9b4121a3cf2c185065afaa16e46ac4"
+"@anycli/plugin-plugins@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@anycli/plugin-plugins/-/plugin-plugins-0.2.3.tgz#75bd2ef541e87c0ce875f4b018cec6ed7cc9ebab"
   dependencies:
     "@anycli/command" "^0.3.4"
     "@anycli/manifest-file" "^0.3.8"
     "@heroku-cli/color" "^1.1.3"
+    chalk "^2.3.0"
     cli-ux "^3.3.12"
     debug "^3.1.0"
     fs-extra "^5.0.0"
