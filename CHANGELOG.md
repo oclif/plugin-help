@@ -1,3 +1,11 @@
+<a name="0.4.5"></a>
+## [0.4.5](https://github.com/anycli/plugin-help/compare/30ca7c144bafb2e1ee6a701a559e755614115b76...v0.4.5) (2018-02-02)
+
+
+### Bug Fixes
+
+* fixing manifest ([cf0d4b4](https://github.com/anycli/plugin-help/commit/cf0d4b4))
+
 <a name="0.4.4"></a>
 ## [0.4.4](https://github.com/anycli/plugin-help/compare/241df8abf10d3f96e025db6f9c83d0a94cccd801...v0.4.4) (2018-02-02)
 
