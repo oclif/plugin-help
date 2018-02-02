@@ -44,63 +44,6 @@ export interface HelpOptions {
   all?: boolean
 }
 
-function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {
-  if (input.length === 0) {
-    return ''
-  }
-  let output = ''
-  if (opts.multiline) {
-    for (let [left, right] of input) {
-      if (!left && !right) continue
-      if (left) {
-        if (opts.stripAnsi) left = stripAnsi(left)
-        output += wrap(left.trim(), opts.maxWidth, {hard: true, trim: false})
-      }
-      if (right) {
-        if (opts.stripAnsi) right = stripAnsi(right)
-        output += '\n'
-        output += indent(wrap(right.trim(), opts.maxWidth - 2, {hard: true, trim: false}), 4)
-      }
-      output += '\n\n'
-    }
-    return output.trim()
-  }
-  const maxLength = widestLine(input.map(i => i[0]).join('\n'))
-  let spacer = '\n'
-  let cur = ''
-  for (let [left, right] of input) {
-    if (cur) {
-      output += spacer
-      output += cur
-    }
-    cur = left || ''
-    if (opts.stripAnsi) cur = stripAnsi(cur)
-    if (!right) {
-      cur = cur.trim()
-      continue
-    }
-    if (opts.stripAnsi) right = stripAnsi(right)
-    right = wrap(right.trim(), opts.maxWidth - (maxLength + 2), {hard: true, trim: false})
-    // right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
-    const [first, ...lines] = right!.split('\n').map(s => s.trim())
-    cur += ' '.repeat(maxLength - width(cur) + 2)
-    cur += first
-    if (lines.length === 0) {
-      continue
-    }
-    // if we start putting too many lines down, render in multiline format
-    if (lines.length > 4) return renderList(input, {...opts, multiline: true})
-    spacer = '\n\n'
-    cur += '\n'
-    cur += indent(lines.join('\n'), maxLength + 2)
-  }
-  if (cur) {
-    output += spacer
-    output += cur
-  }
-  return output.trim()
-}
-
 export default class Help {
   constructor(public config: IConfig, public opts: HelpOptions = {}) {}
 
@@ -136,7 +79,7 @@ export default class Help {
   protected renderMarkdown(article: Article): string {
     const maxWidth = 100
     return _([
-      stripAnsi(article.title || ''),
+      stripAnsi(this.renderTemplate(article.title)),
       '-'.repeat(width(article.title)),
       '',
       ...article.sections
@@ -146,10 +89,11 @@ export default class Help {
           body += ''
         } else if (_.isArray(s.body[0])) {
           body += '```\n'
-          body += renderList(s.body as any, {maxWidth: maxWidth - 2, stripAnsi: true})
+          body += this.renderList(s.body as any, {maxWidth: maxWidth - 2, stripAnsi: true})
           body += '\n```'
         } else {
           let output = _.castArray(s.body as string).join('\n')
+          output = this.renderTemplate(output)
           body += wrap(stripAnsi(output), maxWidth - 2, {trim: false, hard: true})
         }
         if (s.type === 'code') {
@@ -166,16 +110,17 @@ export default class Help {
   protected renderScreen(article: Article): string {
     const maxWidth = screen.stdtermwidth
     return _([
-      article.title,
+      this.renderTemplate(article.title),
       ...article.sections
       .map(s => {
         let body
         if (s.body.length === 0) {
           body = ''
         } else if (_.isArray(s.body[0])) {
-          body = renderList(s.body as any, {maxWidth: maxWidth - 2})
+          body = this.renderList(s.body as any, {maxWidth: maxWidth - 2})
         } else {
           body = _.castArray(s.body as string).join('\n')
+          body = this.renderTemplate(body)
           body = wrap(body, maxWidth - 2, {trim: false, hard: true})
         }
         return _([
@@ -184,5 +129,71 @@ export default class Help {
         ]).compact().join('\n')
       })
     ]).compact().join('\n\n')
+  }
+
+  protected renderTemplate(template: string | undefined): string {
+    return _.template(template || '')({config: this.config})
+  }
+
+  protected renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {
+    if (input.length === 0) {
+      return ''
+    }
+    input = input.map(([left, right]) => {
+      return [this.renderTemplate(left), this.renderTemplate(right)]
+    })
+    const renderMultiline = () => {
+      output = ''
+      for (let [left, right] of input) {
+        if (!left && !right) continue
+        if (left) {
+          if (opts.stripAnsi) left = stripAnsi(left)
+          output += wrap(left.trim(), opts.maxWidth, {hard: true, trim: false})
+        }
+        if (right) {
+          if (opts.stripAnsi) right = stripAnsi(right)
+          output += '\n'
+          output += indent(wrap(right.trim(), opts.maxWidth - 2, {hard: true, trim: false}), 4)
+        }
+        output += '\n\n'
+      }
+      return output.trim()
+    }
+    if (opts.multiline) return renderMultiline()
+    const maxLength = widestLine(input.map(i => i[0]).join('\n'))
+    let output = ''
+    let spacer = '\n'
+    let cur = ''
+    for (let [left, right] of input) {
+      if (cur) {
+        output += spacer
+        output += cur
+      }
+      cur = left || ''
+      if (opts.stripAnsi) cur = stripAnsi(cur)
+      if (!right) {
+        cur = cur.trim()
+        continue
+      }
+      if (opts.stripAnsi) right = stripAnsi(right)
+      right = wrap(right.trim(), opts.maxWidth - (maxLength + 2), {hard: true, trim: false})
+      // right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
+      const [first, ...lines] = right!.split('\n').map(s => s.trim())
+      cur += ' '.repeat(maxLength - width(cur) + 2)
+      cur += first
+      if (lines.length === 0) {
+        continue
+      }
+      // if we start putting too many lines down, render in multiline format
+      if (lines.length > 4) return renderMultiline()
+      spacer = '\n\n'
+      cur += '\n'
+      cur += indent(lines.join('\n'), maxLength + 2)
+    }
+    if (cur) {
+      output += spacer
+      output += cur
+    }
+    return output.trim()
   }
 }
