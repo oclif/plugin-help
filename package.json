@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@anycli/config": "^0.2.11",
-    "@anycli/engine": "^0.1.47",
+    "@anycli/engine": "^0.2.0",
     "@anycli/plugin-plugins": "^0.2.3",
     "@anycli/plugin-version": "^0.1.19",
     "@anycli/test": "^0.10.3",
