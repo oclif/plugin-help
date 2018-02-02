@@ -1,3 +1,11 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/anycli/plugin-help/compare/d8df03bee99d520c51bf1754c00ed084b6a01170...v0.4.0) (2018-02-02)
+
+
+### Features
+
+* show default flag/arg values ([7bedad5](https://github.com/anycli/plugin-help/commit/7bedad5))
+
 <a name="0.3.7"></a>
 ## [0.3.7](https://github.com/anycli/plugin-help/compare/2977578c307c7092192179ee73cb1d4b634d8049...v0.3.7) (2018-02-02)
 
