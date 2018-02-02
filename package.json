@@ -28,7 +28,7 @@
     "@anycli/engine": "^0.1.46",
     "@anycli/plugin-plugins": "^0.2.2",
     "@anycli/plugin-version": "^0.1.19",
-    "@anycli/test": "^0.10.2",
+    "@anycli/test": "^0.10.3",
     "@anycli/tslint": "^0.2.2",
     "@types/chai": "^4.1.2",
     "@types/indent-string": "^3.0.0",
