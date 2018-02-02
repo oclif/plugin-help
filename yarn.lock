@@ -12,11 +12,32 @@
     lodash "^4.17.4"
     tslib "^1.9.0"
 
+"@anycli/command@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.npmjs.org/@anycli/command/-/command-0.3.8.tgz#25ab49db518b983501661e45d8094aad1f0d0760"
+  dependencies:
+    "@anycli/parser" "^3.0.4"
+    cli-ux "^3.3.13"
+    debug "^3.1.0"
+    lodash "^4.17.4"
+    tslib "^1.9.0"
+
 "@anycli/config@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@anycli/config/-/config-0.3.0.tgz#a0938488e7afc507d69ec13a8e52c71aaecc08ea"
   dependencies:
     cli-ux "^3.3.10"
+    debug "^3.1.0"
+    fs-extra "^5.0.0"
+    load-json-file "^4.0.0"
+    lodash "^4.17.4"
+    read-pkg "^3.0.0"
+
+"@anycli/config@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/@anycli/config/-/config-0.3.1.tgz#3832c1da47682dd2ba0f9d46117bb5b6513196ef"
+  dependencies:
+    cli-ux "^3.3.13"
     debug "^3.1.0"
     fs-extra "^5.0.0"
     load-json-file "^4.0.0"
@@ -48,11 +69,11 @@
     lodash "^4.17.4"
     semver "^5.5.0"
 
-"@anycli/engine@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@anycli/engine/-/engine-0.3.1.tgz#c352d9cc73e66759ddc88c72da2907f1e1a0d553"
+"@anycli/engine@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/@anycli/engine/-/engine-0.3.2.tgz#fb8e8d2cf2cd20108ae5fab40b84c3a55cf706ad"
   dependencies:
-    "@anycli/manifest-file" "^0.3.8"
+    "@anycli/manifest-file" "^0.3.9"
     cli-ux "^3.3.13"
     debug "^3.1.0"
     fs-extra "^5.0.0"
@@ -65,6 +86,17 @@
   resolved "https://registry.yarnpkg.com/@anycli/manifest-file/-/manifest-file-0.3.8.tgz#d175a27e1d2009a14080c7e8dd808c1c856de468"
   dependencies:
     cli-ux "^3.3.12"
+    debug "^3.1.0"
+    fs-extra "^5.0.0"
+    load-json-file "^4.0.0"
+    lodash "^4.17.4"
+    proper-lockfile "^3.0.2"
+
+"@anycli/manifest-file@^0.3.9":
+  version "0.3.9"
+  resolved "https://registry.npmjs.org/@anycli/manifest-file/-/manifest-file-0.3.9.tgz#d39ab157c0cd9a15471ef8bfd36654c2c4b01730"
+  dependencies:
+    cli-ux "^3.3.13"
     debug "^3.1.0"
     fs-extra "^5.0.0"
     load-json-file "^4.0.0"
@@ -93,9 +125,9 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@anycli/plugin-help@^0.4.4":
-  version "0.4.4"
-  resolved "https://registry.npmjs.org/@anycli/plugin-help/-/plugin-help-0.4.4.tgz#fbddea9c0b1e061ddd684c6ee5ddb15d7c8e4b52"
+"@anycli/plugin-help@^0.4.6":
+  version "0.4.6"
+  resolved "https://registry.npmjs.org/@anycli/plugin-help/-/plugin-help-0.4.6.tgz#672a96550203968118b881fcdf8f2c685a784bf6"
   dependencies:
     "@anycli/command" "^0.3.7"
     "@anycli/screen" "^0.0.3"
@@ -116,9 +148,9 @@
     cli-ux "^3.3.12"
     string-similarity "^1.2.0"
 
-"@anycli/plugin-plugins@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.npmjs.org/@anycli/plugin-plugins/-/plugin-plugins-0.2.7.tgz#b644a3e25424051e819038e2ba87e2b088499785"
+"@anycli/plugin-plugins@^0.2.8":
+  version "0.2.8"
+  resolved "https://registry.npmjs.org/@anycli/plugin-plugins/-/plugin-plugins-0.2.8.tgz#c143846a528d42abe017298d2360974f8ee7092f"
   dependencies:
     "@anycli/command" "^0.3.7"
     "@anycli/manifest-file" "^0.3.8"
@@ -151,9 +183,9 @@
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@anycli/screen/-/screen-0.0.3.tgz#f0afd970c3ed725702948a45a874ede1fdd9362e"
 
-"@anycli/test@^0.10.3":
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/@anycli/test/-/test-0.10.3.tgz#f0179c6407f7a4a71893bd1ded95a0669b20ea31"
+"@anycli/test@^0.10.4":
+  version "0.10.4"
+  resolved "https://registry.npmjs.org/@anycli/test/-/test-0.10.4.tgz#75575f73b30e99fe6c6b4c3f61fc4928ac4def13"
   dependencies:
     fancy-test "^0.6.6"
     lodash "^4.17.4"

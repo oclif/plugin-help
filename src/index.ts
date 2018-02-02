@@ -1,6 +1,7 @@
-import {ICachedCommand, IConfig} from '@anycli/config'
+import {ICachedCommand, ICommand, IConfig} from '@anycli/config'
 import * as screen from '@anycli/screen'
 import chalk from 'chalk'
+import cli from 'cli-ux'
 import indent = require('indent-string')
 import * as _ from 'lodash'
 import stripAnsi = require('strip-ansi')
@@ -102,6 +103,14 @@ function renderList(input: (string | undefined)[][], opts: {maxWidth: number, mu
 
 export default class Help {
   constructor(public config: IConfig, public opts: HelpOptions = {}) {}
+
+  showHelp(command: ICommand, _: string[]) {
+    if (command.type === 'engine') {
+      cli.info(this.root())
+    } else {
+      cli.info(this.command(command.convertToCached()))
+    }
+  }
 
   root(): string {
     const help = new RootHelp(this.config, this.opts)
