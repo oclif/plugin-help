@@ -1,3 +1,16 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/anycli/plugin-help/compare/4f48c42033e51edbad3d8b721f3bc8ef625b5101...v0.6.0) (2018-02-03)
+
+
+### Bug Fixes
+
+* tweaks to make help render better ([4cc24aa](https://github.com/anycli/plugin-help/commit/4cc24aa))
+
+
+### Features
+
+* generalize help coordination inot showHelp() ([fa37288](https://github.com/anycli/plugin-help/commit/fa37288))
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/anycli/plugin-help/compare/fcc41a0a404c914c93dbe925d77a57c31fb7c162...v0.5.1) (2018-02-03)
 
