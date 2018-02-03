@@ -11,6 +11,7 @@ export default class HelpCommand extends Command {
   static args = [
     {name: 'command', required: false, description: 'command to show help for'}
   ]
+  static strict = false
 
   async run() {
     const {flags, argv} = this.parse(HelpCommand)
