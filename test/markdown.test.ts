@@ -1,5 +1,4 @@
-import {Command as Base, flags} from '@anycli/command'
-import {ICommand} from '@anycli/config'
+import {Command as Base, Config, flags} from '@anycli/command'
 import {expect, test as base} from '@anycli/test'
 import stripAnsi = require('strip-ansi')
 
@@ -13,9 +12,9 @@ class Command extends Base {
 const test = base
 .loadConfig()
 .add('help', ctx => new Help(ctx.config, {format: 'markdown'}))
-.register('commandHelp', (command?: ICommand) => ({
+.register('commandHelp', (command?: Config.Command.Class) => ({
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
-    const cached = command!.convertToCached()
+    const cached = Config.Command.toCached(command!)
     let help = ctx.help.command(cached)
     if (process.env.TEST_OUTPUT === '1') {
       // tslint:disable-next-line

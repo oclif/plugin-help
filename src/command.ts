@@ -1,4 +1,4 @@
-import {ICachedArg, ICachedCommand, ICachedFlag, IConfig} from '@anycli/config'
+import * as Config from '@anycli/config'
 import chalk from 'chalk'
 import * as _ from 'lodash'
 
@@ -11,9 +11,9 @@ const {
 } = chalk
 
 export default class CommandHelp {
-  constructor(public config: IConfig, public opts: HelpOptions) {}
+  constructor(public config: Config.IConfig, public opts: HelpOptions) {}
 
-  command(cmd: ICachedCommand): Article {
+  command(cmd: Config.Command): Article {
     const flagDefs = cmd.flags || {}
     const flags = Object.keys(flagDefs)
     .filter(k => !flagDefs[k].hidden)
@@ -38,14 +38,14 @@ export default class CommandHelp {
   //   return [buildUsage(cmd), cmd.description ? dim(cmd.description) : undefined] as [string, string | undefined]
   // }
 
-  protected usage(cmd: ICachedCommand, flags: ICachedFlag[]): Section {
+  protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): Section {
     return {
       heading: 'usage',
       type: 'code',
       body: cmd.usage ? _.castArray(cmd.usage) : this.defaultUsage(cmd, flags)
     }
   }
-  protected defaultUsage(command: ICachedCommand, flags: ICachedFlag[]): string {
+  protected defaultUsage(command: Config.Command, flags: Config.Command.Flag[]): string {
     return _([
       '$',
       this.config.bin,
@@ -57,7 +57,7 @@ export default class CommandHelp {
     .join(' ')
   }
 
-  protected description(cmd: ICachedCommand): Section | undefined {
+  protected description(cmd: Config.Command): Section | undefined {
     if (!cmd.description) return
     return {
       heading: 'description',
@@ -74,7 +74,7 @@ export default class CommandHelp {
     }
   }
 
-  protected args(args: ICachedCommand['args']): Section | undefined {
+  protected args(args: Config.Command['args']): Section | undefined {
     if (!args.length) return
     return {
       heading: 'arguments',
@@ -86,13 +86,13 @@ export default class CommandHelp {
       })
     }
   }
-  protected arg(arg: ICachedArg): string {
+  protected arg(arg: Config.Command['args'][0]): string {
     let name = arg.name.toUpperCase()
     if (arg.required) return `${name}`
     return `[${name}]`
   }
 
-  protected flags(flags: ICachedFlag[]): Section | undefined {
+  protected flags(flags: Config.Command.Flag[]): Section | undefined {
     if (!flags.length) return
     return {
       heading: 'options',
@@ -103,7 +103,7 @@ export default class CommandHelp {
     }
   }
 
-  protected flag(flag: ICachedFlag): [string, string | undefined] {
+  protected flag(flag: Config.Command.Flag): [string, string | undefined] {
     const label = []
     if (flag.char) label.push(`-${flag.char[0]}`)
     if (flag.name) label.push(`--${flag.name.trim()}`)

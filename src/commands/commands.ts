@@ -11,7 +11,7 @@ export default class Commands extends Command {
   // }
 
   async run() {
-    const commands = this.config.engine!.commandIDs.slice(0)
+    const commands = this.config.commandIDs.slice(0)
     commands.sort()
     for (let id of commands) {
       cli.info(id)

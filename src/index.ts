@@ -1,4 +1,4 @@
-import {ICachedCommand, ICommand, IConfig} from '@anycli/config'
+import * as Config from '@anycli/config'
 import * as screen from '@anycli/screen'
 import chalk from 'chalk'
 import cli from 'cli-ux'
@@ -45,14 +45,14 @@ export interface HelpOptions {
 }
 
 export default class Help {
-  constructor(public config: IConfig, public opts: HelpOptions = {}) {}
+  constructor(public config: Config.IConfig, public opts: HelpOptions = {}) {}
 
-  showHelp(command: ICommand, _: string[]) {
-    if (command.type === 'engine') {
-      cli.info(this.root())
-    } else {
-      cli.info(this.command(command.convertToCached()))
-    }
+  showHelp(command: Config.Command.Class, _: string[]) {
+    // if (command.type === 'engine') {
+    //   cli.info(this.root())
+    // } else {
+      cli.info(this.command(Config.Command.toCached(command)))
+    // }
   }
 
   root(): string {
@@ -61,7 +61,7 @@ export default class Help {
     return this.render(article)
   }
 
-  command(command: ICachedCommand): string {
+  command(command: Config.Command): string {
     const help = new CommandHelp(this.config, this.opts)
     const article = help.command(command)
     return this.render(article)

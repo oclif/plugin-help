@@ -40,7 +40,7 @@ export default class RootHelp {
   }
 
   protected commands(): Section | undefined {
-    const commands = _(this.config.engine.commands)
+    const commands = _(this.config.commands)
     .filter(c => this.opts.all || !c.hidden)
     .sortBy(c => c.id)
     .sortedUniqBy(c => c.id)

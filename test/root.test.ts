@@ -5,8 +5,8 @@ global.columns = 80
 import Help from '../src'
 
 const test = base
-.loadEngine()
-.add('help', ctx => new Help(ctx.engine.config))
+.loadConfig()
+.add('help', ctx => new Help(ctx.config))
 .register('rootHelp', () => ({
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
     let help = ctx.help.root()
@@ -34,5 +34,6 @@ COMMANDS
   plugins
   plugins:install
   plugins:uninstall
+  plugins:update
   version`))
 })
