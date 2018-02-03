@@ -23,9 +23,22 @@
     load-json-file "^4.0.0"
     lodash "^4.17.4"
 
-"@anycli/config@^1.0.17", "@anycli/config@^1.0.19":
+"@anycli/config@^1.0.17":
   version "1.0.19"
   resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.0.19.tgz#3cb12674ad038c88841079262280e85dc3d65957"
+  dependencies:
+    cli-ux "^3.3.13"
+    debug "^3.1.0"
+    fs-extra "^5.0.0"
+    fs-extra-debug "^1.0.4"
+    globby "^7.1.1"
+    load-json-file "^4.0.0"
+    lodash "^4.17.4"
+    read-pkg "^3.0.0"
+
+"@anycli/config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.1.0.tgz#22ef1b42ee9004aac7c1e53a3c2ff8d13da68e9f"
   dependencies:
     cli-ux "^3.3.13"
     debug "^3.1.0"
