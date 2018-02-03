@@ -47,12 +47,24 @@ export interface HelpOptions {
 export default class Help {
   constructor(public config: Config.IConfig, public opts: HelpOptions = {}) {}
 
-  showHelp(command: Config.Command.Class, _: string[]) {
-    // if (command.type === 'engine') {
-    //   cli.info(this.root())
-    // } else {
-      cli.info(this.command(Config.Command.toCached(command)))
-    // }
+  showHelp(argv: string[]) {
+    const getHelpSubject = () => {
+      for (let arg of argv) {
+        if (arg === '--') return
+        if (arg.startsWith('-')) continue
+        if (arg === 'help') continue
+        return arg
+      }
+    }
+    const subject = getHelpSubject()
+    if (!subject) {
+      cli.info(this.root())
+    } else {
+      // TODO: topic help
+      let command = this.config.findCommand(subject, {must: true})
+      cli.info(this.command(command))
+    }
+    if (this.opts.format === 'screen') cli.info()
   }
 
   root(): string {

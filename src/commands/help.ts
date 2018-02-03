@@ -1,5 +1,4 @@
 import {Command, flags} from '@anycli/command'
-import cli from 'cli-ux'
 
 import Help from '..'
 
@@ -14,18 +13,9 @@ export default class HelpCommand extends Command {
   ]
 
   async run() {
-    const {flags, args} = this.parse(HelpCommand)
+    const {flags, argv} = this.parse(HelpCommand)
     const format = flags.format as any || 'screen'
-    let id = args.command
     let help = new Help(this.config, {format})
-    if (!id) {
-      let rootHelp = help.root()
-      cli.info(rootHelp)
-    } else {
-      let command = this.config.findCommand(id, {must: true})
-      let commandHelp = help.command(command)
-      cli.info(commandHelp)
-    }
-    if (format === 'screen') cli.info()
+    help.showHelp(argv)
   }
 }
