@@ -1,3 +1,11 @@
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/anycli/plugin-help/compare/4cc24aa7608b55071b4b9bd3aece77a671eb84c5...v0.6.1) (2018-02-05)
+
+
+### Bug Fixes
+
+* make dependencies optional ([32b9b62](https://github.com/anycli/plugin-help/commit/32b9b62))
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/anycli/plugin-help/compare/4f48c42033e51edbad3d8b721f3bc8ef625b5101...v0.6.0) (2018-02-03)
 
