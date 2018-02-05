@@ -7,7 +7,6 @@
     "commands": "./lib/commands",
     "bin": "anycli",
     "devPlugins": [
-      "@anycli/plugin-version",
       "@anycli/plugin-plugins"
     ]
   },
@@ -16,21 +15,19 @@
     "@anycli/command": "^1.2.5",
     "chalk": "^2.3.0",
     "indent-string": "^3.2.0",
-    "lodash": "^4.17.5",
+    "lodash.template": "^4.4.0",
     "string-width": "^2.1.1",
     "widest-line": "^2.0.0",
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^1.1.6",
+    "@anycli/config": "^1.1.8",
     "@anycli/dev-cli": "^0.1.5",
     "@anycli/plugin-plugins": "^0.2.11",
-    "@anycli/plugin-version": "^0.1.34",
     "@anycli/test": "^0.10.10",
     "@anycli/tslint": "^0.2.5",
     "@types/chai": "^4.1.2",
     "@types/indent-string": "^3.0.0",
-    "@types/lodash": "^4.14.100",
     "@types/lodash.template": "^4.4.3",
     "@types/mocha": "^2.2.48",
     "@types/node": "^9.4.0",
@@ -39,7 +36,6 @@
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
     "globby": "^7.1.1",
-    "lodash.template": "^4.4.0",
     "mocha": "^5.0.0",
     "strip-ansi": "^4.0.0",
     "ts-node": "^4.1.0",

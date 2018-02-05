@@ -23,9 +23,9 @@
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.1.5.tgz#48eddbe34557f3efd6a922a2804f1e01b38999f1"
 
-"@anycli/config@^1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.1.6.tgz#141f1e849c5dfd4d19169a0e8af267f4013b1042"
+"@anycli/config@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.1.8.tgz#986eedd29ec8ccecb5454d080c16e65c37ae28e5"
 
 "@anycli/dev-cli@^0.1.5":
   version "0.1.5"
@@ -143,7 +143,7 @@
   dependencies:
     "@types/lodash" "*"
 
-"@types/lodash@*", "@types/lodash@^4.14.100":
+"@types/lodash@*":
   version "4.14.100"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.100.tgz#f353dd9d3a9785638b6cb8023e6639097bd31969"
 
@@ -640,10 +640,6 @@ lodash.templatesettings@^4.0.0:
 lodash@^4.13.1, lodash@^4.17.4, lodash@^4.5.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
-
-lodash@^4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lru-cache@^4.0.1:
   version "4.1.1"

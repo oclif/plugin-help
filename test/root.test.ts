@@ -34,6 +34,5 @@ COMMANDS
   plugins
   plugins:install
   plugins:uninstall
-  plugins:update
-  version`))
+  plugins:update`))
 })

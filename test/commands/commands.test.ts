@@ -13,7 +13,6 @@ plugins
 plugins:install
 plugins:uninstall
 plugins:update
-version
 `)
   })
 })
