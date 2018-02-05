@@ -1,8 +1,8 @@
 import * as Config from '@anycli/config'
 import chalk from 'chalk'
-import * as _ from 'lodash'
 
 import {Article, HelpOptions, Section} from '.'
+import {castArray, compact, sortBy} from './util'
 
 const {
   underline,
@@ -24,13 +24,13 @@ export default class CommandHelp {
     const args = (cmd.args || []).filter(a => !a.hidden)
     return {
       title: cmd.title,
-      sections: _([
+      sections: compact([
         this.usage(cmd, flags),
         this.args(args),
         this.flags(flags),
         this.description(cmd),
         this.aliases(cmd.aliases),
-      ]).compact().value(),
+      ]),
     }
   }
 
@@ -40,27 +40,26 @@ export default class CommandHelp {
 
   protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): Section {
     return {
-      heading: 'usage',
+      heading: 'Usage',
       type: 'code',
-      body: cmd.usage ? _.castArray(cmd.usage) : this.defaultUsage(cmd, flags)
+      body: cmd.usage ? castArray(cmd.usage) : this.defaultUsage(cmd, flags)
     }
   }
   protected defaultUsage(command: Config.Command, flags: Config.Command.Flag[]): string {
-    return _([
+    return compact([
       '$',
       this.config.bin,
       command.id,
       command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
       flags.length && '[OPTIONS]',
     ])
-    .compact()
     .join(' ')
   }
 
   protected description(cmd: Config.Command): Section | undefined {
     if (!cmd.description) return
     return {
-      heading: 'description',
+      heading: 'Description',
       body: cmd.description.trim(),
     }
   }
@@ -68,7 +67,7 @@ export default class CommandHelp {
   protected aliases(aliases: string[] | undefined): Section | undefined {
     if (!aliases || !aliases.length) return
     return {
-      heading: 'aliases',
+      heading: 'Aliases',
       type: 'code',
       body: aliases.map(a => ['$', this.config.bin, a].join(' ')),
     }
@@ -77,7 +76,7 @@ export default class CommandHelp {
   protected args(args: Config.Command['args']): Section | undefined {
     if (!args.length) return
     return {
-      heading: 'arguments',
+      heading: 'Arguments',
       body: args.map(a => {
         const name = a.name.toUpperCase()
         let description = a.description || ''
@@ -95,11 +94,9 @@ export default class CommandHelp {
   protected flags(flags: Config.Command.Flag[]): Section | undefined {
     if (!flags.length) return
     return {
-      heading: 'options',
-      body: _(flags)
-      .sortBy(f => [!f.char, f.char, f.name])
+      heading: 'Options',
+      body: sortBy(flags, f => [!f.char, f.char, f.name])
       .map(f => this.flag(f))
-      .value(),
     }
   }
 

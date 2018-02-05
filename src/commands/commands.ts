@@ -1,5 +1,4 @@
 import {Command} from '@anycli/command'
-import cli from 'cli-ux'
 
 export default class Commands extends Command {
   static hidden = true
@@ -14,7 +13,7 @@ export default class Commands extends Command {
     const commands = this.config.commandIDs.slice(0)
     commands.sort()
     for (let id of commands) {
-      cli.info(id)
+      this.log(id)
     }
   }
 }

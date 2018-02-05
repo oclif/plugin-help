@@ -13,16 +13,11 @@
     load-json-file "^4.0.0"
     lodash "^4.17.4"
 
-"@anycli/command@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.4.tgz#9c42a8142a380193a949fab8f374b53ef805f4e9"
+"@anycli/command@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.5.tgz#c7a6ee35344f1d854d5323e1f5a3f6b6da7e1b6d"
   dependencies:
-    "@anycli/parser" "^3.2.2"
-    cli-ux "^3.3.13"
-    debug "^3.1.0"
-    fs-extra "^5.0.0"
-    load-json-file "^4.0.0"
-    lodash "^4.17.4"
+    "@anycli/parser" "^3.2.4"
 
 "@anycli/config@^1.1.1":
   version "1.1.5"
@@ -51,6 +46,10 @@
     "@anycli/screen" "^0.0.3"
     chalk "^2.3.0"
     lodash "^4.17.4"
+
+"@anycli/parser@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@anycli/parser/-/parser-3.2.4.tgz#30297ac2fa225b37efaab5c0062bf189988b3ce8"
 
 "@anycli/plugin-help@^0.6.0":
   version "0.6.0"
@@ -138,7 +137,13 @@
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/indent-string/-/indent-string-3.0.0.tgz#9ebb391ceda548926f5819ad16405349641b999f"
 
-"@types/lodash@^4.14.100":
+"@types/lodash.template@^4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@types/lodash.template/-/lodash.template-4.4.3.tgz#3c6df2eb7e964cd56b12ce55ac0e6669fef6216f"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*", "@types/lodash@^4.14.100":
   version "4.14.100"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.100.tgz#f353dd9d3a9785638b6cb8023e6639097bd31969"
 
@@ -320,25 +325,6 @@ cli-ux@^3.3.13:
     indent-string "^3.2.0"
     lodash "^4.17.4"
     node-notifier "^5.2.1"
-    password-prompt "^1.0.4"
-    semver "^5.5.0"
-    strip-ansi "^4.0.0"
-    supports-color "^5.1.0"
-
-cli-ux@^3.3.15:
-  version "3.3.15"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-3.3.15.tgz#8aaae7431e72779f80c115b3af14913a3a18bdf1"
-  dependencies:
-    "@anycli/screen" "^0.0.3"
-    "@heroku/linewrap" "^1.0.0"
-    ansi-styles "^3.2.0"
-    cardinal "^1.0.0"
-    chalk "^2.3.0"
-    clean-stack "^1.3.0"
-    extract-stack "^1.0.0"
-    fs-extra "^5.0.0"
-    indent-string "^3.2.0"
-    lodash "^4.17.4"
     password-prompt "^1.0.4"
     semver "^5.5.0"
     strip-ansi "^4.0.0"
@@ -633,6 +619,23 @@ load-json-file@^4.0.0:
     parse-json "^4.0.0"
     pify "^3.0.0"
     strip-bom "^3.0.0"
+
+lodash._reinterpolate@~3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
+
+lodash.template@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
+  dependencies:
+    lodash._reinterpolate "~3.0.0"
+    lodash.templatesettings "^4.0.0"
+
+lodash.templatesettings@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
+  dependencies:
+    lodash._reinterpolate "~3.0.0"
 
 lodash@^4.13.1, lodash@^4.17.4, lodash@^4.5.1:
   version "4.17.4"

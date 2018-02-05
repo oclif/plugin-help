@@ -1,13 +1,13 @@
 import * as Config from '@anycli/config'
-import * as screen from '@anycli/screen'
 import chalk from 'chalk'
-import cli from 'cli-ux'
 import indent = require('indent-string')
-import * as _ from 'lodash'
+import template = require('lodash.template')
 import stripAnsi = require('strip-ansi')
 
 import CommandHelp from './command'
 import RootHelp from './root'
+import {stdtermwidth} from './screen'
+import {castArray, compact} from './util'
 
 const width = require('string-width')
 const wrap = require('wrap-ansi')
@@ -62,13 +62,13 @@ export default class Help {
     }
     const subject = getHelpSubject()
     if (!subject) {
-      cli.info(this.root())
+      console.log(this.root())
     } else {
       // TODO: topic help
       let command = this.config.findCommand(subject, {must: true})
-      cli.info(this.command(command))
+      console.log(this.command(command))
     }
-    if (this.opts.format === 'screen') cli.info()
+    if (this.opts.format === 'screen') console.log()
   }
 
   root(): string {
@@ -94,7 +94,7 @@ export default class Help {
 
   protected renderMarkdown(article: Article): string {
     const maxWidth = 100
-    return _([
+    return [
       stripAnsi(this.renderTemplate(article.title)),
       '-'.repeat(width(article.title)),
       '',
@@ -103,52 +103,52 @@ export default class Help {
         let body = '\n'
         if (s.body.length === 0) {
           body += ''
-        } else if (_.isArray(s.body[0])) {
+        } else if (Array.isArray(s.body[0])) {
           body += '```\n'
           body += this.renderList(s.body as any, {maxWidth: maxWidth - 2, stripAnsi: true})
           body += '\n```'
         } else {
-          let output = _.castArray(s.body as string).join('\n')
+          let output = castArray(s.body as string).join('\n')
           output = this.renderTemplate(output)
           body += wrap(stripAnsi(output), maxWidth - 2, {trim: false, hard: true})
         }
         if (s.type === 'code') {
           body = `\n\`\`\`sh-session${body}\n\`\`\``
         }
-        return _([
-          `**${_.capitalize(s.heading)}**`,
+        return compact([
+          `**${s.heading}**`,
           body,
-        ]).compact().join('\n') + '\n'
+        ]).join('\n') + '\n'
       })
-    ]).join('\n').trim()
+    ].join('\n').trim()
   }
 
   protected renderScreen(article: Article): string {
-    const maxWidth = screen.stdtermwidth
-    return _([
+    const maxWidth = stdtermwidth
+    return compact([
       this.renderTemplate(article.title),
       ...article.sections
       .map(s => {
         let body
         if (s.body.length === 0) {
           body = ''
-        } else if (_.isArray(s.body[0])) {
+        } else if (Array.isArray(s.body[0])) {
           body = this.renderList(s.body as any, {maxWidth: maxWidth - 2})
         } else {
-          body = _.castArray(s.body as string).join('\n')
+          body = castArray(s.body as string).join('\n')
           body = this.renderTemplate(body)
           body = wrap(body, maxWidth - 2, {trim: false, hard: true})
         }
-        return _([
+        return compact([
           bold(s.heading.toUpperCase()),
           indent(body, 2),
-        ]).compact().join('\n')
+        ]).join('\n')
       })
-    ]).compact().join('\n\n')
+    ]).join('\n\n')
   }
 
-  protected renderTemplate(template: string | undefined): string {
-    return _.template(template || '')({config: this.config})
+  protected renderTemplate(t: string | undefined): string {
+    return template(t || '')({config: this.config})
   }
 
   protected renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {

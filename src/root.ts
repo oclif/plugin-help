@@ -1,8 +1,8 @@
 import {IConfig} from '@anycli/config'
 // import chalk from 'chalk'
-import * as _ from 'lodash'
 
 import {Article, HelpOptions, Section} from '.'
+import {compact, sortBy, uniqBy} from './util'
 
 // const {
 //   underline,
@@ -16,11 +16,11 @@ export default class RootHelp {
   root(): Article {
     return {
       title: this.config.pjson.anycli.title || this.config.pjson.description,
-      sections: _([
+      sections: compact([
         this.usage(),
         this.description(),
         this.commands(),
-      ]).compact().value(),
+      ])
     }
   }
 
@@ -40,14 +40,14 @@ export default class RootHelp {
   }
 
   protected commands(): Section | undefined {
-    const commands = _(this.config.commands)
-    .filter(c => this.opts.all || !c.hidden)
-    .sortBy(c => c.id)
-    .sortedUniqBy(c => c.id)
+    let commands = this.config.commands
+    commands = commands.filter(c => this.opts.all || !c.hidden)
+    commands = sortBy(commands, c => c.id)
+    commands = uniqBy(commands, c => c.id)
 
     return {
       heading: 'commands',
-      body: commands.map(c => [c.id, c.title]).value(),
+      body: commands.map(c => [c.id, c.title]),
     }
   }
 }

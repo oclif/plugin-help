@@ -1,3 +1,6 @@
 {
-  "extends": "@anycli/tslint"
+  "extends": "@anycli/tslint",
+  "rules": {
+    "no-console": [true, "dir", "error"]
+  }
 }

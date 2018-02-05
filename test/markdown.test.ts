@@ -1,4 +1,5 @@
-import {Command as Base, Config, flags} from '@anycli/command'
+import {Command as Base, flags} from '@anycli/command'
+import * as Config from '@anycli/config'
 import {expect, test as base} from '@anycli/test'
 import stripAnsi = require('strip-ansi')
 
