@@ -1,3 +1,11 @@
+<a name="0.6.3"></a>
+## [0.6.3](https://github.com/anycli/plugin-help/compare/8d2a146505f02ccc0854601a28223ae3d2acbf2c...v0.6.3) (2018-02-05)
+
+
+### Bug Fixes
+
+* require lodash.template ([b53cc90](https://github.com/anycli/plugin-help/commit/b53cc90))
+
 <a name="0.6.2"></a>
 ## [0.6.2](https://github.com/anycli/plugin-help/compare/32b9b620962c54b8102dc878f70104dd4084c62f...v0.6.2) (2018-02-05)
 
