@@ -2,116 +2,94 @@
 # yarn lockfile v1
 
 
-"@anycli/command@^1.2.2", "@anycli/command@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.3.tgz#b239669674f98098b1af096f081958b270fab0b6"
-  dependencies:
-    "@anycli/parser" "^3.2.2"
-    cli-ux "^3.3.13"
-    debug "^3.1.0"
-    fs-extra "^5.0.0"
-    load-json-file "^4.0.0"
-    lodash "^4.17.4"
-
 "@anycli/command@^1.2.5":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.5.tgz#c7a6ee35344f1d854d5323e1f5a3f6b6da7e1b6d"
   dependencies:
     "@anycli/parser" "^3.2.4"
 
-"@anycli/config@^1.1.1":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.1.5.tgz#48eddbe34557f3efd6a922a2804f1e01b38999f1"
+"@anycli/command@^1.2.9":
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.9.tgz#6db08fbb3537c8cc2f616415fcd6360043750f38"
+  dependencies:
+    "@anycli/parser" "^3.2.5"
 
 "@anycli/config@^1.1.8":
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.1.8.tgz#986eedd29ec8ccecb5454d080c16e65c37ae28e5"
 
-"@anycli/dev-cli@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@anycli/dev-cli/-/dev-cli-0.1.5.tgz#efcb13ca2dd4378798e991d5e207558fdd440b09"
-  dependencies:
-    "@anycli/command" "^1.2.3"
-    "@anycli/config" "^1.1.1"
-    "@anycli/plugin-help" "^0.6.0"
-    "@anycli/plugin-not-found" "^0.1.15"
-    "@anycli/plugin-version" "^0.1.34"
-    cli-ux "^3.3.13"
-    fs-extra "^5.0.0"
+"@anycli/config@^1.3.10":
+  version "1.3.10"
+  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.3.10.tgz#8d821fe8a60ec400dd49d9b1a12f7062e590dd4f"
 
-"@anycli/parser@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@anycli/parser/-/parser-3.2.2.tgz#ee2616e889e7dd78bc269638b7eee3f3096e2c91"
+"@anycli/dev-cli@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@anycli/dev-cli/-/dev-cli-0.1.6.tgz#bb27980fe2cfb26f889768006c26735350fdfe28"
   dependencies:
-    "@anycli/screen" "^0.0.3"
-    chalk "^2.3.0"
-    lodash "^4.17.4"
+    "@anycli/command" "^1.2.5"
+    "@anycli/config" "^1.1.8"
+    "@anycli/plugin-help" "^0.6.2"
+
+"@anycli/errors@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@anycli/errors/-/errors-0.2.0.tgz#ee421115dcdb499d76de9d4853718c06e1c5d5f0"
+  dependencies:
+    clean-stack "^1.3.0"
+    fs-extra "^5.0.0"
+    indent-string "^3.2.0"
+    strip-ansi "^4.0.0"
+    wrap-ansi "^3.0.1"
 
 "@anycli/parser@^3.2.4":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@anycli/parser/-/parser-3.2.4.tgz#30297ac2fa225b37efaab5c0062bf189988b3ce8"
 
-"@anycli/plugin-help@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-help/-/plugin-help-0.6.0.tgz#a7177b0b4afc87544ae7e7bcdc095fbeea65791f"
+"@anycli/parser@^3.2.5":
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@anycli/parser/-/parser-3.2.5.tgz#d0e7ddb14945cb84377fa69095009ca6005e6b6d"
+
+"@anycli/plugin-help@^0.6.2":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@anycli/plugin-help/-/plugin-help-0.6.3.tgz#e365947b69ce232cbd49fcda934dd53852d2503f"
   dependencies:
-    "@anycli/command" "^1.2.3"
-    "@anycli/screen" "^0.0.3"
+    "@anycli/command" "^1.2.5"
     chalk "^2.3.0"
-    cli-ux "^3.3.13"
     indent-string "^3.2.0"
-    lodash "^4.17.4"
+    lodash.template "^4.4.0"
     string-width "^2.1.1"
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@anycli/plugin-not-found@^0.1.15":
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-not-found/-/plugin-not-found-0.1.15.tgz#738bdabd485081ee9172e0e4e4a3ee29d32178da"
+"@anycli/plugin-plugins@^0.2.13":
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/@anycli/plugin-plugins/-/plugin-plugins-0.2.13.tgz#a1937f0568433568de1cc1232c4cc097ab680abf"
   dependencies:
-    "@anycli/command" "^1.2.2"
-    "@heroku-cli/color" "^1.1.3"
-    cli-ux "^3.3.13"
-    string-similarity "^1.2.0"
-
-"@anycli/plugin-plugins@^0.2.11":
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-plugins/-/plugin-plugins-0.2.11.tgz#8e2d42614db0b5c3f06fbdf059352c14afaedeba"
-  dependencies:
-    "@anycli/command" "^1.2.3"
+    "@anycli/command" "^1.2.9"
     "@heroku-cli/color" "^1.1.3"
     chalk "^2.3.0"
-    cli-ux "^3.3.13"
+    cli-ux "^3.3.18"
     debug "^3.1.0"
     fs-extra "^5.0.0"
     http-call "^5.0.2"
     load-json-file "^4.0.0"
-    lodash "^4.17.4"
     npm-run-path "^2.0.2"
     semver "^5.5.0"
     tslib "^1.9.0"
     yarn "^1.3.2"
 
-"@anycli/plugin-version@^0.1.34":
-  version "0.1.34"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-version/-/plugin-version-0.1.34.tgz#d64f990662adc531ddde048a8908b4a85db0d09d"
-  dependencies:
-    "@anycli/command" "^1.2.2"
-    cli-ux "^3.3.13"
-
 "@anycli/screen@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@anycli/screen/-/screen-0.0.3.tgz#f0afd970c3ed725702948a45a874ede1fdd9362e"
 
-"@anycli/test@^0.10.10":
-  version "0.10.10"
-  resolved "https://registry.yarnpkg.com/@anycli/test/-/test-0.10.10.tgz#1b43d394c13f42e05dffdebecdf352dc51f920d1"
+"@anycli/test@^0.10.11":
+  version "0.10.11"
+  resolved "https://registry.yarnpkg.com/@anycli/test/-/test-0.10.11.tgz#0d1004c8c0b34a8853ee7a3a26c90ed12ce6e42f"
   dependencies:
     fancy-test "^1.0.1"
 
-"@anycli/tslint@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@anycli/tslint/-/tslint-0.2.5.tgz#63feeb981b11f36326e0cb745c62f51d55c2ed67"
+"@anycli/tslint@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@anycli/tslint/-/tslint-0.2.6.tgz#4251f4cb3744dc577309b4351d2c2e8b65072de2"
   dependencies:
     tslint "^5.9.1"
     tslint-xo "^0.6.0"
@@ -310,9 +288,9 @@ clean-stack@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-1.3.0.tgz#9e821501ae979986c46b1d66d2d432db2fd4ae31"
 
-cli-ux@^3.3.13:
-  version "3.3.13"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-3.3.13.tgz#123e0c7a29d1f743447b919500a9055486992df6"
+cli-ux@^3.3.18:
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-3.3.18.tgz#e14419abb33824b905507fa2e892adf79aeee16f"
   dependencies:
     "@anycli/screen" "^0.0.3"
     "@heroku/linewrap" "^1.0.0"
@@ -323,8 +301,7 @@ cli-ux@^3.3.13:
     extract-stack "^1.0.0"
     fs-extra "^5.0.0"
     indent-string "^3.2.0"
-    lodash "^4.17.4"
-    node-notifier "^5.2.1"
+    lodash "^4.17.5"
     password-prompt "^1.0.4"
     semver "^5.5.0"
     strip-ansi "^4.0.0"
@@ -502,10 +479,6 @@ growl@1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/growl/-/growl-1.10.3.tgz#1926ba90cf3edfe2adb4927f5880bc22c66c790f"
 
-growly@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
-
 has-ansi@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-0.1.0.tgz#84f265aae8c0e6a88a12d7022894b7568894c62e"
@@ -637,9 +610,13 @@ lodash.templatesettings@^4.0.0:
   dependencies:
     lodash._reinterpolate "~3.0.0"
 
-lodash@^4.13.1, lodash@^4.17.4, lodash@^4.5.1:
+lodash@^4.17.4, lodash@^4.5.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^4.17.5:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lru-cache@^4.0.1:
   version "4.1.1"
@@ -690,15 +667,6 @@ mocha@^5.0.0:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
-
-node-notifier@^5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/node-notifier/-/node-notifier-5.2.1.tgz#fa313dd08f5517db0e2502e5758d664ac69f9dea"
-  dependencies:
-    growly "^1.3.0"
-    semver "^5.4.1"
-    shellwords "^0.1.1"
-    which "^1.3.0"
 
 npm-run-path@^2.0.2:
   version "2.0.2"
@@ -780,7 +748,7 @@ safe-buffer@^5.0.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
+semver@^5.3.0, semver@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
@@ -793,10 +761,6 @@ shebang-command@^1.2.0:
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
-
-shellwords@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
 
 slash@^1.0.0:
   version "1.0.0"
@@ -826,12 +790,6 @@ stdout-stderr@^0.1.6:
   dependencies:
     debug "*"
     strip-ansi "^4.0.0"
-
-string-similarity@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-1.2.0.tgz#d75153cb383846318b7a39a8d9292bb4db4e9c30"
-  dependencies:
-    lodash "^4.13.1"
 
 string-width@^2.1.1:
   version "2.1.1"
@@ -1010,7 +968,7 @@ v8flags@^3.0.0:
   dependencies:
     homedir-polyfill "^1.0.1"
 
-which@^1.2.9, which@^1.3.0:
+which@^1.2.9:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/which/-/which-1.3.0.tgz#ff04bdfc010ee547d780bec38e1ac1c2777d253a"
   dependencies:
