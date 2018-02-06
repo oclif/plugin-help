@@ -1,6 +1,7 @@
 import * as Config from '@anycli/config'
 import chalk from 'chalk'
 import indent = require('indent-string')
+import stripAnsi = require('strip-ansi')
 
 import {HelpOptions} from '.'
 import {compact, template} from './util'
@@ -21,11 +22,13 @@ export default class RootHelp {
     let description = this.config.pjson.anycli.description || this.config.pjson.description || ''
     description = this.render(description)
     description = description.split('\n')[0]
-    return compact([
+    let output = compact([
       description,
       this.usage(),
       this.description(),
     ]).join('\n\n')
+    if (this.opts.stripAnsi) output = stripAnsi(output)
+    return output
   }
 
   protected usage(): string {

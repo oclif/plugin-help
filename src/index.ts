@@ -2,13 +2,15 @@ import * as Config from '@anycli/config'
 import {error} from '@anycli/errors'
 import chalk from 'chalk'
 import indent = require('indent-string')
+import stripAnsi = require('strip-ansi')
 
 import CommandHelp from './command'
 import {renderList} from './list'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
-import {sortBy, template, uniqBy} from './util'
+import {compact, sortBy, template, uniqBy} from './util'
 
+const wrap = require('wrap-ansi')
 const {
   bold,
 } = chalk
@@ -47,7 +49,7 @@ export default class Help {
     commands = uniqBy(commands, c => c.id)
     let subject = getHelpSubject()
     let command: Config.Command | undefined
-    let topic
+    let topic: Config.Topic | undefined
     if (!subject) {
       if (!this.opts.all) commands = commands.filter(c => !c.id.includes(':'))
       console.log(this.root())
@@ -66,7 +68,7 @@ export default class Help {
       }
     } else if (topic = this.config.findTopic(subject)) {
       console.log(this.topic(topic))
-      console.log()
+      commands = commands.filter(c => c.id.startsWith(topic!.name))
       if (commands.length) {
         console.log(this.commands(commands))
         console.log()
@@ -82,7 +84,22 @@ export default class Help {
   }
 
   topic(topic: Config.Topic): string {
-    return topic.name
+    let description = this.render(topic.description || '')
+    let title = description.split('\n')[0]
+    description = description.split('\n').slice(1).join('\n')
+    let output = compact([
+      title,
+      [
+        bold('USAGE'),
+        indent(wrap(`$ ${this.config.bin} ${topic.name}:COMMAND`, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+      ].join('\n'),
+      description && ([
+        bold('DESCRIPTION'),
+        indent(wrap(description, this.opts.maxWidth - 2, {trim: false, hard: true}), 2)
+      ].join('\n'))
+    ]).join('\n\n')
+    if (this.opts.stripAnsi) output = stripAnsi(output)
+    return output + '\n'
   }
 
   command(command: Config.Command): string {

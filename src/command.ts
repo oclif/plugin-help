@@ -1,6 +1,7 @@
 import * as Config from '@anycli/config'
 import chalk from 'chalk'
 import indent = require('indent-string')
+import stripAnsi = require('strip-ansi')
 
 import {HelpOptions} from '.'
 import {renderList} from './list'
@@ -28,7 +29,7 @@ export default class CommandHelp {
       return v
     }), f => [!f.char, f.char, f.name])
     const args = (cmd.args || []).filter(a => !a.hidden)
-    return compact([
+    let output = compact([
       cmd.description && this.render(cmd.description).split('\n')[0],
       this.usage(cmd, flags),
       this.args(args),
@@ -36,6 +37,8 @@ export default class CommandHelp {
       this.description(cmd),
       this.aliases(cmd.aliases),
     ]).join('\n\n')
+    if (this.opts.stripAnsi) output = stripAnsi(output)
+    return output
   }
 
   protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): string {
@@ -75,7 +78,7 @@ export default class CommandHelp {
   }
 
   protected args(args: Config.Command['args']): string | undefined {
-    if (!args.length) return
+    if (!args.filter(a => a.description).length) return
     let body = renderList(args.map(a => {
       const name = a.name.toUpperCase()
       let description = a.description || ''
