@@ -2,7 +2,7 @@ import * as Config from '@anycli/config'
 import chalk from 'chalk'
 
 import {Article, HelpOptions, Section} from '.'
-import {castArray, compact, sortBy, uniqBy} from './util'
+import {castArray, compact, sortBy, template, uniqBy} from './util'
 
 const {
   underline,
@@ -11,7 +11,10 @@ const {
 } = chalk
 
 export default class CommandHelp {
-  constructor(public config: Config.IConfig, public opts: HelpOptions) {}
+  render: (input: string) => string
+  constructor(public config: Config.IConfig, public opts: HelpOptions) {
+    this.render = template(this)
+  }
 
   command(cmd: Config.Command): Article {
     const flagDefs = cmd.flags || {}
@@ -23,7 +26,7 @@ export default class CommandHelp {
     })
     const args = (cmd.args || []).filter(a => !a.hidden)
     return {
-      title: cmd.title,
+      title: cmd.description && this.render(cmd.description).split('\n')[0],
       sections: compact([
         this.usage(cmd, flags),
         this.args(args),
@@ -43,13 +46,12 @@ export default class CommandHelp {
     return {
       heading: 'Usage',
       type: 'code',
-      body: cmd.usage ? castArray(cmd.usage) : this.defaultUsage(cmd, flags)
+      body: (cmd.usage ? castArray(cmd.usage) : [this.defaultUsage(cmd, flags)])
+      .map(u => `$ ${this.config.bin} ${u}`)
     }
   }
   protected defaultUsage(command: Config.Command, flags: Config.Command.Flag[]): string {
     return compact([
-      '$',
-      this.config.bin,
       command.id,
       command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
       flags.length && '[OPTIONS]',
@@ -58,10 +60,11 @@ export default class CommandHelp {
   }
 
   protected description(cmd: Config.Command): Section | undefined {
-    if (!cmd.description) return
+    let description = cmd.description && this.render(cmd.description).split('\n').slice(1).join('\n')
+    if (!description) return
     return {
       heading: 'Description',
-      body: cmd.description.trim(),
+      body: description,
     }
   }
 
@@ -128,16 +131,12 @@ export default class CommandHelp {
     commands = sortBy(commands, c => c.id)
     commands = uniqBy(commands, c => c.id)
     if (!commands.length) return
-    if (this.opts.format === 'markdown') {
-      return {
-        heading: 'commands',
-        body: commands.map(c => compact([`* [${c.id}](#${c.id})`, c.title]).join(' - '))
-      }
-    } else {
-      return {
-        heading: 'commands',
-        body: commands.map(c => [c.id, c.title]),
-      }
+    return {
+      heading: 'commands',
+      body: commands.map(c => [
+        c.id,
+        c.description && this.render(c.description.split('\n')[0])
+      ]),
     }
   }
 }

@@ -31,10 +31,8 @@ describe('command help', () => {
   .commandHelp(class extends Command {
     static id = 'apps:create'
     static aliases = ['app:init', 'create']
-    static description = `some
-
-  multiline help
-  `
+    static description = `first line
+multiline help`
     static args = [{name: 'app_name', description: 'app to use'}]
     static flags = {
       app: flags.string({char: 'a', hidden: true}),
@@ -43,7 +41,9 @@ describe('command help', () => {
       ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
       remote: flags.string({char: 'r'}),
     }})
-  .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`first line
+
+USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
@@ -65,9 +65,7 @@ OPTIONS
                        newliney
 
 DESCRIPTION
-  some
-
-     multiline help
+  multiline help
 
 ALIASES
   $ anycli app:init
@@ -76,7 +74,7 @@ ALIASES
   test
   .commandHelp(class extends Command {
     static id = 'apps:create'
-    static title = 'description of apps:create'
+    static description = 'description of apps:create'
     static aliases = ['app:init', 'create']
     static args = [{name: 'app_name', description: 'app to use'}]
     static flags = {
@@ -121,13 +119,13 @@ ALIASES
   test
   .commandHelp(class extends Command {
     static id = 'apps:create'
-    static title = 'description of apps:create'
+    static description = 'description of apps:create'
     static aliases = ['app:init', 'create']
     static args = [{name: 'app_name', description: 'app to use'}]
     static flags = {
       force: flags.boolean({description: 'forces'}),
     }})
-  .it('outputs with title', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
+  .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
 
 USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
@@ -148,7 +146,7 @@ ALIASES
     static flags = {
       myenum: flags.enum({options: ['a', 'b', 'c']}),
     }})
-  .it('outputs with title', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ anycli apps:create [OPTIONS]
 
 OPTIONS

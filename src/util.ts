@@ -1,3 +1,5 @@
+import Template = require('lodash.template')
+
 export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   return arr.filter((a, i) => {
     let aVal = fn(a)
@@ -37,3 +39,5 @@ export function sortBy<T>(arr: T[], fn: (i: T) => sort.Types | sort.Types[]): T[
 export namespace sort {
   export type Types = string | number | undefined | boolean
 }
+
+export const template = (context: any) => (t: string): string => Template(t)(context)

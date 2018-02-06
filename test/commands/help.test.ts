@@ -14,8 +14,7 @@ ARGUMENTS
   COMMAND  command to show help for
 
 OPTIONS
-  --all                    see all commands in CLI
-  --format=(markdown|man)  output in a different format
+  --all  see all commands in CLI
 
 `)
   })
@@ -33,11 +32,8 @@ DESCRIPTION
   standard help for anycli
 
 COMMANDS
-  help               display help for anycli
-  plugins
-  plugins:install
-  plugins:uninstall
-  plugins:update
+  help     display help for anycli
+  plugins  list installed plugins
 
 `)
   })

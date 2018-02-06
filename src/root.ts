@@ -1,21 +1,18 @@
 import * as Config from '@anycli/config'
-// import chalk from 'chalk'
 
 import {Article, HelpOptions, Section} from '.'
-import {compact} from './util'
-
-// const {
-//   underline,
-//   dim,
-//   blueBright,
-// } = chalk
+import {compact, template} from './util'
 
 export default class RootHelp {
-  constructor(public config: Config.IConfig, public opts: HelpOptions = {}) {}
+  render: (input: string) => string
+
+  constructor(public config: Config.IConfig, public opts: HelpOptions = {}) {
+    this.render = template(this)
+  }
 
   root(commands: Config.Command[]): Article {
     return {
-      title: this.config.pjson.anycli.title || this.config.pjson.description,
+      title: this.config.pjson.anycli.description || this.config.pjson.description,
       sections: compact([
         this.usage(),
         this.description(),
@@ -41,16 +38,12 @@ export default class RootHelp {
 
   protected commands(commands: Config.Command[]): Section | undefined {
     if (commands.length === 0) return
-    if (this.opts.format === 'markdown') {
-      return {
-        heading: 'commands',
-        body: commands.map(c => compact([`* [${c.id}](#${c.id})`, c.title]).join(' - '))
-      }
-    } else {
-      return {
-        heading: 'commands',
-        body: commands.map(c => [c.id, c.title]),
-      }
+    return {
+      heading: 'commands',
+      body: commands.map(c => [
+        c.id,
+        c.description && this.render(c.description.split('\n')[0]),
+      ]),
     }
   }
 }
