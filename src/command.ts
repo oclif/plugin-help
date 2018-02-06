@@ -2,7 +2,7 @@ import * as Config from '@anycli/config'
 import chalk from 'chalk'
 
 import {Article, HelpOptions, Section} from '.'
-import {castArray, compact, sortBy} from './util'
+import {castArray, compact, sortBy, uniqBy} from './util'
 
 const {
   underline,
@@ -30,6 +30,7 @@ export default class CommandHelp {
         this.flags(flags),
         this.description(cmd),
         this.aliases(cmd.aliases),
+        this.subcommands(cmd),
       ]),
     }
   }
@@ -118,5 +119,25 @@ export default class CommandHelp {
     if (flag.required) right = `(required) ${right}`
 
     return [left, dim(right.trim())]
+  }
+
+  protected subcommands(command: Config.Command) {
+    let commands = this.config.commands
+    commands = commands.filter(c => this.opts.all || !c.hidden)
+    commands = commands.filter(c => c.id !== command.id && c.id.startsWith(command.id))
+    commands = sortBy(commands, c => c.id)
+    commands = uniqBy(commands, c => c.id)
+    if (!commands.length) return
+    if (this.opts.format === 'markdown') {
+      return {
+        heading: 'commands',
+        body: commands.map(c => compact([`* [${c.id}](#${c.id})`, c.title]).join(' - '))
+      }
+    } else {
+      return {
+        heading: 'commands',
+        body: commands.map(c => [c.id, c.title]),
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 import * as Config from '@anycli/config'
+import {error} from '@anycli/errors'
 import chalk from 'chalk'
 import indent = require('indent-string')
 import template = require('lodash.template')
@@ -7,7 +8,7 @@ import stripAnsi = require('strip-ansi')
 import CommandHelp from './command'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
-import {castArray, compact} from './util'
+import {castArray, compact, sortBy, uniqBy} from './util'
 
 const width = require('string-width')
 const wrap = require('wrap-ansi')
@@ -60,26 +61,49 @@ export default class Help {
         return arg
       }
     }
-    const subject = getHelpSubject()
+    let subject = getHelpSubject()
+    let command
+    let topic
     if (!subject) {
-      console.log(this.root())
-    } else {
-      // TODO: topic help
-      let command = this.config.findCommand(subject, {must: true})
+      let commands = this.config.commands
+      commands = commands.filter(c => this.opts.all || !c.hidden)
+      if (!this.opts.all) commands = commands.filter(c => !c.id.includes(':'))
+      commands = sortBy(commands, c => c.id)
+      commands = uniqBy(commands, c => c.id)
+      console.log(this.root(commands))
+      console.log()
+      if (this.opts.format === 'markdown') {
+        for (let command of commands) {
+          console.log(this.command(command))
+          console.log()
+        }
+      }
+    } else if (command = this.config.findCommand(subject)) {
       console.log(this.command(command))
+    } else if (topic = this.config.findTopic(subject)) {
+      console.log(this.topic(topic))
+    } else {
+      error(`command ${subject} not found`)
     }
     if (this.opts.format === 'screen') console.log()
   }
 
-  root(): string {
+  root(commands: Config.Command[]): string {
     const help = new RootHelp(this.config, this.opts)
-    const article = help.root()
+    const article = help.root(commands)
     return this.render(article)
+  }
+
+  topic(topic: Config.Topic): string {
+    return topic.name
   }
 
   command(command: Config.Command): string {
     const help = new CommandHelp(this.config, this.opts)
     const article = help.command(command)
+    console.log(command.id)
+    console.log('-'.repeat(width(command.id)))
+    console.log()
     return this.render(article)
   }
 
@@ -96,7 +120,6 @@ export default class Help {
     const maxWidth = 100
     return [
       stripAnsi(this.renderTemplate(article.title)),
-      '-'.repeat(width(article.title)),
       '',
       ...article.sections
       .map(s => {

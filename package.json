@@ -6,8 +6,15 @@
   "anycli": {
     "commands": "./lib/commands",
     "bin": "anycli",
+    "topics": {
+      "fob": {
+        "description": "foo"
+      }
+    },
     "devPlugins": [
-      "@anycli/plugin-plugins"
+      "@anycli/plugin-plugins",
+      "@anycli/plugin-legacy",
+      "@heroku-cli/plugin-apps"
     ]
   },
   "bugs": "https://github.com/anycli/plugin-help/issues",
@@ -24,9 +31,11 @@
     "@anycli/config": "^1.3.11",
     "@anycli/dev-cli": "^0.2.2",
     "@anycli/errors": "^0.2.1",
+    "@anycli/plugin-legacy": "^0.0.2",
     "@anycli/plugin-plugins": "^0.2.13",
     "@anycli/test": "^0.10.11",
     "@anycli/tslint": "^0.2.6",
+    "@heroku-cli/plugin-apps": "^2.4.23",
     "@types/chai": "^4.1.2",
     "@types/indent-string": "^3.0.0",
     "@types/lodash.template": "^4.4.3",
