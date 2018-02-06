@@ -30,7 +30,6 @@ export default class CommandHelp {
     }), f => [!f.char, f.char, f.name])
     const args = (cmd.args || []).filter(a => !a.hidden)
     let output = compact([
-      cmd.description && this.render(cmd.description).split('\n')[0],
       this.usage(cmd, flags),
       this.args(args),
       this.flags(flags),

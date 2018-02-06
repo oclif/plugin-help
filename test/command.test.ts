@@ -41,9 +41,7 @@ multiline help`
       ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
       remote: flags.string({char: 'r'}),
     }})
-  .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`first line
-
-USAGE
+  .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
@@ -84,9 +82,7 @@ ALIASES
       ss: flags.boolean({description: 'newliney\n'.repeat(5)}),
       remote: flags.string({char: 'r'}),
     }})
-  .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
-
-USAGE
+  .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
@@ -125,9 +121,7 @@ ALIASES
     static flags = {
       force: flags.boolean({description: 'forces'}),
     }})
-  .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`description of apps:create
-
-USAGE
+  .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ anycli apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS

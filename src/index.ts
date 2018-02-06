@@ -60,6 +60,8 @@ export default class Help {
       }
     } else if (command = this.config.findCommand(subject)) {
       commands = commands.filter(c => c.id !== command!.id && c.id.startsWith(command!.id))
+      let title = command.description && this.render(command.description).split('\n')[0]
+      if (title) console.log(title + '\n')
       console.log(this.command(command))
       console.log()
       if (commands.length) {
