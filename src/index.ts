@@ -7,20 +7,7 @@ import CommandHelp from './command'
 import {renderList} from './list'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
-import {castArray, compact, sortBy, uniqBy} from './util'
-
-const wrap = require('wrap-ansi')
-
-export interface Article {
-  title?: string
-  sections: Section[]
-}
-
-export interface Section {
-  heading: string
-  type?: 'plain' | 'code'
-  body: string | string[] | (string | undefined)[][]
-}
+import {sortBy, template, uniqBy} from './util'
 
 const {
   bold,
@@ -28,10 +15,18 @@ const {
 
 export interface HelpOptions {
   all?: boolean
+  maxWidth: number
+  stripAnsi?: boolean
 }
 
 export default class Help {
-  constructor(public config: Config.IConfig, public opts: HelpOptions = {}) {}
+  opts: HelpOptions
+  render: (input: string) => string
+
+  constructor(public config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
+    this.opts = {maxWidth: stdtermwidth, ...opts}
+    this.render = template(this)
+  }
 
   showHelp(argv: string[]) {
     const getHelpSubject = () => {
@@ -46,30 +41,44 @@ export default class Help {
         return arg
       }
     }
+    let commands = this.config.commands
+    commands = commands.filter(c => this.opts.all || !c.hidden)
+    commands = sortBy(commands, c => c.id)
+    commands = uniqBy(commands, c => c.id)
     let subject = getHelpSubject()
-    let command
+    let command: Config.Command | undefined
     let topic
     if (!subject) {
-      let commands = this.config.commands
-      commands = commands.filter(c => this.opts.all || !c.hidden)
       if (!this.opts.all) commands = commands.filter(c => !c.id.includes(':'))
-      commands = sortBy(commands, c => c.id)
-      commands = uniqBy(commands, c => c.id)
-      console.log(this.root(commands))
+      console.log(this.root())
+      console.log()
+      if (commands.length) {
+        console.log(this.commands(commands))
+        console.log()
+      }
     } else if (command = this.config.findCommand(subject)) {
+      commands = commands.filter(c => c.id !== command!.id && c.id.startsWith(command!.id))
       console.log(this.command(command))
+      console.log()
+      if (commands.length) {
+        console.log(this.commands(commands))
+        console.log()
+      }
     } else if (topic = this.config.findTopic(subject)) {
       console.log(this.topic(topic))
+      console.log()
+      if (commands.length) {
+        console.log(this.commands(commands))
+        console.log()
+      }
     } else {
       error(`command ${subject} not found`)
     }
-    console.log()
   }
 
-  root(commands: Config.Command[]): string {
+  root(): string {
     const help = new RootHelp(this.config, this.opts)
-    const article = help.root(commands)
-    return this.render(article)
+    return help.root()
   }
 
   topic(topic: Config.Topic): string {
@@ -78,60 +87,18 @@ export default class Help {
 
   command(command: Config.Command): string {
     const help = new CommandHelp(this.config, this.opts)
-    const article = help.command(command)
-    return this.render(article)
+    return help.command(command)
   }
 
-  protected render(article: Article): string {
-    const maxWidth = stdtermwidth
-    return compact([
-      article.title,
-      ...article.sections
-      .map(s => {
-        let body
-        if (s.body.length === 0) {
-          body = ''
-        } else if (Array.isArray(s.body[0])) {
-          body = renderList(s.body as any, {maxWidth: maxWidth - 2})
-        } else {
-          body = castArray(s.body as string).join('\n')
-          body = wrap(body, maxWidth - 2, {trim: false, hard: true})
-        }
-        return compact([
-          bold(s.heading.toUpperCase()),
-          indent(body, 2),
-        ]).join('\n')
-      })
-    ]).join('\n\n')
+  commands(commands: Config.Command[]): string | undefined {
+    if (!commands.length) return
+    let body = renderList(commands.map(c => [
+      c.id,
+      c.description && this.render(c.description.split('\n')[0])
+    ]), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
+    return [
+      bold('COMMANDS'),
+      indent(body, 2),
+    ].join('\n')
   }
-
-  // protected renderMarkdown(article: Article): string {
-  //   const maxWidth = 100
-  //   return [
-  //     stripAnsi(this.renderTemplate(article.title)),
-  //     '',
-  //     ...article.sections
-  //     .map(s => {
-  //       let body = '\n'
-  //       if (s.body.length === 0) {
-  //         body += ''
-  //       } else if (Array.isArray(s.body[0])) {
-  //         body += '```\n'
-  //         body += renderList(s.body as any, {maxWidth: maxWidth - 2, stripAnsi: true})
-  //         body += '\n```'
-  //       } else {
-  //         let output = castArray(s.body as string).join('\n')
-  //         output = this.renderTemplate(output)
-  //         body += wrap(stripAnsi(output), maxWidth - 2, {trim: false, hard: true})
-  //       }
-  //       if (s.type === 'code') {
-  //         body = `\n\`\`\`sh-session${body}\n\`\`\``
-  //       }
-  //       return compact([
-  //         `**${s.heading}**`,
-  //         body,
-  //       ]).join('\n') + '\n'
-  //     })
-  //   ].join('\n').trim()
-  // }
 }

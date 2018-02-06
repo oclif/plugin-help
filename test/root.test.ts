@@ -9,7 +9,7 @@ const test = base
 .add('help', ctx => new Help(ctx.config))
 .register('rootHelp', () => ({
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
-    let help = ctx.help.root(ctx.help.config.commands.filter(c => !c.id.includes(':') && !c.hidden))
+    let help = ctx.help.root()
     if (process.env.TEST_OUTPUT === '1') {
       // tslint:disable-next-line
       console.log(help)
@@ -24,12 +24,5 @@ describe('root help', () => {
   .it(ctx => expect(ctx.commandHelp).to.equal(`standard help for anycli
 
 USAGE
-  $ anycli [COMMAND]
-
-DESCRIPTION
-  standard help for anycli
-
-COMMANDS
-  help     display help for anycli
-  plugins  list installed plugins`))
+  $ anycli [COMMAND]`))
 })

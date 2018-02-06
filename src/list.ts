@@ -4,17 +4,6 @@ import stripAnsi = require('strip-ansi')
 const width = require('string-width')
 const wrap = require('wrap-ansi')
 
-export interface Article {
-  title?: string
-  sections: Section[]
-}
-
-export interface Section {
-  heading: string
-  type?: 'plain' | 'code'
-  body: string | string[] | (string | undefined)[][]
-}
-
 const widestLine = require('widest-line')
 
 export function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {

@@ -38,7 +38,7 @@
     "@types/indent-string": "^3.0.0",
     "@types/lodash.template": "^4.4.3",
     "@types/mocha": "^2.2.48",
-    "@types/node": "^9.4.0",
+    "@types/node": "^9.4.1",
     "@types/strip-ansi": "^3.0.0",
     "@types/wrap-ansi": "^2.0.14",
     "chai": "^4.1.2",

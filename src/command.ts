@@ -1,14 +1,18 @@
 import * as Config from '@anycli/config'
 import chalk from 'chalk'
+import indent = require('indent-string')
 
-import {Article, HelpOptions, Section} from '.'
-import {castArray, compact, sortBy, template, uniqBy} from './util'
+import {HelpOptions} from '.'
+import {renderList} from './list'
+import {castArray, compact, sortBy, template} from './util'
 
 const {
   underline,
   dim,
-  // blueBright,
+  bold,
 } = chalk
+
+const wrap = require('wrap-ansi')
 
 export default class CommandHelp {
   render: (input: string) => string
@@ -16,78 +20,72 @@ export default class CommandHelp {
     this.render = template(this)
   }
 
-  command(cmd: Config.Command): Article {
-    const flagDefs = cmd.flags || {}
-    const flags = Object.keys(flagDefs)
-    .filter(k => !flagDefs[k].hidden)
-    .map(k => {
-      flagDefs[k].name = k
-      return flagDefs[k]
-    })
+  command(cmd: Config.Command): string {
+    const flags = sortBy(Object.entries(cmd.flags || {})
+    .filter(([, v]) => !v.hidden)
+    .map(([k, v]) => {
+      v.name = k
+      return v
+    }), f => [!f.char, f.char, f.name])
     const args = (cmd.args || []).filter(a => !a.hidden)
-    return {
-      title: cmd.description && this.render(cmd.description).split('\n')[0],
-      sections: compact([
-        this.usage(cmd, flags),
-        this.args(args),
-        this.flags(flags),
-        this.description(cmd),
-        this.aliases(cmd.aliases),
-        this.subcommands(cmd),
-      ]),
-    }
+    return compact([
+      cmd.description && this.render(cmd.description).split('\n')[0],
+      this.usage(cmd, flags),
+      this.args(args),
+      this.flags(flags),
+      this.description(cmd),
+      this.aliases(cmd.aliases),
+    ]).join('\n\n')
   }
 
-  // commandLine(cmd: ICachedCommand): [string, string | undefined] {
-  //   return [buildUsage(cmd), cmd.description ? dim(cmd.description) : undefined] as [string, string | undefined]
-  // }
-
-  protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): Section {
-    return {
-      heading: 'Usage',
-      type: 'code',
-      body: (cmd.usage ? castArray(cmd.usage) : [this.defaultUsage(cmd, flags)])
-      .map(u => `$ ${this.config.bin} ${u}`)
-    }
+  protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): string {
+    let body = (cmd.usage ? castArray(cmd.usage) : [this.defaultUsage(cmd, flags)])
+    .map(u => `$ ${this.config.bin} ${u}`)
+    .join('\n')
+    return [
+      bold('USAGE'),
+      indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+    ].join('\n')
   }
+
   protected defaultUsage(command: Config.Command, flags: Config.Command.Flag[]): string {
     return compact([
       command.id,
       command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
       flags.length && '[OPTIONS]',
-    ])
-    .join(' ')
+    ]).join(' ')
   }
 
-  protected description(cmd: Config.Command): Section | undefined {
+  protected description(cmd: Config.Command): string | undefined {
     let description = cmd.description && this.render(cmd.description).split('\n').slice(1).join('\n')
     if (!description) return
-    return {
-      heading: 'Description',
-      body: description,
-    }
+    return [
+      bold('DESCRIPTION'),
+      indent(wrap(description, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+    ].join('\n')
   }
 
-  protected aliases(aliases: string[] | undefined): Section | undefined {
+  protected aliases(aliases: string[] | undefined): string | undefined {
     if (!aliases || !aliases.length) return
-    return {
-      heading: 'Aliases',
-      type: 'code',
-      body: aliases.map(a => ['$', this.config.bin, a].join(' ')),
-    }
+    let body = aliases.map(a => ['$', this.config.bin, a].join(' ')).join('\n')
+    return [
+      bold('ALIASES'),
+      indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+    ].join('\n')
   }
 
-  protected args(args: Config.Command['args']): Section | undefined {
+  protected args(args: Config.Command['args']): string | undefined {
     if (!args.length) return
-    return {
-      heading: 'Arguments',
-      body: args.map(a => {
-        const name = a.name.toUpperCase()
-        let description = a.description || ''
-        if (a.default) description = `[default: ${a.default}] ${description}`
-        return [name, description ? dim(description) : undefined]
-      })
-    }
+    let body = renderList(args.map(a => {
+      const name = a.name.toUpperCase()
+      let description = a.description || ''
+      if (a.default) description = `[default: ${a.default}] ${description}`
+      return [name, description ? dim(description) : undefined]
+    }), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
+    return [
+      bold('ARGUMENTS'),
+      indent(body, 2),
+    ].join('\n')
   }
   protected arg(arg: Config.Command['args'][0]): string {
     let name = arg.name.toUpperCase()
@@ -95,48 +93,30 @@ export default class CommandHelp {
     return `[${name}]`
   }
 
-  protected flags(flags: Config.Command.Flag[]): Section | undefined {
+  protected flags(flags: Config.Command.Flag[]): string | undefined {
     if (!flags.length) return
-    return {
-      heading: 'Options',
-      body: sortBy(flags, f => [!f.char, f.char, f.name])
-      .map(f => this.flag(f))
-    }
-  }
+    let body = renderList(flags.map(flag => {
+      const label = []
+      if (flag.char) label.push(`-${flag.char[0]}`)
+      if (flag.name) label.push(`--${flag.name.trim()}`)
+      let left = label.join(', ')
+      if (flag.type === 'option') {
+        let value = flag.helpValue || flag.name
+        if (!value.includes('(')) value = underline(value)
+        left += `=${value}`
+      }
 
-  protected flag(flag: Config.Command.Flag): [string, string | undefined] {
-    const label = []
-    if (flag.char) label.push(`-${flag.char[0]}`)
-    if (flag.name) label.push(`--${flag.name.trim()}`)
-    let left = label.join(', ')
-    if (flag.type === 'option') {
-      let value = flag.helpValue || flag.name
-      if (!value.includes('(')) value = underline(value)
-      left += `=${value}`
-    }
+      let right = flag.description || ''
+      if (flag.type === 'option' && flag.default) {
+        right = `[default: ${flag.default}] ${right}`
+      }
+      if (flag.required) right = `(required) ${right}`
 
-    let right = flag.description || ''
-    if (flag.type === 'option' && flag.default) {
-      right = `[default: ${flag.default}] ${right}`
-    }
-    if (flag.required) right = `(required) ${right}`
-
-    return [left, dim(right.trim())]
-  }
-
-  protected subcommands(command: Config.Command) {
-    let commands = this.config.commands
-    commands = commands.filter(c => this.opts.all || !c.hidden)
-    commands = commands.filter(c => c.id !== command.id && c.id.startsWith(command.id))
-    commands = sortBy(commands, c => c.id)
-    commands = uniqBy(commands, c => c.id)
-    if (!commands.length) return
-    return {
-      heading: 'commands',
-      body: commands.map(c => [
-        c.id,
-        c.description && this.render(c.description.split('\n')[0])
-      ]),
-    }
+      return [left, dim(right.trim())]
+    }), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
+    return [
+      bold('OPTIONS'),
+      indent(body, 2),
+    ].join('\n')
   }
 }

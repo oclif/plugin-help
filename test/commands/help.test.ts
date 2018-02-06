@@ -28,9 +28,6 @@ OPTIONS
 USAGE
   $ anycli [COMMAND]
 
-DESCRIPTION
-  standard help for anycli
-
 COMMANDS
   help     display help for anycli
   plugins  list installed plugins
