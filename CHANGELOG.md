@@ -1,3 +1,11 @@
+<a name="0.6.7"></a>
+## [0.6.7](https://github.com/anycli/plugin-help/compare/v0.6.6...v0.6.7) (2018-02-06)
+
+
+### Bug Fixes
+
+* simplify ([692a7e6](https://github.com/anycli/plugin-help/commit/692a7e6))
+
 <a name="0.6.5"></a>
 ## [0.6.5](https://github.com/anycli/plugin-help/compare/3259b8742a5164bfdd6d5db516ef7ba59e1fba0b...v0.6.5) (2018-02-06)
 
