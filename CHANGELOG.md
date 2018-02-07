@@ -1,3 +1,16 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/anycli/plugin-help/compare/476ec1dc0601bd75e8062759cb6e29aec1ce698b...v0.7.0) (2018-02-07)
+
+
+### Bug Fixes
+
+* fixed tests ([d33c3d8](https://github.com/anycli/plugin-help/commit/d33c3d8))
+
+
+### Features
+
+* add examples ([6fd821c](https://github.com/anycli/plugin-help/commit/6fd821c))
+
 <a name="0.6.9"></a>
 ## [0.6.9](https://github.com/anycli/plugin-help/compare/61a26af71387aae48988ff161a186c7728ad3e30...v0.6.9) (2018-02-07)
 
