@@ -15,7 +15,7 @@ const test = base
 .add('help', ctx => new Help(ctx.config))
 .register('commandHelp', (command?: Config.Command.Class) => ({
   run(ctx: {help: Help, commandHelp: string, expectation: string}) {
-    const cached = Config.Command.toCached(command!)
+    const cached = Config.Command.toCached(command!, {} as any)
     let help = ctx.help.command(cached)
     if (process.env.TEST_OUTPUT === '1') {
       // tslint:disable-next-line

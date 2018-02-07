@@ -78,7 +78,6 @@ export default class CommandHelp {
   }
 
   protected examples(examples: string[] | undefined | string): string | undefined {
-    console.dir(examples)
     if (!examples || !examples.length) return
     let body = castArray(examples).map(a => this.render(a)).join('\n')
     return [

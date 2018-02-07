@@ -2,36 +2,28 @@
 # yarn lockfile v1
 
 
-"@anycli/command@^1.2.13":
-  version "1.2.13"
-  resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.13.tgz#2c3470a3f3b952aa42dd1b2491de85e116c28ae0"
-  dependencies:
-    "@anycli/parser" "^3.2.6"
-
 "@anycli/command@^1.2.14":
   version "1.2.14"
   resolved "https://registry.yarnpkg.com/@anycli/command/-/command-1.2.14.tgz#de8e1be33f64143c49242c0deb7bf9a06a826813"
   dependencies:
     "@anycli/parser" "^3.2.6"
 
-"@anycli/config@^1.3.23":
-  version "1.3.25"
-  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.3.25.tgz#659dd6f3eec5b1f69b4518fb8a3c635529482e2a"
+"@anycli/config@^1.3.36":
+  version "1.3.36"
+  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.3.36.tgz#ea69dd7b708c6d2543e3f13481bd2f6bca69fa83"
 
-"@anycli/config@^1.3.31":
-  version "1.3.31"
-  resolved "https://registry.yarnpkg.com/@anycli/config/-/config-1.3.31.tgz#33d3b39d2ed46383bbf952f789403681306676c2"
-
-"@anycli/dev-cli@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@anycli/dev-cli/-/dev-cli-0.3.2.tgz#9ed9fe4994fa9ccf8ac1c77a47f6aa9cde2cb1d1"
+"@anycli/dev-cli@^0.3.7":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@anycli/dev-cli/-/dev-cli-0.3.7.tgz#b03996f6f4973649b520a2ffe41c772035d68c59"
   dependencies:
-    "@anycli/command" "^1.2.13"
-    "@anycli/config" "^1.3.23"
+    "@anycli/command" "^1.2.14"
+    "@anycli/config" "^1.3.36"
     "@anycli/errors" "^0.2.1"
-    "@anycli/plugin-help" "^0.6.8"
+    "@anycli/plugin-help" "^0.6.9"
     lodash.template "^4.4.0"
     normalize-package-data "^2.4.0"
+    require-relative "^0.8.7"
+    require-resolve "^0.0.2"
 
 "@anycli/errors@^0.2.1":
   version "0.2.1"
@@ -47,11 +39,11 @@
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/@anycli/parser/-/parser-3.2.6.tgz#bbd119a80709099179a9f11af0dc44b68c54575b"
 
-"@anycli/plugin-help@^0.6.8":
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-help/-/plugin-help-0.6.8.tgz#1102006c7b8a49d3f6e56d9dad1f7fc5f69a223c"
+"@anycli/plugin-help@^0.6.9":
+  version "0.6.9"
+  resolved "https://registry.yarnpkg.com/@anycli/plugin-help/-/plugin-help-0.6.9.tgz#1ff4a4aac9f8e56f3d36ffc1270e50fb1c453b4d"
   dependencies:
-    "@anycli/command" "^1.2.13"
+    "@anycli/command" "^1.2.14"
     chalk "^2.3.0"
     indent-string "^3.2.0"
     lodash.template "^4.4.0"
@@ -59,9 +51,9 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@anycli/plugin-legacy@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-legacy/-/plugin-legacy-0.0.5.tgz#88cf351dfe10416d5aa118dcd5494aa599a8d224"
+"@anycli/plugin-legacy@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@anycli/plugin-legacy/-/plugin-legacy-0.1.0.tgz#5b980d0decba6fbe569a0a49bd10ed9fd160afab"
   dependencies:
     "@anycli/command" "^1.2.14"
     "@heroku-cli/color" "^1.1.3"
@@ -773,6 +765,10 @@ password-prompt@^1.0.4:
     ansi-escapes "^3.0.0"
     cross-spawn "^5.1.0"
 
+path-extra@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/path-extra/-/path-extra-1.0.3.tgz#7c112189a6e50d595790e7ad2037e44e410c1166"
+
 path-is-absolute@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
@@ -808,6 +804,16 @@ redeyed@~1.0.0:
   resolved "https://registry.yarnpkg.com/redeyed/-/redeyed-1.0.1.tgz#e96c193b40c0816b00aec842698e61185e55498a"
   dependencies:
     esprima "~3.0.0"
+
+require-relative@^0.8.7:
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/require-relative/-/require-relative-0.8.7.tgz#7999539fc9e047a37928fa196f8e1563dabd36de"
+
+require-resolve@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/require-resolve/-/require-resolve-0.0.2.tgz#bab410ab1aee2f3f55b79317451dd3428764e6f3"
+  dependencies:
+    x-path "^0.0.2"
 
 resolve@^1.3.2:
   version "1.5.0"
@@ -1093,6 +1099,12 @@ wrap-ansi@^3.0.1:
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
+
+x-path@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/x-path/-/x-path-0.0.2.tgz#294d076bb97a7706cc070bbb2a6fd8c54df67b12"
+  dependencies:
+    path-extra "^1.0.2"
 
 yallist@^2.1.2:
   version "2.1.2"
