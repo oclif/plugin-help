@@ -18,7 +18,7 @@
   },
   "bugs": "https://github.com/anycli/plugin-help/issues",
   "dependencies": {
-    "@anycli/command": "^1.2.17",
+    "@anycli/command": "^1.2.18",
     "chalk": "^2.3.0",
     "indent-string": "^3.2.0",
     "lodash.template": "^4.4.0",
@@ -27,7 +27,7 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@anycli/config": "^1.3.40",
+    "@anycli/config": "^1.3.41",
     "@anycli/dev-cli": "^0.3.8",
     "@anycli/errors": "^0.2.1",
     "@anycli/plugin-legacy": "^0.1.1",
