@@ -1,3 +1,11 @@
+<a name="0.6.9"></a>
+## [0.6.9](https://github.com/anycli/plugin-help/compare/61a26af71387aae48988ff161a186c7728ad3e30...v0.6.9) (2018-02-07)
+
+
+### Bug Fixes
+
+* updated config ([476ec1d](https://github.com/anycli/plugin-help/commit/476ec1d))
+
 <a name="0.6.8"></a>
 ## [0.6.8](https://github.com/anycli/plugin-help/compare/692a7e663f79a676e8de8c136bef6662f2ed29b3...v0.6.8) (2018-02-06)
 
