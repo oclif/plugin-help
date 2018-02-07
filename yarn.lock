@@ -65,11 +65,11 @@
     widest-line "^2.0.0"
     wrap-ansi "^3.0.1"
 
-"@anycli/plugin-legacy@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@anycli/plugin-legacy/-/plugin-legacy-0.0.4.tgz#4d75f8aafc2cb221c859748ce54bcbe0db00b6aa"
+"@anycli/plugin-legacy@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@anycli/plugin-legacy/-/plugin-legacy-0.0.5.tgz#88cf351dfe10416d5aa118dcd5494aa599a8d224"
   dependencies:
-    "@anycli/command" "^1.2.13"
+    "@anycli/command" "^1.2.14"
     "@heroku-cli/color" "^1.1.3"
     "@heroku-cli/command" "^8.0.0-anycli.1"
     ansi-escapes "^3.0.0"
