@@ -35,6 +35,7 @@ export default class CommandHelp {
       this.flags(flags),
       this.description(cmd),
       this.aliases(cmd.aliases),
+      this.examples(cmd.examples),
     ]).join('\n\n')
     if (this.opts.stripAnsi) output = stripAnsi(output)
     return output
@@ -72,6 +73,16 @@ export default class CommandHelp {
     let body = aliases.map(a => ['$', this.config.bin, a].join(' ')).join('\n')
     return [
       bold('ALIASES'),
+      indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+    ].join('\n')
+  }
+
+  protected examples(examples: string[] | undefined | string): string | undefined {
+    console.dir(examples)
+    if (!examples || !examples.length) return
+    let body = castArray(examples).map(a => this.render(a)).join('\n')
+    return [
+      bold('EXAMPLE' + (examples.length > 1 ? 'S' : '')),
       indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
     ].join('\n')
   }
