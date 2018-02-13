@@ -1,3 +1,11 @@
+<a name="0.7.4"></a>
+## [0.7.4](https://github.com/oclif/plugin-help/compare/v0.7.3...v0.7.4) (2018-02-13)
+
+
+### Bug Fixes
+
+* oclif rename ([fb1bbe9](https://github.com/oclif/plugin-help/commit/fb1bbe9))
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/anycli/plugin-help/compare/123c328fa036f3e17d21544fb2fa6fe76ac9407a...v0.7.2) (2018-02-07)
 
