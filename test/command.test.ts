@@ -1,6 +1,6 @@
-import {Command as Base, flags} from '@anycli/command'
-import * as Config from '@anycli/config'
-import {expect, test as base} from '@anycli/test'
+import {Command as Base, flags} from '@oclif/command'
+import * as Config from '@oclif/config'
+import {expect, test as base} from '@oclif/test'
 import stripAnsi = require('strip-ansi')
 
 global.columns = 80
@@ -42,7 +42,7 @@ multiline help`
       remote: flags.string({char: 'r'}),
     }})
   .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ anycli apps:create [APP_NAME] [OPTIONS]
+  $ oclif apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -66,8 +66,8 @@ DESCRIPTION
   multiline help
 
 ALIASES
-  $ anycli app:init
-  $ anycli create`))
+  $ oclif app:init
+  $ oclif create`))
 
   test
   .commandHelp(class extends Command {
@@ -83,7 +83,7 @@ ALIASES
       remote: flags.string({char: 'r'}),
     }})
   .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ anycli apps:create [APP_NAME] [OPTIONS]
+  $ oclif apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -109,8 +109,8 @@ OPTIONS
       newliney
 
 ALIASES
-  $ anycli app:init
-  $ anycli create`))
+  $ oclif app:init
+  $ oclif create`))
 
   test
   .commandHelp(class extends Command {
@@ -122,7 +122,7 @@ ALIASES
       force: flags.boolean({description: 'forces'}),
     }})
   .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ anycli apps:create [APP_NAME] [OPTIONS]
+  $ oclif apps:create [APP_NAME] [OPTIONS]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -131,8 +131,8 @@ OPTIONS
   --force  forces
 
 ALIASES
-  $ anycli app:init
-  $ anycli create`))
+  $ oclif app:init
+  $ oclif create`))
 
   test
   .commandHelp(class extends Command {
@@ -141,7 +141,7 @@ ALIASES
       myenum: flags.enum({options: ['a', 'b', 'c']}),
     }})
   .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ anycli apps:create [OPTIONS]
+  $ oclif apps:create [OPTIONS]
 
 OPTIONS
   --myenum=(a|b|c)`))
@@ -161,7 +161,7 @@ OPTIONS
     }
   })
   .it('outputs with default options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ anycli apps:create [ARG1] [ARG2] [ARG3] [OPTIONS]
+  $ oclif apps:create [ARG1] [ARG2] [ARG3] [OPTIONS]
 
 ARGUMENTS
   ARG1  [default: .]

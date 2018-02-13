@@ -1,4 +1,4 @@
-import * as Config from '@anycli/config'
+import * as Config from '@oclif/config'
 import chalk from 'chalk'
 import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
@@ -19,7 +19,7 @@ export default class RootHelp {
   }
 
   root(): string {
-    let description = this.config.pjson.anycli.description || this.config.pjson.description || ''
+    let description = this.config.pjson.oclif.description || this.config.pjson.description || ''
     description = this.render(description)
     description = description.split('\n')[0]
     let output = compact([
@@ -39,7 +39,7 @@ export default class RootHelp {
   }
 
   protected description(): string | undefined {
-    let description = this.config.pjson.anycli.description || this.config.pjson.description || ''
+    let description = this.config.pjson.oclif.description || this.config.pjson.description || ''
     description = this.render(description)
     description = description.split('\n').slice(1).join('\n')
     if (!description) return

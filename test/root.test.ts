@@ -1,4 +1,4 @@
-import {expect, test as base} from '@anycli/test'
+import {expect, test as base} from '@oclif/test'
 import stripAnsi = require('strip-ansi')
 
 global.columns = 80
@@ -21,8 +21,8 @@ const test = base
 describe('root help', () => {
   test
   .rootHelp()
-  .it(ctx => expect(ctx.commandHelp).to.equal(`standard help for anycli
+  .it(ctx => expect(ctx.commandHelp).to.equal(`standard help for oclif
 
 USAGE
-  $ anycli [COMMAND]`))
+  $ oclif [COMMAND]`))
 })
