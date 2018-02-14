@@ -25,6 +25,13 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@heroku/linewrap/-/linewrap-1.0.0.tgz#a9d4e99f0a3e423a899b775f5f3d6747a1ff15c6"
 
+"@mrmlnc/readdir-enhanced@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
+  dependencies:
+    call-me-maybe "^1.0.1"
+    glob-to-regexp "^0.3.0"
+
 "@oclif/command@^1.2.21", "@oclif/command@^1.2.22", "@oclif/command@^1.2.23":
   version "1.2.23"
   resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.2.23.tgz#12bd96c3b4839a712f364d9aa36e463ba870d906"
@@ -610,13 +617,13 @@ fancy-test@^1.0.1:
     stdout-stderr "^0.1.6"
 
 fast-glob@^2.0.2:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.0.3.tgz#25a5a6926ac89559a0ff600db21f9c51623b737f"
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.0.4.tgz#a4b9f49e36175f5ef1a3456f580226a6e7abcc9e"
   dependencies:
+    "@mrmlnc/readdir-enhanced" "^2.2.1"
     glob-parent "3.1.0"
     merge2 "1.2.1"
     micromatch "3.1.5"
-    readdir-enhanced mrmlnc/readdir-enhanced#ISSUE-11_monkey_fix
 
 fill-range@^4.0.0:
   version "4.0.0"
@@ -1232,13 +1239,6 @@ posix-character-classes@^0.1.0:
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
-
-readdir-enhanced@mrmlnc/readdir-enhanced#ISSUE-11_monkey_fix:
-  version "2.2.0"
-  resolved "https://codeload.github.com/mrmlnc/readdir-enhanced/tar.gz/1580afe4fdf21cd191c202ec599d1ca7d0ab062d"
-  dependencies:
-    call-me-maybe "^1.0.1"
-    glob-to-regexp "^0.3.0"
 
 redeyed@~1.0.0:
   version "1.0.1"
