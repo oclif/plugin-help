@@ -42,7 +42,7 @@ multiline help`
       remote: flags.string({char: 'r'}),
     }})
   .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ oclif apps:create [APP_NAME] [OPTIONS]
+  $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -83,7 +83,7 @@ ALIASES
       remote: flags.string({char: 'r'}),
     }})
   .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ oclif apps:create [APP_NAME] [OPTIONS]
+  $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -122,7 +122,7 @@ ALIASES
       force: flags.boolean({description: 'forces'}),
     }})
   .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ oclif apps:create [APP_NAME] [OPTIONS]
+  $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
   APP_NAME  app to use
@@ -141,7 +141,7 @@ ALIASES
       myenum: flags.enum({options: ['a', 'b', 'c']}),
     }})
   .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ oclif apps:create [OPTIONS]
+  $ oclif apps:create
 
 OPTIONS
   --myenum=(a|b|c)`))
@@ -161,7 +161,7 @@ OPTIONS
     }
   })
   .it('outputs with default options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ oclif apps:create [ARG1] [ARG2] [ARG3] [OPTIONS]
+  $ oclif apps:create [ARG1] [ARG2] [ARG3]
 
 ARGUMENTS
   ARG1  [default: .]

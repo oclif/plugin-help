@@ -51,11 +51,11 @@ export default class CommandHelp {
     ].join('\n')
   }
 
-  protected defaultUsage(command: Config.Command, flags: Config.Command.Flag[]): string {
+  protected defaultUsage(command: Config.Command, _: Config.Command.Flag[]): string {
     return compact([
       command.id,
       command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
-      flags.length && '[OPTIONS]',
+      // flags.length && '[OPTIONS]',
     ]).join(' ')
   }
 

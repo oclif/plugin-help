@@ -8,7 +8,7 @@ describe('help command', () => {
      expect(ctx.stdout).to.equal(`display help for oclif
 
 USAGE
-  $ oclif help [COMMAND] [OPTIONS]
+  $ oclif help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
