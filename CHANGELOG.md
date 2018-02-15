@@ -1,3 +1,11 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/oclif/plugin-help/compare/651763997bf220f980aa43b522d8f2d1bdaf1275...v1.0.2) (2018-02-15)
+
+
+### Bug Fixes
+
+* hide OPTIONS for now ([7e70920](https://github.com/oclif/plugin-help/commit/7e70920))
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/oclif/plugin-help/compare/v1.0.0...v1.0.1) (2018-02-13)
 
