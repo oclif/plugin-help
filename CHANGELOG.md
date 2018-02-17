@@ -1,3 +1,11 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/oclif/plugin-help/compare/de750328be54793875516f99a40cc5dd8a7bc8cf...v1.1.0) (2018-02-17)
+
+
+### Features
+
+* add topics ([67d1cba](https://github.com/oclif/plugin-help/commit/67d1cba))
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/oclif/plugin-help/compare/66cd4cdfba29f6e6c81f45742a5528038375830f...v1.0.5) (2018-02-17)
 
