@@ -138,13 +138,13 @@ ALIASES
   .commandHelp(class extends Command {
     static id = 'apps:create'
     static flags = {
-      myenum: flags.enum({options: ['a', 'b', 'c']}),
+      myenum: flags.string({options: ['a', 'b', 'c']}),
     }})
   .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create
 
 OPTIONS
-  --myenum=(a|b|c)`))
+  --myenum=a|b|c`))
 
   test
   .commandHelp(class extends Command {

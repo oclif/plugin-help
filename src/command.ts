@@ -114,7 +114,10 @@ export default class CommandHelp {
       let left = label.join(', ')
       if (flag.type === 'option') {
         let value = flag.helpValue || flag.name
-        if (!value.includes('(')) value = underline(value)
+        if (!flag.helpValue && flag.options) {
+          value = flag.options.join('|')
+        }
+        if (!value.includes('|')) value = underline(value)
         left += `=${value}`
       }
 
