@@ -60,7 +60,8 @@ export default class Help {
       console.log()
     } else if (command = this.config.findCommand(subject)) {
       const name = command.id
-      topics = topics.filter(t => t.name.startsWith(name + ':'))
+      const depth = name.split(':').length
+      topics = topics.filter(t => t.name.startsWith(name) && t.name.split(':').length === depth + 1)
       let title = command.description && this.render(command.description).split('\n')[0]
       if (title) console.log(title + '\n')
       console.log(this.command(command))
@@ -71,8 +72,9 @@ export default class Help {
       }
     } else if (topic = this.config.findTopic(subject)) {
       const name = topic.name
+      const depth = name.split(':').length
+      topics = topics.filter(t => t.name.startsWith(name) && t.name.split(':').length === depth + 1)
       console.log(this.topic(topic))
-      topics = topics.filter(t => t.name.startsWith(name + ':'))
       if (topics.length) {
         console.log(this.topics(topics))
         console.log()
