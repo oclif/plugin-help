@@ -39,22 +39,18 @@
     "@oclif/parser" "^3.2.9"
     semver "^5.5.0"
 
-"@oclif/config@^1.3.52":
-  version "1.3.55"
-  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.3.55.tgz#f7417eb5c0eaea7c738c4fa65361b7c12935b615"
-
 "@oclif/config@^1.3.56":
   version "1.3.56"
   resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.3.56.tgz#daa92087dda5fd649d4aeea9cc44aef92b854e7f"
 
-"@oclif/dev-cli@^1.2.13":
-  version "1.2.13"
-  resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.2.13.tgz#769d651e2ea2fb7df646d4a376402a5521d35221"
+"@oclif/dev-cli@^1.2.16":
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.2.16.tgz#50d3ff41f33d4100a44183494de3b3eff1a73dd5"
   dependencies:
-    "@oclif/command" "^1.3.0"
-    "@oclif/config" "^1.3.52"
+    "@oclif/command" "^1.3.1"
+    "@oclif/config" "^1.3.56"
     "@oclif/errors" "^1.0.2"
-    "@oclif/plugin-help" "^1.0.3"
+    "@oclif/plugin-help" "^1.1.0"
     lodash "^4.17.5"
     lodash.template "^4.4.0"
     normalize-package-data "^2.4.0"
@@ -76,11 +72,11 @@
   dependencies:
     "@heroku/linewrap" "^1.0.0"
 
-"@oclif/plugin-help@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-1.0.4.tgz#cdfae67c36c7088e263dd67b47eb7d28daaa9ff8"
+"@oclif/plugin-help@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-1.1.0.tgz#15c760a1049e13e1f47f0ebac60a3f64bfbfd922"
   dependencies:
-    "@oclif/command" "^1.3.0"
+    "@oclif/command" "^1.3.1"
     chalk "^2.3.1"
     indent-string "^3.2.0"
     lodash.template "^4.4.0"
@@ -698,9 +694,9 @@ glob@7.1.2, glob@^7.1.1, glob@^7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-globby@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/globby/-/globby-8.0.0.tgz#e6f8340ead9a52fa417ec0e75ae664ae0026f5c6"
+globby@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-8.0.1.tgz#b5ad48b8aa80b35b814fc1281ecc851f1d2b5b50"
   dependencies:
     array-union "^1.0.1"
     dir-glob "^2.0.0"
