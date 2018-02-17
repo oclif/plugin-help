@@ -1,3 +1,12 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/oclif/plugin-help/compare/a382ee982a225d48d7650f1ced7fd97ea90e1ebf...v1.0.4) (2018-02-17)
+
+
+### Bug Fixes
+
+* trim usage ([06de470](https://github.com/oclif/plugin-help/commit/06de470))
+* updated deps ([66cd4cd](https://github.com/oclif/plugin-help/commit/66cd4cd))
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/oclif/plugin-help/compare/7e709205248664666654cf0750c3209c43327298...v1.0.3) (2018-02-15)
 
