@@ -34,7 +34,7 @@ export default class Help {
     const getHelpSubject = () => {
       // special case
       // if (['help:help', 'help:--help', '--help:help'].includes(argv.slice(0, 2).join(':'))) {
-      if (argv[0] === 'help') return 'help'
+      // if (argv[0] === 'help') return 'help'
 
       for (let arg of argv) {
         if (arg === '--') return
