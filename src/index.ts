@@ -116,7 +116,8 @@ export default class Help {
 
   commands(commands: (Config.Command | Config.Topic)[]): string | undefined {
     if (!commands.length) return
-    commands = uniqBy(commands, c => id(c))
+    commands = uniqBy(commands, id)
+    commands = sortBy(commands, id)
     let body = renderList(commands.map(c => [
       id(c),
       c.description && this.render(c.description.split('\n')[0])
