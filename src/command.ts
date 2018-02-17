@@ -43,7 +43,7 @@ export default class CommandHelp {
 
   protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): string {
     let body = (cmd.usage ? castArray(cmd.usage) : [this.defaultUsage(cmd, flags)])
-    .map(u => `$ ${this.config.bin} ${u}`)
+    .map(u => `$ ${this.config.bin} ${u}`.trim())
     .join('\n')
     return [
       bold('USAGE'),
