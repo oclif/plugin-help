@@ -1,3 +1,11 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/oclif/plugin-help/compare/67d1cba010649852ecbd1b6870e91e06df35aa28...v1.1.1) (2018-02-17)
+
+
+### Bug Fixes
+
+* sort commands/topics ([165a53c](https://github.com/oclif/plugin-help/commit/165a53c))
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/oclif/plugin-help/compare/de750328be54793875516f99a40cc5dd8a7bc8cf...v1.1.0) (2018-02-17)
 
