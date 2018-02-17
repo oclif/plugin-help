@@ -44,6 +44,7 @@ export default class Help {
       }
     }
     let topics = this.config.topics
+    topics = topics.filter(t => this.opts.all || !t.hidden)
     topics = sortBy(topics, t => t.name)
     topics = uniqBy(topics, t => t.name)
     let subject = getHelpSubject()
