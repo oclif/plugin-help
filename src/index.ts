@@ -44,10 +44,8 @@ export default class Help {
       }
     }
     let topics = this.config.topics
-    let commands = this.config.commands
-    commands = commands.filter(c => this.opts.all || !c.hidden)
-    commands = sortBy(commands, c => c.id)
-    commands = uniqBy(commands, c => c.id)
+    topics = sortBy(topics, t => t.name)
+    topics = uniqBy(topics, t => t.name)
     let subject = getHelpSubject()
     let command: Config.Command | undefined
     let topic: Config.Topic | undefined
@@ -55,29 +53,27 @@ export default class Help {
       console.log(this.root())
       console.log()
       if (!this.opts.all) {
-        commands = commands.filter(c => !c.id.includes(':'))
         topics = topics.filter(t => !t.name.includes(':'))
       }
-      console.log(this.commands([...topics, ...commands]))
+      console.log(this.topics(topics))
       console.log()
     } else if (command = this.config.findCommand(subject)) {
-      const id = command.id
-      const depth = id.split(':').length
-      commands = commands.filter(c => c.id.startsWith(id) && c.id.split(':').length === depth + 1)
-      topics = topics.filter(t => t.name.startsWith(id) && t.name.split(':').length === depth + 1)
+      const name = command.id
+      topics = topics.filter(t => t.name.startsWith(name + ':'))
       let title = command.description && this.render(command.description).split('\n')[0]
       if (title) console.log(title + '\n')
       console.log(this.command(command))
       console.log()
-      if (commands.length) {
-        console.log(this.commands(commands))
+      if (topics.length) {
+        console.log(this.topics(topics))
         console.log()
       }
     } else if (topic = this.config.findTopic(subject)) {
+      const name = topic.name
       console.log(this.topic(topic))
-      commands = commands.filter(c => c.id.startsWith(topic!.name))
-      if (commands.length) {
-        console.log(this.commands(commands))
+      topics = topics.filter(t => t.name.startsWith(name + ':'))
+      if (topics.length) {
+        console.log(this.topics(topics))
         console.log()
       }
     } else {
@@ -114,12 +110,10 @@ export default class Help {
     return help.command(command)
   }
 
-  commands(commands: (Config.Command | Config.Topic)[]): string | undefined {
-    if (!commands.length) return
-    commands = uniqBy(commands, id)
-    commands = sortBy(commands, id)
-    let body = renderList(commands.map(c => [
-      id(c),
+  topics(topics: Config.Topic[]): string | undefined {
+    if (!topics.length) return
+    let body = renderList(topics.map(c => [
+      c.name,
       c.description && this.render(c.description.split('\n')[0])
     ]), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
     return [
@@ -129,6 +123,6 @@ export default class Help {
   }
 }
 
-function id(c: Config.Command | Config.Topic): string {
-  return (c as any).id || (c as any).name
-}
+// function id(c: Config.Command | Config.Topic): string {
+//   return (c as any).id || (c as any).name
+// }
