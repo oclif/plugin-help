@@ -1,3 +1,12 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/oclif/plugin-help/compare/66cd4cdfba29f6e6c81f45742a5528038375830f...v1.0.5) (2018-02-17)
+
+
+### Bug Fixes
+
+* read options if flagValue is undefined ([abe43d8](https://github.com/oclif/plugin-help/commit/abe43d8))
+* updated deps ([de75032](https://github.com/oclif/plugin-help/commit/de75032))
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/oclif/plugin-help/compare/a382ee982a225d48d7650f1ced7fd97ea90e1ebf...v1.0.4) (2018-02-17)
 
