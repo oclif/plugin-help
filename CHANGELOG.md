@@ -1,3 +1,12 @@
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/oclif/plugin-help/compare/7a9b7508cb0d44c8e1ab2c8ba081d30bbd99e230...v1.1.4) (2018-02-17)
+
+
+### Bug Fixes
+
+* only show topics 1 level deep ([829e75e](https://github.com/oclif/plugin-help/commit/829e75e))
+* only show topics 1 level deep ([5af8a0b](https://github.com/oclif/plugin-help/commit/5af8a0b))
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/oclif/plugin-help/compare/81c089f2b549984de4e8e25f1d941698b7f63cb3...v1.1.3) (2018-02-17)
 
