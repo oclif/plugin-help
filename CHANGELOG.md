@@ -1,3 +1,11 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/oclif/plugin-help/compare/81c089f2b549984de4e8e25f1d941698b7f63cb3...v1.1.3) (2018-02-17)
+
+
+### Bug Fixes
+
+* hide hidden topics ([7a9b750](https://github.com/oclif/plugin-help/commit/7a9b750))
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/oclif/plugin-help/compare/165a53c8d7f6705b20fa56553e6d78cb689d882e...v1.1.2) (2018-02-17)
 
