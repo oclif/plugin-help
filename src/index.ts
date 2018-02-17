@@ -43,6 +43,7 @@ export default class Help {
         return arg
       }
     }
+    let topics = this.config.topics
     let commands = this.config.commands
     commands = commands.filter(c => this.opts.all || !c.hidden)
     commands = sortBy(commands, c => c.id)
@@ -51,15 +52,19 @@ export default class Help {
     let command: Config.Command | undefined
     let topic: Config.Topic | undefined
     if (!subject) {
-      if (!this.opts.all) commands = commands.filter(c => !c.id.includes(':'))
       console.log(this.root())
       console.log()
-      if (commands.length) {
-        console.log(this.commands(commands))
-        console.log()
+      if (!this.opts.all) {
+        commands = commands.filter(c => !c.id.includes(':'))
+        topics = topics.filter(t => !t.name.includes(':'))
       }
+      console.log(this.commands([...topics, ...commands]))
+      console.log()
     } else if (command = this.config.findCommand(subject)) {
-      commands = commands.filter(c => c.id !== command!.id && c.id.startsWith(command!.id))
+      const id = command.id
+      const depth = id.split(':').length
+      commands = commands.filter(c => c.id.startsWith(id) && c.id.split(':').length === depth + 1)
+      topics = topics.filter(t => t.name.startsWith(id) && t.name.split(':').length === depth + 1)
       let title = command.description && this.render(command.description).split('\n')[0]
       if (title) console.log(title + '\n')
       console.log(this.command(command))
@@ -109,10 +114,11 @@ export default class Help {
     return help.command(command)
   }
 
-  commands(commands: Config.Command[]): string | undefined {
+  commands(commands: (Config.Command | Config.Topic)[]): string | undefined {
     if (!commands.length) return
+    commands = uniqBy(commands, c => id(c))
     let body = renderList(commands.map(c => [
-      c.id,
+      id(c),
       c.description && this.render(c.description.split('\n')[0])
     ]), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
     return [
@@ -120,4 +126,8 @@ export default class Help {
       indent(body, 2),
     ].join('\n')
   }
+}
+
+function id(c: Config.Command | Config.Topic): string {
+  return (c as any).id || (c as any).name
 }

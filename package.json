@@ -14,11 +14,11 @@
     "wrap-ansi": "^3.0.1"
   },
   "devDependencies": {
-    "@oclif/config": "^1.3.55",
-    "@oclif/dev-cli": "^1.2.12",
+    "@oclif/config": "^1.3.56",
+    "@oclif/dev-cli": "^1.2.13",
     "@oclif/errors": "^1.0.2",
     "@oclif/plugin-legacy": "^1.0.2",
-    "@oclif/plugin-plugins": "^1.0.0",
+    "@oclif/plugin-plugins": "^1.0.1",
     "@oclif/test": "^1.0.1",
     "@oclif/tslint": "^1.0.2",
     "@types/chai": "^4.1.2",
@@ -53,11 +53,6 @@
   "oclif": {
     "commands": "./lib/commands",
     "bin": "oclif",
-    "topics": {
-      "fob": {
-        "description": "foo"
-      }
-    },
     "devPlugins": [
       "@oclif/plugin-plugins",
       "@oclif/plugin-legacy"
