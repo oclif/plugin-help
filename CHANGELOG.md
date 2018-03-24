@@ -1,3 +1,11 @@
+<a name="1.1.8"></a>
+## [1.1.8](https://github.com/oclif/plugin-help/compare/a4a769687bd7a19f535773c5ab39064b6b35ac0b...v1.1.8) (2018-03-24)
+
+
+### Bug Fixes
+
+* updated command ([5e3b8f5](https://github.com/oclif/plugin-help/commit/5e3b8f5))
+
 <a name="1.1.7"></a>
 ## [1.1.7](https://github.com/oclif/plugin-help/compare/cb5f9bea2c14d88afd94843026b09d245f584864...v1.1.7) (2018-03-23)
 
