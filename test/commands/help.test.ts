@@ -50,8 +50,10 @@ OPTIONS
   .stdout()
   .command(['help'])
   .it('shows root help', ctx => {
-     expect(ctx.stdout).to.equal(`${UA}
-standard help for oclif
+     expect(ctx.stdout).to.equal(`standard help for oclif
+
+VERSION
+  ${UA}
 
 USAGE
   $ oclif [COMMAND]
