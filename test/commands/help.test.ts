@@ -1,5 +1,8 @@
 import {expect, test} from '@oclif/test'
 
+const VERSION = require('../../package.json').version
+const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} node-${process.version}`
+
 describe('help command', () => {
   test
   .stdout()
@@ -47,7 +50,8 @@ OPTIONS
   .stdout()
   .command(['help'])
   .it('shows root help', ctx => {
-     expect(ctx.stdout).to.equal(`standard help for oclif
+     expect(ctx.stdout).to.equal(`${UA}
+standard help for oclif
 
 USAGE
   $ oclif [COMMAND]
