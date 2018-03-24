@@ -1,3 +1,16 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/oclif/plugin-help/compare/v1.1.8...v1.2.0) (2018-03-24)
+
+
+### Bug Fixes
+
+* use new semantic-release ([8bdc8fc](https://github.com/oclif/plugin-help/commit/8bdc8fc))
+
+
+### Features
+
+* show version on root help ([988de52](https://github.com/oclif/plugin-help/commit/988de52))
+
 <a name="1.1.8"></a>
 ## [1.1.8](https://github.com/oclif/plugin-help/compare/a4a769687bd7a19f535773c5ab39064b6b35ac0b...v1.1.8) (2018-03-24)
 
