@@ -1,3 +1,11 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/oclif/plugin-help/compare/v1.2.2...v1.2.3) (2018-04-07)
+
+
+### Bug Fixes
+
+* show extra line between examples ([d05ec75](https://github.com/oclif/plugin-help/commit/d05ec75))
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/oclif/plugin-help/compare/v1.2.1...v1.2.2) (2018-03-28)
 
