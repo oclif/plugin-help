@@ -118,7 +118,11 @@ export default class Help {
     let body = renderList(topics.map(c => [
       c.name,
       c.description && this.render(c.description.split('\n')[0])
-    ]), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
+    ]), {
+      spacer: '\n',
+      stripAnsi: this.opts.stripAnsi,
+      maxWidth: this.opts.maxWidth - 2,
+    })
     return [
       bold('COMMANDS'),
       indent(body, 2),

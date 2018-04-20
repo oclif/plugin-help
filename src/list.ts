@@ -6,7 +6,7 @@ const wrap = require('wrap-ansi')
 
 const widestLine = require('widest-line')
 
-export function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean}): string {
+export function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean, spacer?: string}): string {
   if (input.length === 0) {
     return ''
   }
@@ -30,7 +30,7 @@ export function renderList(input: (string | undefined)[][], opts: {maxWidth: num
   if (opts.multiline) return renderMultiline()
   const maxLength = widestLine(input.map(i => i[0]).join('\n'))
   let output = ''
-  let spacer = '\n'
+  let spacer = opts.spacer || '\n'
   let cur = ''
   for (let [left, right] of input) {
     if (cur) {
@@ -54,7 +54,8 @@ export function renderList(input: (string | undefined)[][], opts: {maxWidth: num
     }
     // if we start putting too many lines down, render in multiline format
     if (lines.length > 4) return renderMultiline()
-    spacer = '\n\n'
+    // if spacer is not defined, separate all rows with extra newline
+    if (!opts.spacer) spacer = '\n\n'
     cur += '\n'
     cur += indent(lines.join('\n'), maxLength + 2)
   }
