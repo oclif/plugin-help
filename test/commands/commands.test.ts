@@ -11,6 +11,7 @@ describe(command, () => {
 help
 plugins
 plugins:install
+plugins:link
 plugins:uninstall
 plugins:update
 `)

@@ -21,6 +21,7 @@ EXAMPLE
 
 COMMANDS
   plugins:install    installs a plugin into the CLI
+  plugins:link       links a plugin into the CLI for development
   plugins:uninstall  removes a plugin from the CLI
   plugins:update     update installed plugins
 
