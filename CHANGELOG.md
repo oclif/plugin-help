@@ -1,3 +1,11 @@
+<a name="1.2.10"></a>
+## [1.2.10](https://github.com/oclif/plugin-help/compare/v1.2.9...v1.2.10) (2018-05-03)
+
+
+### Bug Fixes
+
+* updated semantic-release ([e3ff4aa](https://github.com/oclif/plugin-help/commit/e3ff4aa))
+
 <a name="1.2.9"></a>
 ## [1.2.9](https://github.com/oclif/plugin-help/compare/v1.2.8...v1.2.9) (2018-05-03)
 
