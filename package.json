@@ -5,7 +5,7 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/command": "^1.4.19",
+    "@oclif/command": "^1.4.20",
     "chalk": "^2.4.1",
     "indent-string": "^3.2.0",
     "lodash.template": "^4.4.0",
@@ -41,7 +41,7 @@
     "node": ">=8.0.0"
   },
   "files": [
-    ".oclif.manifest.json",
+    "oclif.manifest.json",
     "/lib"
   ],
   "homepage": "https://github.com/oclif/plugin-help",
@@ -62,9 +62,9 @@
   "scripts": {
     "build": "rm -rf lib && tsc",
     "lint": "concurrently -p command \"tsc -p test --noEmit\" \"tslint -p test\"",
-    "postpublish": "rm .oclif.manifest.json",
+    "postpack": "rm oclif.manifest.json",
     "posttest": "yarn run lint",
-    "prepublishOnly": "yarn run build && oclif-dev manifest",
+    "prepack": "yarn run build && oclif-dev manifest",
     "test": "mocha --forbid-only \"test/**/*.test.ts\""
   },
   "types": "./lib/index.d.ts"
