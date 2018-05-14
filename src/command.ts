@@ -7,11 +7,15 @@ import {HelpOptions} from '.'
 import {renderList} from './list'
 import {castArray, compact, sortBy, template} from './util'
 
-const {
+let {
   underline,
   dim,
   bold,
 } = chalk
+
+if (process.env.ConEmuANSI === 'ON') {
+  dim = chalk.gray
+}
 
 const wrap = require('wrap-ansi')
 
