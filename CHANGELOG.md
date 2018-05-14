@@ -1,3 +1,11 @@
+<a name="1.2.11"></a>
+## [1.2.11](https://github.com/oclif/plugin-help/compare/v1.2.10...v1.2.11) (2018-05-14)
+
+
+### Bug Fixes
+
+* use gray for ConEmu ([d0a469d](https://github.com/oclif/plugin-help/commit/d0a469d))
+
 <a name="1.2.10"></a>
 ## [1.2.10](https://github.com/oclif/plugin-help/compare/v1.2.9...v1.2.10) (2018-05-03)
 
