@@ -1,3 +1,17 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/oclif/plugin-help/compare/v1.2.11...v2.0.0) (2018-05-28)
+
+
+### Features
+
+* removed commands command ([cfcac30](https://github.com/oclif/plugin-help/commit/cfcac30))
+
+
+### BREAKING CHANGES
+
+* `commands` command is no longer in this plugin
+it will be moved into @oclif/plugin-commands
+
 <a name="1.2.11"></a>
 ## [1.2.11](https://github.com/oclif/plugin-help/compare/v1.2.10...v1.2.11) (2018-05-14)
 
