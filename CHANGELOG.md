@@ -1,3 +1,11 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/oclif/plugin-help/compare/v2.0.0...v2.0.1) (2018-05-30)
+
+
+### Bug Fixes
+
+* single line to separate examples ([da1c488](https://github.com/oclif/plugin-help/commit/da1c488))
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/oclif/plugin-help/compare/v1.2.11...v2.0.0) (2018-05-28)
 
