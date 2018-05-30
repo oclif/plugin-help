@@ -83,7 +83,7 @@ export default class CommandHelp {
 
   protected examples(examples: string[] | undefined | string): string | undefined {
     if (!examples || !examples.length) return
-    let body = castArray(examples).map(a => this.render(a)).join('\n\n')
+    let body = castArray(examples).map(a => this.render(a)).join('\n')
     return [
       bold('EXAMPLE' + (examples.length > 1 ? 'S' : '')),
       indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
