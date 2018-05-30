@@ -12,7 +12,7 @@ function termwidth(stream: any): number {
   return width
 }
 
-const columns: number | null = (global as any).columns
+const columns: number | null = parseInt(process.env.COLUMNS!, 10) || (global as any).columns
 
 export let stdtermwidth = columns || termwidth(process.stdout)
 export let errtermwidth = columns || termwidth(process.stderr)
