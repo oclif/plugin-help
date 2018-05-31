@@ -1,3 +1,11 @@
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/oclif/plugin-help/compare/v2.0.3...v2.0.4) (2018-05-31)
+
+
+### Bug Fixes
+
+* trim descriptions ([d26baaa](https://github.com/oclif/plugin-help/commit/d26baaa))
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/oclif/plugin-help/compare/v2.0.2...v2.0.3) (2018-05-31)
 
