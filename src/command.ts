@@ -68,7 +68,7 @@ export default class CommandHelp {
     if (!description) return
     return [
       bold('DESCRIPTION'),
-      indent(wrap(description, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+      indent(wrap(description.trim(), this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
     ].join('\n')
   }
 
