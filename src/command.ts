@@ -39,7 +39,7 @@ export default class CommandHelp {
       this.flags(flags),
       this.description(cmd),
       this.aliases(cmd.aliases),
-      this.examples(cmd.examples),
+      this.examples(cmd.examples || (cmd as any).example),
     ]).join('\n\n')
     if (this.opts.stripAnsi) output = stripAnsi(output)
     return output
