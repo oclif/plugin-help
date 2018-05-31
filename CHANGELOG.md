@@ -1,3 +1,11 @@
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/oclif/plugin-help/compare/v2.0.2...v2.0.3) (2018-05-31)
+
+
+### Bug Fixes
+
+* read from `example` or `examples` ([d08f33b](https://github.com/oclif/plugin-help/commit/d08f33b))
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/oclif/plugin-help/compare/v2.0.1...v2.0.2) (2018-05-30)
 
