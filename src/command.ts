@@ -96,6 +96,7 @@ export default class CommandHelp {
       const name = a.name.toUpperCase()
       let description = a.description || ''
       if (a.default) description = `[default: ${a.default}] ${description}`
+      if (a.options) description = `(${a.options.join('|')}) ${description}`
       return [name, description ? dim(description) : undefined]
     }), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
     return [

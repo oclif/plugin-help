@@ -173,6 +173,19 @@ OPTIONS
   --flag2=flag2  [default: .] flag2 desc
   --flag3=flag3  flag3 desc`))
 
+  test
+  .commandHelp(class extends Command {
+    static id = 'apps:create'
+    static args = [
+      {name: 'arg1', description: 'Show the options', options: ['option1', 'option2']}
+    ]
+  })
+  .it('outputs with possible options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif apps:create [ARG1]
+
+ARGUMENTS
+  ARG1  (option1|option2) Show the options`))
+
   // class AppsCreate3 extends Command {
   //   static id = 'apps:create'
   //   static flags = {
