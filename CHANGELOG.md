@@ -1,3 +1,11 @@
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/oclif/plugin-help/compare/v2.0.4...v2.0.5) (2018-06-06)
+
+
+### Bug Fixes
+
+* show argument options in help ([#26](https://github.com/oclif/plugin-help/issues/26)) ([0c8d1bf](https://github.com/oclif/plugin-help/commit/0c8d1bf))
+
 <a name="2.0.4"></a>
 ## [2.0.4](https://github.com/oclif/plugin-help/compare/v2.0.3...v2.0.4) (2018-05-31)
 
