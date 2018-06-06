@@ -94,13 +94,10 @@ export default class CommandHelp {
     if (!args.filter(a => a.description).length) return
     let body = renderList(args.map(a => {
       const name = a.name.toUpperCase()
-      let options
-      if (a.options) {
-        options = `Can be one of: ${a.options.join(', ')}`
-      }
       let description = a.description || ''
       if (a.default) description = `[default: ${a.default}] ${description}`
-      return [name, description ? dim(description) : undefined, options]
+      if (a.options) description = `(${a.options.join('|')}) ${description}`
+      return [name, description ? dim(description) : undefined]
     }), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
     return [
       bold('ARGUMENTS'),
