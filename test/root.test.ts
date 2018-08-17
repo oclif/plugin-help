@@ -1,7 +1,8 @@
 import {expect, test as base} from '@oclif/test'
 import stripAnsi = require('strip-ansi')
 
-global.columns = 80
+const g: any = global
+g.columns = 80
 import Help from '../src'
 
 const VERSION = require('../package.json').version
