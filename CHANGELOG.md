@@ -1,3 +1,11 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/oclif/plugin-help/compare/v2.0.5...v2.1.0) (2018-08-17)
+
+
+### Features
+
+* typescript 3 ([53c4d0f](https://github.com/oclif/plugin-help/commit/53c4d0f))
+
 <a name="2.0.5"></a>
 ## [2.0.5](https://github.com/oclif/plugin-help/compare/v2.0.4...v2.0.5) (2018-06-06)
 
