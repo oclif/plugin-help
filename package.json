@@ -29,7 +29,7 @@
     "@types/strip-ansi": "^3.0.0",
     "@types/wrap-ansi": "^3.0.0",
     "chai": "^4.1.2",
-    "concurrently": "^3.6.1",
+    "concurrently": "^4.0.0",
     "globby": "^8.0.1",
     "mocha": "^5.2.0",
     "strip-ansi": "^4.0.0",
