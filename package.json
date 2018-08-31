@@ -11,21 +11,21 @@
     "lodash.template": "^4.4.0",
     "string-width": "^2.1.1",
     "widest-line": "^2.0.0",
-    "wrap-ansi": "^3.0.1"
+    "wrap-ansi": "^4.0.0"
   },
   "devDependencies": {
-    "@oclif/config": "^1.7.0",
+    "@oclif/config": "^1.7.3",
     "@oclif/dev-cli": "^1.17.0",
     "@oclif/errors": "^1.2.0",
     "@oclif/plugin-legacy": "^1.1.0",
-    "@oclif/plugin-plugins": "^1.6.1",
+    "@oclif/plugin-plugins": "^1.6.2",
     "@oclif/test": "^1.2.0",
     "@oclif/tslint": "^2.0.0",
     "@types/chai": "^4.1.4",
     "@types/indent-string": "^3.0.0",
     "@types/lodash.template": "^4.4.4",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.9.1",
+    "@types/node": "^10.9.4",
     "@types/strip-ansi": "^3.0.0",
     "@types/wrap-ansi": "^3.0.0",
     "chai": "^4.1.2",
@@ -34,7 +34,7 @@
     "strip-ansi": "^4.0.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.3"
   },
   "engines": {
     "node": ">=8.0.0"
