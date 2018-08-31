@@ -11,7 +11,7 @@
     "lodash.template": "^4.4.0",
     "string-width": "^2.1.1",
     "widest-line": "^2.0.0",
-    "wrap-ansi": "^3.0.1"
+    "wrap-ansi": "^4.0.0"
   },
   "devDependencies": {
     "@oclif/config": "^1.7.0",
