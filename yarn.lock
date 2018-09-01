@@ -71,9 +71,9 @@
     debug "^3.1.0"
     semver "^5.5.0"
 
-"@oclif/config@^1.7.0", "@oclif/config@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.7.3.tgz#b666b581a9b080419d5f12a2cb618a2c4c6bced0"
+"@oclif/config@^1.7.0", "@oclif/config@^1.7.4":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.7.4.tgz#5b7f779534a339de8c62a863b12f5740b15c41f5"
   dependencies:
     debug "^3.1.0"
     tslib "^1.9.3"
@@ -109,8 +109,8 @@
   resolved "https://registry.yarnpkg.com/@oclif/linewrap/-/linewrap-1.0.0.tgz#aedcb64b479d4db7be24196384897b5000901d91"
 
 "@oclif/parser@^3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@oclif/parser/-/parser-3.6.0.tgz#8d0b4c3e012aa1f0d59a6936b3dedec318b11a6d"
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@oclif/parser/-/parser-3.6.1.tgz#dd0ad29d9178d75a2de30314874a6167675925ed"
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     chalk "^2.4.1"

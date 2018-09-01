@@ -187,6 +187,19 @@ OPTIONS
 ARGUMENTS
   ARG1  (option1|option2) Show the options`))
 
+  test
+  .commandHelp(class extends Command {
+    static id = 'apps:create'
+    static flags = {
+      opt: flags.boolean({allowNo: true})
+    }
+  })
+  .it('outputs with possible options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif apps:create
+
+OPTIONS
+  --[no-]opt`))
+
   // class AppsCreate3 extends Command {
   //   static id = 'apps:create'
   //   static flags = {

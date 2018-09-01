@@ -115,7 +115,13 @@ export default class CommandHelp {
     let body = renderList(flags.map(flag => {
       const label = []
       if (flag.char) label.push(`-${flag.char[0]}`)
-      if (flag.name) label.push(`--${flag.name.trim()}`)
+      if (flag.name) {
+        if (flag.type === 'boolean' && flag.allowNo) {
+          label.push(`--[no-]${flag.name.trim()}`)
+        } else {
+          label.push(`--${flag.name.trim()}`)
+        }
+      }
       let left = label.join(', ')
       if (flag.type === 'option') {
         let value = flag.helpValue || flag.name
