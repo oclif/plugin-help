@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/oclif/plugin-help/compare/v2.1.0...v2.1.1) (2018-09-01)
+
+
+### Bug Fixes
+
+* show docs for allowNo on boolean flags ([208a27a](https://github.com/oclif/plugin-help/commit/208a27a))
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/oclif/plugin-help/compare/v2.0.5...v2.1.0) (2018-08-17)
 
