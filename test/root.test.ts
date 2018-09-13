@@ -24,8 +24,8 @@ const test = base
 
 describe('root help', () => {
   test
-  .rootHelp()
-  .it(ctx => expect(ctx.commandHelp).to.equal(`standard help for oclif
+    .rootHelp()
+    .it(ctx => expect(ctx.commandHelp).to.equal(`standard help for oclif
 
 VERSION
   ${UA}

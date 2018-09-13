@@ -5,10 +5,10 @@ const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} no
 
 describe('help command', () => {
   test
-  .stdout()
-  .command(['help', 'plugins'])
-  .it('shows plugins command help', ctx => {
-     expect(ctx.stdout).to.equal(`list installed plugins
+    .stdout()
+    .command(['help', 'plugins'])
+    .it('shows plugins command help', ctx => {
+      expect(ctx.stdout).to.equal(`list installed plugins
 
 USAGE
   $ oclif plugins
@@ -26,14 +26,14 @@ COMMANDS
   plugins:update     update installed plugins
 
 `)
-  })
+    })
 
   test
-  .stdout()
-  .command(['help', 'help'])
-  .skip()
-  .it('shows help command help', ctx => {
-     expect(ctx.stdout).to.equal(`display help for oclif
+    .stdout()
+    .command(['help', 'help'])
+    .skip()
+    .it('shows help command help', ctx => {
+      expect(ctx.stdout).to.equal(`display help for oclif
 
 USAGE
   $ oclif help [COMMAND]
@@ -45,13 +45,13 @@ OPTIONS
   --all  see all commands in CLI
 
 `)
-  })
+    })
 
   test
-  .stdout()
-  .command(['help'])
-  .it('shows root help', ctx => {
-     expect(ctx.stdout).to.equal(`standard help for oclif
+    .stdout()
+    .command(['help'])
+    .it('shows root help', ctx => {
+      expect(ctx.stdout).to.equal(`standard help for oclif
 
 VERSION
   ${UA}
@@ -64,5 +64,5 @@ COMMANDS
   plugins  list installed plugins
 
 `)
-  })
+    })
 })
