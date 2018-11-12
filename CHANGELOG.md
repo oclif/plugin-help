@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/oclif/plugin-help/compare/v2.1.3...v2.1.4) (2018-11-12)
+
+
+### Bug Fixes
+
+* Expose command help method ([#33](https://github.com/oclif/plugin-help/issues/33)) ([0c0a0d9](https://github.com/oclif/plugin-help/commit/0c0a0d9))
+
 ## [2.1.3](https://github.com/oclif/plugin-help/compare/v2.1.2...v2.1.3) (2018-10-13)
 
 
