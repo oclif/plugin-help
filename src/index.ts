@@ -59,17 +59,7 @@ export default class Help {
       console.log(this.topics(topics))
       console.log()
     } else if (command = this.config.findCommand(subject)) {
-      const name = command.id
-      const depth = name.split(':').length
-      topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-      let title = command.description && this.render(command.description).split('\n')[0]
-      if (title) console.log(title + '\n')
-      console.log(this.command(command))
-      console.log()
-      if (topics.length) {
-        console.log(this.topics(topics))
-        console.log()
-      }
+      this.showCommandHelp(command, topics)
     } else if (topic = this.config.findTopic(subject)) {
       const name = topic.name
       const depth = name.split(':').length
@@ -81,6 +71,20 @@ export default class Help {
       }
     } else {
       error(`command ${subject} not found`)
+    }
+  }
+
+  showCommandHelp(command: Config.Command, topics: Config.Topic[]) {
+    const name = command.id
+    const depth = name.split(':').length
+    topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+    let title = command.description && this.render(command.description).split('\n')[0]
+    if (title) console.log(title + '\n')
+    console.log(this.command(command))
+    console.log()
+    if (topics.length) {
+      console.log(this.topics(topics))
+      console.log()
     }
   }
 
