@@ -165,13 +165,13 @@ OPTIONS
   $ oclif apps:create [ARG1] [ARG2] [ARG3]
 
 ARGUMENTS
-  ARG1  [default: .]
-  ARG2  [default: .] arg2 desc
+  ARG1  [default: '.']
+  ARG2  [default: '.'] arg2 desc
   ARG3  arg3 desc
 
 OPTIONS
-  --flag1=flag1  [default: .]
-  --flag2=flag2  [default: .] flag2 desc
+  --flag1=flag1  [default: '.']
+  --flag2=flag2  [default: '.'] flag2 desc
   --flag3=flag3  flag3 desc`))
 
   test
