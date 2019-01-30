@@ -21,11 +21,12 @@ const wrap = require('wrap-ansi')
 
 export default class CommandHelp {
   render: (input: string) => string
-  constructor(public config: Config.IConfig, public opts: HelpOptions) {
+  constructor(public command: Config.Command, public config: Config.IConfig, public opts: HelpOptions) {
     this.render = template(this)
   }
 
-  command(cmd: Config.Command): string {
+  generate(): string {
+    const cmd = this.command
     const flags = sortBy(Object.entries(cmd.flags || {})
     .filter(([, v]) => !v.hidden)
     .map(([k, v]) => {
@@ -34,10 +35,10 @@ export default class CommandHelp {
     }), f => [!f.char, f.char, f.name])
     const args = (cmd.args || []).filter(a => !a.hidden)
     let output = compact([
-      this.usage(cmd, flags),
+      this.usage(flags),
       this.args(args),
       this.flags(flags),
-      this.description(cmd),
+      this.description(),
       this.aliases(cmd.aliases),
       this.examples(cmd.examples || (cmd as any).example),
     ]).join('\n\n')
@@ -45,25 +46,27 @@ export default class CommandHelp {
     return output
   }
 
-  protected usage(cmd: Config.Command, flags: Config.Command.Flag[]): string {
-    let body = (cmd.usage ? castArray(cmd.usage) : [this.defaultUsage(cmd, flags)])
+  protected usage(flags: Config.Command.Flag[]): string {
+    const usage = this.command.usage
+    let body = (usage ? castArray(usage) : [this.defaultUsage(flags)])
     .map(u => `$ ${this.config.bin} ${u}`.trim())
     .join('\n')
     return [
       bold('USAGE'),
-      indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+      indent(wrap(this.render(body), this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
     ].join('\n')
   }
 
-  protected defaultUsage(command: Config.Command, _: Config.Command.Flag[]): string {
+  protected defaultUsage(_: Config.Command.Flag[]): string {
     return compact([
-      command.id,
-      command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
+      this.command.id,
+      this.command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
       // flags.length && '[OPTIONS]',
     ]).join(' ')
   }
 
-  protected description(cmd: Config.Command): string | undefined {
+  protected description(): string | undefined {
+    const cmd = this.command
     let description = cmd.description && this.render(cmd.description).split('\n').slice(1).join('\n')
     if (!description) return
     return [

@@ -113,8 +113,8 @@ export default class Help {
   }
 
   command(command: Config.Command): string {
-    const help = new CommandHelp(this.config, this.opts)
-    return help.command(command)
+    const help = new CommandHelp(command, this.config, this.opts)
+    return help.generate()
   }
 
   topics(topics: Config.Topic[]): string | undefined {

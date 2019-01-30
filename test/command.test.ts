@@ -200,6 +200,23 @@ ARGUMENTS
 OPTIONS
   --[no-]opt`))
 
+  test
+    .commandHelp(class extends Command {
+      static id = 'apps:create'
+      static usage = '<%= config.bin %> <%= command.id %> usage'
+    })
+    .it('outputs usage with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif oclif apps:create usage`))
+
+  test
+    .commandHelp(class extends Command {
+      static id = 'apps:create'
+      static usage = ['<%= config.bin %>', '<%= command.id %> usage']
+    })
+    .it('outputs usage arrays with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif oclif
+  $ oclif apps:create usage`))
+
   // class AppsCreate3 extends Command {
   //   static id = 'apps:create'
   //   static flags = {
