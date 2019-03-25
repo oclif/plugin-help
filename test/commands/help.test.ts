@@ -63,6 +63,11 @@ COMMANDS
   help     display help for oclif
   plugins  list installed plugins
 
+TOPICS
+  Run help for each topic below to view its subcommands
+
+  plugins  list installed plugins
+
 `)
     })
 })

@@ -119,18 +119,56 @@ export default class Help {
 
   topics(topics: Config.Topic[]): string | undefined {
     if (!topics.length) return
-    let body = renderList(topics.map(c => [
-      c.name,
-      c.description && this.render(c.description.split('\n')[0])
-    ]), {
+
+    let Topics: Array<string | undefined>[] = []
+    let Commands: Array<string | undefined>[] = []
+
+    topics.map(t => {
+      let out = [
+        t.name,
+        t.description && this.render(t.description.split('\n')[0])
+      ]
+      if (this.config.commandIDs.includes(t.name)) {
+        Commands.push(out)
+      }
+      let tp = this.config.commandIDs.find(id => {
+        if (id.match(`${t.name}:`)) return true
+        return false
+      })
+      if (tp) {
+        Topics.push(out)
+      }
+    })
+
+    let commandsList = renderList(Commands, {
       spacer: '\n',
       stripAnsi: this.opts.stripAnsi,
       maxWidth: this.opts.maxWidth - 2,
     })
-    return [
-      bold('COMMANDS'),
-      indent(body, 2),
-    ].join('\n')
+
+    let output = [
+      [
+        bold('COMMANDS'),
+        indent(commandsList, 2),
+      ].join('\n')
+    ]
+
+    if (Topics.length) {
+      let topicsList = renderList(Topics, {
+        spacer: '\n',
+        stripAnsi: this.opts.stripAnsi,
+        maxWidth: this.opts.maxWidth - 2,
+      })
+      output.push(
+        [
+          bold('TOPICS'),
+          indent('Run help for each topic below to view its subcommands\n', 2),
+          indent(topicsList, 2),
+        ].join('\n')
+      )
+    }
+
+    return output.join('\n\n')
   }
 }
 
