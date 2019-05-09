@@ -116,16 +116,21 @@ export default class CommandHelp {
   protected flags(flags: Config.Command.Flag[]): string | undefined {
     if (!flags.length) return
     let body = renderList(flags.map(flag => {
-      const label = []
-      if (flag.char) label.push(`-${flag.char[0]}`)
-      if (flag.name) {
-        if (flag.type === 'boolean' && flag.allowNo) {
-          label.push(`--[no-]${flag.name.trim()}`)
-        } else {
-          label.push(`--${flag.name.trim()}`)
+      let left = flag.helpLabel
+
+      if (!left) {
+        const label = []
+        if (flag.char) label.push(`-${flag.char[0]}`)
+        if (flag.name) {
+          if (flag.type === 'boolean' && flag.allowNo) {
+            label.push(`--[no-]${flag.name.trim()}`)
+          } else {
+            label.push(`--${flag.name.trim()}`)
+          }
         }
+        left = label.join(', ')
       }
-      let left = label.join(', ')
+
       if (flag.type === 'option') {
         let value = flag.helpValue || flag.name
         if (!flag.helpValue && flag.options) {
