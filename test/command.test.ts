@@ -41,6 +41,7 @@ multiline help`
         force: flags.boolean({description: 'force  it '.repeat(15)}),
         ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
         remote: flags.string({char: 'r'}),
+        label: flags.string({char: 'l', helpLabel: '-l'}),
       }})
     .it('shows lots of output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
@@ -51,6 +52,8 @@ ARGUMENTS
 OPTIONS
   -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoo
                        barfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobar
+
+  -l=label
 
   -r, --remote=remote
 
