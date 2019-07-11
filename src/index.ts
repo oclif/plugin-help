@@ -2,7 +2,7 @@ import * as Config from '@oclif/config'
 import {error} from '@oclif/errors'
 import chalk from 'chalk'
 import indent = require('indent-string')
-import stripAnsi = require('strip-ansi')
+import stripAnsi from 'strip-ansi'
 
 import CommandHelp from './command'
 import {renderList} from './list'

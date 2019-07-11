@@ -1,5 +1,5 @@
 import indent = require('indent-string')
-import stripAnsi = require('strip-ansi')
+import stripAnsi from 'strip-ansi'
 
 const width = require('string-width')
 const wrap = require('wrap-ansi')

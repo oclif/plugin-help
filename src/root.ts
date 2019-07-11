@@ -1,7 +1,7 @@
 import * as Config from '@oclif/config'
 import chalk from 'chalk'
 import indent = require('indent-string')
-import stripAnsi = require('strip-ansi')
+import stripAnsi from 'strip-ansi'
 
 import {HelpOptions} from '.'
 import {compact, template} from './util'

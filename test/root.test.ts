@@ -1,5 +1,5 @@
 import {expect, test as base} from '@oclif/test'
-import stripAnsi = require('strip-ansi')
+import stripAnsi from 'strip-ansi'
 
 const g: any = global
 g.columns = 80
