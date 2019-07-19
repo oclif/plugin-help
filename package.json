@@ -8,7 +8,7 @@
     "@oclif/command": "^1.5.13",
     "chalk": "^2.4.1",
     "indent-string": "^3.2.0",
-    "lodash.template": "^4.4.0",
+    "lodash.template": "4.5.0",
     "string-width": "^3.0.0",
     "strip-ansi": "^5.0.0",
     "widest-line": "^2.0.1",
