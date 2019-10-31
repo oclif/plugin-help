@@ -52,12 +52,12 @@ export default class Help {
     let topic: Config.Topic | undefined
     if (!subject) {
       console.log(this.root())
-      console.log()
+      console.log('')
       if (!this.opts.all) {
         topics = topics.filter(t => !t.name.includes(':'))
       }
       console.log(this.topics(topics))
-      console.log()
+      console.log('')
     } else if (command = this.config.findCommand(subject)) {
       this.showCommandHelp(command, topics)
     } else if (topic = this.config.findTopic(subject)) {
@@ -67,7 +67,7 @@ export default class Help {
       console.log(this.topic(topic))
       if (topics.length) {
         console.log(this.topics(topics))
-        console.log()
+        console.log('')
       }
     } else {
       error(`command ${subject} not found`)
@@ -81,10 +81,10 @@ export default class Help {
     let title = command.description && this.render(command.description).split('\n')[0]
     if (title) console.log(title + '\n')
     console.log(this.command(command))
-    console.log()
+    console.log('')
     if (topics.length) {
       console.log(this.topics(topics))
-      console.log()
+      console.log('')
     }
   }
 
