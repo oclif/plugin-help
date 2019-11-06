@@ -56,5 +56,4 @@ export default class RootHelp {
       indent(wrap(this.config.userAgent, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
     ].join('\n')
   }
-
 }

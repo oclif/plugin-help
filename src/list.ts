@@ -6,12 +6,12 @@ const wrap = require('wrap-ansi')
 
 const widestLine = require('widest-line')
 
-export function renderList(input: (string | undefined)[][], opts: {maxWidth: number, multiline?: boolean, stripAnsi?: boolean, spacer?: string}): string {
+export function renderList(input: (string | undefined)[][], opts: {maxWidth: number; multiline?: boolean; stripAnsi?: boolean; spacer?: string}): string {
   if (input.length === 0) {
     return ''
   }
   const renderMultiline = () => {
-    output = ''
+    let output = ''
     for (let [left, right] of input) {
       if (!left && !right) continue
       if (left) {
@@ -32,7 +32,8 @@ export function renderList(input: (string | undefined)[][], opts: {maxWidth: num
   let output = ''
   let spacer = opts.spacer || '\n'
   let cur = ''
-  for (let [left, right] of input) {
+  for (const [left, r] of input) {
+    let right = r
     if (cur) {
       output += spacer
       output += cur

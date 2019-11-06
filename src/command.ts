@@ -7,10 +7,12 @@ import {HelpOptions} from '.'
 import {renderList} from './list'
 import {castArray, compact, sortBy, template} from './util'
 
-let {
+const {
   underline,
-  dim,
   bold,
+} = chalk
+let {
+  dim,
 } = chalk
 
 if (process.env.ConEmuANSI === 'ON') {
@@ -21,6 +23,7 @@ const wrap = require('wrap-ansi')
 
 export default class CommandHelp {
   render: (input: string) => string
+
   constructor(public command: Config.Command, public config: Config.IConfig, public opts: HelpOptions) {
     this.render = template(this)
   }
@@ -48,7 +51,7 @@ export default class CommandHelp {
 
   protected usage(flags: Config.Command.Flag[]): string {
     const usage = this.command.usage
-    let body = (usage ? castArray(usage) : [this.defaultUsage(flags)])
+    const body = (usage ? castArray(usage) : [this.defaultUsage(flags)])
     .map(u => `$ ${this.config.bin} ${u}`.trim())
     .join('\n')
     return [
@@ -67,7 +70,7 @@ export default class CommandHelp {
 
   protected description(): string | undefined {
     const cmd = this.command
-    let description = cmd.description && this.render(cmd.description).split('\n').slice(1).join('\n')
+    const description = cmd.description && this.render(cmd.description).split('\n').slice(1).join('\n')
     if (!description) return
     return [
       bold('DESCRIPTION'),
@@ -76,8 +79,8 @@ export default class CommandHelp {
   }
 
   protected aliases(aliases: string[] | undefined): string | undefined {
-    if (!aliases || !aliases.length) return
-    let body = aliases.map(a => ['$', this.config.bin, a].join(' ')).join('\n')
+    if (!aliases || aliases.length === 0) return
+    const body = aliases.map(a => ['$', this.config.bin, a].join(' ')).join('\n')
     return [
       bold('ALIASES'),
       indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
@@ -85,8 +88,8 @@ export default class CommandHelp {
   }
 
   protected examples(examples: string[] | undefined | string): string | undefined {
-    if (!examples || !examples.length) return
-    let body = castArray(examples).map(a => this.render(a)).join('\n')
+    if (!examples || examples.length === 0) return
+    const body = castArray(examples).map(a => this.render(a)).join('\n')
     return [
       bold('EXAMPLE' + (examples.length > 1 ? 'S' : '')),
       indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
@@ -94,8 +97,8 @@ export default class CommandHelp {
   }
 
   protected args(args: Config.Command['args']): string | undefined {
-    if (!args.filter(a => a.description).length) return
-    let body = renderList(args.map(a => {
+    if (args.filter(a => a.description).length === 0) return
+    const body = renderList(args.map(a => {
       const name = a.name.toUpperCase()
       let description = a.description || ''
       if (a.default) description = `[default: ${a.default}] ${description}`
@@ -107,15 +110,16 @@ export default class CommandHelp {
       indent(body, 2),
     ].join('\n')
   }
+
   protected arg(arg: Config.Command['args'][0]): string {
-    let name = arg.name.toUpperCase()
+    const name = arg.name.toUpperCase()
     if (arg.required) return `${name}`
     return `[${name}]`
   }
 
   protected flags(flags: Config.Command.Flag[]): string | undefined {
-    if (!flags.length) return
-    let body = renderList(flags.map(flag => {
+    if (flags.length === 0) return
+    const body = renderList(flags.map(flag => {
       let left = flag.helpLabel
 
       if (!left) {

@@ -1,14 +1,14 @@
-import Template = require('lodash.template')
+import lodashTemplate = require('lodash.template')
 
 export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   return arr.filter((a, i) => {
-    let aVal = fn(a)
+    const aVal = fn(a)
     return !arr.find((b, j) => j > i && fn(b) === aVal)
   })
 }
 
 export function compact<T>(a: (T | undefined)[]): T[] {
-  return a.filter((a): a is T => !!a)
+  return a.filter((a): a is T => Boolean(a))
 }
 
 export function castArray<T>(input?: T | T[]): T[] {
@@ -23,7 +23,7 @@ export function sortBy<T>(arr: T[], fn: (i: T) => sort.Types | sort.Types[]): T[
 
     if (Array.isArray(a) && Array.isArray(b)) {
       if (a.length === 0 && b.length === 0) return 0
-      let diff = compare(a[0], b[0])
+      const diff = compare(a[0], b[0])
       if (diff !== 0) return diff
       return compare(a.slice(1), b.slice(1))
     }
@@ -40,4 +40,9 @@ export namespace sort {
   export type Types = string | number | undefined | boolean
 }
 
-export const template = (context: any) => (t: string): string => Template(t)(context)
+export function template(context: any): (t: string) => string {
+  function render(t: string): string {
+    return lodashTemplate(t)(context)
+  }
+  return render
+}
