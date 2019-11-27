@@ -1,7 +1,5 @@
-// tslint:disable
-
 declare namespace NodeJS {
   interface Global {
-    'columns': number
+    'columns': number;
   }
 }

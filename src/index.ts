@@ -16,13 +16,27 @@ const {
 } = chalk
 
 export interface HelpOptions {
-  all?: boolean
-  maxWidth: number
-  stripAnsi?: boolean
+  all?: boolean;
+  maxWidth: number;
+  stripAnsi?: boolean;
+}
+
+function getHelpSubject(args: string[]): string | undefined {
+  // special case
+  // if (['help:help', 'help:--help', '--help:help'].includes(argv.slice(0, 2).join(':'))) {
+  // if (argv[0] === 'help') return 'help'
+
+  for (const arg of args) {
+    if (arg === '--') return
+    if (arg.startsWith('-')) continue
+    if (arg === 'help') continue
+    return arg
+  }
 }
 
 export default class Help {
   opts: HelpOptions
+
   render: (input: string) => string
 
   constructor(public config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
@@ -31,25 +45,22 @@ export default class Help {
   }
 
   showHelp(argv: string[]) {
-    const getHelpSubject = () => {
-      // special case
-      // if (['help:help', 'help:--help', '--help:help'].includes(argv.slice(0, 2).join(':'))) {
-      // if (argv[0] === 'help') return 'help'
-
-      for (let arg of argv) {
-        if (arg === '--') return
-        if (arg.startsWith('-')) continue
-        if (arg === 'help') continue
-        return arg
-      }
-    }
     let topics = this.config.topics
     topics = topics.filter(t => this.opts.all || !t.hidden)
     topics = sortBy(topics, t => t.name)
     topics = uniqBy(topics, t => t.name)
-    let subject = getHelpSubject()
+    const subject = getHelpSubject(argv)
+
     let command: Config.Command | undefined
+    if (subject) {
+      command = this.config.findCommand(subject)
+    }
+
     let topic: Config.Topic | undefined
+    if (subject && !command) {
+      topic = this.config.findTopic(subject)
+    }
+
     if (!subject) {
       console.log(this.root())
       console.log('')
@@ -58,14 +69,14 @@ export default class Help {
       }
       console.log(this.topics(topics))
       console.log('')
-    } else if (command = this.config.findCommand(subject)) {
+    } else if (command) {
       this.showCommandHelp(command, topics)
-    } else if (topic = this.config.findTopic(subject)) {
+    } else if (topic) {
       const name = topic.name
       const depth = name.split(':').length
       topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
       console.log(this.topic(topic))
-      if (topics.length) {
+      if (topics.length > 0) {
         console.log(this.topics(topics))
         console.log('')
       }
@@ -78,11 +89,11 @@ export default class Help {
     const name = command.id
     const depth = name.split(':').length
     topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-    let title = command.description && this.render(command.description).split('\n')[0]
+    const title = command.description && this.render(command.description).split('\n')[0]
     if (title) console.log(title + '\n')
     console.log(this.command(command))
     console.log('')
-    if (topics.length) {
+    if (topics.length > 0) {
       console.log(this.topics(topics))
       console.log('')
     }
@@ -95,7 +106,7 @@ export default class Help {
 
   topic(topic: Config.Topic): string {
     let description = this.render(topic.description || '')
-    let title = description.split('\n')[0]
+    const title = description.split('\n')[0]
     description = description.split('\n').slice(1).join('\n')
     let output = compact([
       title,
@@ -105,8 +116,8 @@ export default class Help {
       ].join('\n'),
       description && ([
         bold('DESCRIPTION'),
-        indent(wrap(description, this.opts.maxWidth - 2, {trim: false, hard: true}), 2)
-      ].join('\n'))
+        indent(wrap(description, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+      ].join('\n')),
     ]).join('\n\n')
     if (this.opts.stripAnsi) output = stripAnsi(output)
     return output + '\n'
@@ -118,10 +129,10 @@ export default class Help {
   }
 
   topics(topics: Config.Topic[]): string | undefined {
-    if (!topics.length) return
-    let body = renderList(topics.map(c => [
+    if (topics.length === 0) return
+    const body = renderList(topics.map(c => [
       c.name,
-      c.description && this.render(c.description.split('\n')[0])
+      c.description && this.render(c.description.split('\n')[0]),
     ]), {
       spacer: '\n',
       stripAnsi: this.opts.stripAnsi,
