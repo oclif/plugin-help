@@ -69,7 +69,6 @@ export default class CommandHelp {
       const commandRegex = new RegExp(`^(.*(?:\\b${
         binEscaped
       }|<%=\\s*config\\.bin\\s*%>)\\s*.*\\s)(<%=\\s*command\\.id\\s*%>|${commandEscaped})(\\s+|$)`)
-      console.log(commandRegex)
       const transformedCommandName = this.transformCommandName(defaultCommandId, usageOptions)
       result = usages.map(usage => {
         const groups = commandRegex.exec(usage)
