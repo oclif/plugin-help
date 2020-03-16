@@ -4,7 +4,8 @@ import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
 
 import {HelpOptions} from '.'
-import {compact, template} from './util'
+import {compact, template, getUsagePrefix} from './util'
+import CommandHelp from './command'
 
 const wrap = require('wrap-ansi')
 const {
@@ -32,10 +33,32 @@ export default class RootHelp {
     return output
   }
 
+  usageBase() {
+    const usagePrefix = getUsagePrefix(this.config, this.opts)
+    const generalUsage = `${usagePrefix}[COMMAND]`
+    let usages: string[] = [
+      generalUsage,
+    ]
+    const defaultCommandId = (this.config.pjson.oclif as {defaultCommand?: string}).defaultCommand
+    if (defaultCommandId) {
+      const command = this.config.findCommand(defaultCommandId)
+      if (command) {
+        const commandHelp = new CommandHelp(command, this.config, this.opts)
+        const defaultCommandUsages = commandHelp.usageBase(CommandHelp.getCommandFlags(command),
+            {omitCommandNameIfDefault: true})
+        usages = [
+          ...usages,
+          ...defaultCommandUsages,
+        ]
+      }
+    }
+    return usages
+  }
+
   protected usage(): string {
     return [
       bold('USAGE'),
-      indent(wrap(`$ ${this.config.bin} [COMMAND]`, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+      ...this.usageBase().map(u => indent(wrap(u, this.opts.maxWidth - 2, {trim: false, hard: true}), 2))
     ].join('\n')
   }
 

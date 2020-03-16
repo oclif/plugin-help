@@ -1,11 +1,12 @@
 import * as Config from '@oclif/config'
 import chalk from 'chalk'
+import escapeStringRegexp = require('escape-string-regexp')
 import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
 
 import {HelpOptions} from '.'
 import {renderList} from './list'
-import {castArray, compact, sortBy, template} from './util'
+import {castArray, compact, sortBy, template, getDefaultCommandId, getUsagePrefix} from './util'
 
 const {
   underline,
@@ -21,6 +22,10 @@ if (process.env.ConEmuANSI === 'ON') {
 
 const wrap = require('wrap-ansi')
 
+export type UsageOptions = {
+  omitCommandNameIfDefault?: boolean
+}
+
 export default class CommandHelp {
   render: (input: string) => string
 
@@ -28,14 +33,19 @@ export default class CommandHelp {
     this.render = template(this)
   }
 
-  generate(): string {
-    const cmd = this.command
+  static getCommandFlags(cmd: Config.Command) {
     const flags = sortBy(Object.entries(cmd.flags || {})
     .filter(([, v]) => !v.hidden)
     .map(([k, v]) => {
       v.name = k
       return v
     }), f => [!f.char, f.char, f.name])
+    return flags
+  }
+
+  generate(): string {
+    const cmd = this.command
+    const flags = CommandHelp.getCommandFlags(cmd)
     const args = (cmd.args || []).filter(a => !a.hidden)
     let output = compact([
       this.usage(flags),
@@ -49,20 +59,70 @@ export default class CommandHelp {
     return output
   }
 
-  protected usage(flags: Config.Command.Flag[]): string {
-    const usage = this.command.usage
-    const body = (usage ? castArray(usage) : [this.defaultUsage(flags)])
-    .map(u => `$ ${this.config.bin} ${u}`.trim())
-    .join('\n')
+  transformUsages(usages: string[], usageOptions?: UsageOptions) {
+    usageOptions = usageOptions || {}
+    let result = usages
+    const defaultCommandId = getDefaultCommandId(this.config)
+    if (defaultCommandId === this.command.id) {
+      const binEscaped = escapeStringRegexp(this.config.bin)
+      const commandEscaped = escapeStringRegexp(defaultCommandId)
+      const commandRegex = new RegExp(`^(.*(?:\\b${
+        binEscaped
+      }|<%=\\s*config\\.bin\\s*%>)\\s*.*\\s)(<%=\\s*command\\.id\\s*%>|${commandEscaped})(\\s+|$)`)
+      console.log(commandRegex)
+      const transformedCommandName = this.transformCommandName(defaultCommandId, usageOptions)
+      result = usages.map(usage => {
+        const groups = commandRegex.exec(usage)
+        if (groups) {
+          const prefix = groups[1]
+          const commandRef = groups[2]
+          const prefixCommandRef = `${prefix}${commandRef}`
+          const partAfterCommandRef = usage.substr(prefixCommandRef.length).trimLeft()
+
+          const transformedPrefixCommand = `${prefix}${transformedCommandName}`
+          usage = `${transformedPrefixCommand}${partAfterCommandRef}`
+        }
+        return usage
+      })
+    }
+    return result.map(u => u.trim())
+  }
+
+  usageBase(flags: Config.Command.Flag[], options?: UsageOptions) {
+    let usages = this.command.usage ? castArray(this.command.usage) : undefined
+    if (usages) {
+      usages = this.transformUsages(usages, options)
+    } else {
+      usages = [this.defaultUsage(flags, options)]
+    }
+    const prefix = getUsagePrefix(this.config, this.opts)
+    return usages.map(u => {
+      let line = prefix + this.render(u).trimRight()
+      if (this.opts.stripAnsi) {
+        line = stripAnsi(line)
+      }
+      return line
+    })
+  }
+
+  protected usage(flags: Config.Command.Flag[], options?: UsageOptions): string {
     return [
       bold('USAGE'),
-      indent(wrap(this.render(body), this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+      ...this.usageBase(flags, options).map(u => indent(wrap(u, this.opts.maxWidth - 2, {trim: false, hard: true}), 2))
     ].join('\n')
   }
 
-  protected defaultUsage(_: Config.Command.Flag[]): string {
+  protected transformCommandName(name: string, options?: UsageOptions) {
+    options = options || {}
+    if (name === getDefaultCommandId(this.config)) {
+      name = options.omitCommandNameIfDefault ? '' : this.optionalize(name)
+    }
+    return name
+  }
+
+  protected defaultUsage(_flags: Config.Command.Flag[], options?: UsageOptions): string {
     return compact([
-      this.command.id,
+      this.transformCommandName(this.command.id, options),
       this.command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
       // flags.length && '[OPTIONS]',
     ]).join(' ')
@@ -89,7 +149,8 @@ export default class CommandHelp {
 
   protected examples(examples: string[] | undefined | string): string | undefined {
     if (!examples || examples.length === 0) return
-    const body = castArray(examples).map(a => this.render(a)).join('\n')
+    examples = this.transformUsages(castArray(examples), {omitCommandNameIfDefault: true})
+    const body = examples.map(a => this.render(a)).join('\n')
     return [
       bold('EXAMPLE' + (examples.length > 1 ? 'S' : '')),
       indent(wrap(body, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
@@ -111,10 +172,14 @@ export default class CommandHelp {
     ].join('\n')
   }
 
+  protected optionalize(text: string) {
+    return `[${text}]`
+  }
+
   protected arg(arg: Config.Command['args'][0]): string {
     const name = arg.name.toUpperCase()
     if (arg.required) return `${name}`
-    return `[${name}]`
+    return this.optionalize(name)
   }
 
   protected flags(flags: Config.Command.Flag[]): string | undefined {

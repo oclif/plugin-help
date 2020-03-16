@@ -8,7 +8,7 @@ import CommandHelp from './command'
 import {renderList} from './list'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
-import {compact, sortBy, template, uniqBy} from './util'
+import {compact, sortBy, template, uniqBy, getDefaultCommandId, getUsagePrefix} from './util'
 
 const wrap = require('wrap-ansi')
 const {
@@ -19,6 +19,7 @@ export interface HelpOptions {
   all?: boolean;
   maxWidth: number;
   stripAnsi?: boolean;
+  usagePrefix?: string; // default: '$ <config.bin> '
 }
 
 function getHelpSubject(args: string[]): string | undefined {
@@ -108,11 +109,12 @@ export default class Help {
     let description = this.render(topic.description || '')
     const title = description.split('\n')[0]
     description = description.split('\n').slice(1).join('\n')
+    const usagePrefix = getUsagePrefix(this.config, this.opts)
     let output = compact([
       title,
       [
         bold('USAGE'),
-        indent(wrap(`$ ${this.config.bin} ${topic.name}:COMMAND`, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
+        indent(wrap(`${usagePrefix}${topic.name}:COMMAND`, this.opts.maxWidth - 2, {trim: false, hard: true}), 2),
       ].join('\n'),
       description && ([
         bold('DESCRIPTION'),
@@ -130,8 +132,9 @@ export default class Help {
 
   topics(topics: Config.Topic[]): string | undefined {
     if (topics.length === 0) return
+    const defaultCommandId = getDefaultCommandId(this.config)
     const body = renderList(topics.map(c => [
-      c.name,
+      defaultCommandId === c.name ? `${c.name} (default)` : c.name,
       c.description && this.render(c.description.split('\n')[0]),
     ]), {
       spacer: '\n',

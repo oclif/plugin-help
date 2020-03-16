@@ -1,4 +1,6 @@
 import lodashTemplate = require('lodash.template')
+import * as Config from '@oclif/config'
+import Help from '.'
 
 export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   return arr.filter((a, i) => {
@@ -45,4 +47,12 @@ export function template(context: any): (t: string) => string {
     return lodashTemplate(t)(context)
   }
   return render
+}
+
+export function getDefaultCommandId(config: Config.IConfig) {
+  return (config.pjson.oclif as {defaultCommand?: string}).defaultCommand
+}
+
+export function getUsagePrefix(config: Config.IConfig, opts: Help['opts']) {
+  return opts.usagePrefix === undefined ? `$ ${config.bin} ` : opts.usagePrefix
 }
