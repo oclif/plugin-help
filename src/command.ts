@@ -59,7 +59,7 @@ export default class CommandHelp {
     return output
   }
 
-  transformUsages(usages: string[], usageOptions?: UsageOptions) {
+  protected transformUsages(usages: string[], usageOptions?: UsageOptions) {
     usageOptions = usageOptions || {}
     let result = usages
     const defaultCommandId = getDefaultCommandId(this.config)
