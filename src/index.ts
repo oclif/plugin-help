@@ -34,7 +34,21 @@ function getHelpSubject(args: string[]): string | undefined {
   }
 }
 
-export default class Help {
+abstract class HelpBase {
+  constructor(public config: Config.IConfig) {}
+
+  abstract showHelp(argv: string[]): void;
+
+  abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
+
+  abstract root(): string;
+
+  abstract topic(topic: Config.Topic): string;
+
+  abstract topics(topics: Config.Topic[]): string | undefined;
+}
+
+export default class Help implements HelpBase {
   opts: HelpOptions
 
   render: (input: string) => string
@@ -52,12 +66,9 @@ export default class Help {
     const subject = getHelpSubject(argv)
 
     let command: Config.Command | undefined
+    let topic: Config.Topic | undefined
     if (subject) {
       command = this.config.findCommand(subject)
-    }
-
-    let topic: Config.Topic | undefined
-    if (subject && !command) {
       topic = this.config.findTopic(subject)
     }
 
