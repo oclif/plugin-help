@@ -35,6 +35,7 @@ function getHelpSubject(args: string[]): string | undefined {
 }
 
 abstract class HelpBase {
+  // eslint-disable-next-line no-useless-constructor
   constructor(public config: Config.IConfig) {}
 
   abstract showHelp(argv: string[]): void;
@@ -155,7 +156,3 @@ export default class Help implements HelpBase {
     ].join('\n')
   }
 }
-
-// function id(c: Config.Command | Config.Topic): string {
-//   return (c as any).id || (c as any).name
-// }
