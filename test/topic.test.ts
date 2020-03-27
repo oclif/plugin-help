@@ -38,7 +38,22 @@ USAGE
     name: 'topic',
     hidden: false,
   })
-  .it('shows topic usage without a description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('shows topic without a description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif topic:COMMAND
+`))
+
+  test
+  .topicHelp({
+    name: 'topic',
+    hidden: false,
+    description: 'This is the top level description\nDescription that shows up in the DESCRIPTION section',
+  })
+  .it('shows topic descriptions split from \\n for top-level and description section descriptions', ctx => expect(ctx.commandHelp).to.equal(`This is the top level description
+
+USAGE
+  $ oclif topic:COMMAND
+
+DESCRIPTION
+  Description that shows up in the DESCRIPTION section
 `))
 })
