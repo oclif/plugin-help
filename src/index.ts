@@ -35,14 +35,17 @@ function getHelpSubject(args: string[]): string | undefined {
 }
 
 abstract class HelpBase {
-  constructor(config: Config.IConfig) {
+  constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
     this.render = template(this)
     this.config = config
+    this.opts = {maxWidth: stdtermwidth, ...opts}
   }
 
   render: (input: string) => string
 
   config: Config.IConfig
+
+  opts: HelpOptions
 
   abstract showHelp(argv: string[]): void;
 
@@ -56,11 +59,8 @@ abstract class HelpBase {
 }
 
 export default class Help extends HelpBase {
-  opts: HelpOptions
-
   constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
-    super(config)
-    this.opts = {maxWidth: stdtermwidth, ...opts}
+    super(config, opts)
   }
 
   showHelp(argv: string[]) {
