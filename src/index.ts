@@ -35,8 +35,14 @@ function getHelpSubject(args: string[]): string | undefined {
 }
 
 abstract class HelpBase {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(public config: Config.IConfig) {}
+  constructor(config: Config.IConfig) {
+    this.render = template(this)
+    this.config = config
+  }
+
+  render: (input: string) => string
+
+  config: Config.IConfig
 
   abstract showHelp(argv: string[]): void;
 
@@ -46,17 +52,15 @@ abstract class HelpBase {
 
   abstract topic(topic: Config.Topic): string;
 
-  abstract topics(topics: Config.Topic[]): string | undefined;
+  abstract topics(topics: Config.Topic[]): string | undefined
 }
 
-export default class Help implements HelpBase {
+export default class Help extends HelpBase {
   opts: HelpOptions
 
-  render: (input: string) => string
-
-  constructor(public config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
+  constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
+    super(config)
     this.opts = {maxWidth: stdtermwidth, ...opts}
-    this.render = template(this)
   }
 
   showHelp(argv: string[]) {
