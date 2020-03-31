@@ -16,16 +16,12 @@ const {
 } = chalk
 
 export interface HelpOptions {
-  all?: boolean;
   maxWidth: number;
   stripAnsi?: boolean;
+  all?: boolean;
 }
 
 function getHelpSubject(args: string[]): string | undefined {
-  // special case
-  // if (['help:help', 'help:--help', '--help:help'].includes(argv.slice(0, 2).join(':'))) {
-  // if (argv[0] === 'help') return 'help'
-
   for (const arg of args) {
     if (arg === '--') return
     if (arg.startsWith('-')) continue
@@ -36,12 +32,9 @@ function getHelpSubject(args: string[]): string | undefined {
 
 abstract class HelpBase {
   constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
-    this.render = template(this)
     this.config = config
     this.opts = {maxWidth: stdtermwidth, ...opts}
   }
-
-  render: (input: string) => string
 
   config: Config.IConfig
 
@@ -51,16 +44,21 @@ abstract class HelpBase {
 
   abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
 
-  abstract root(): string;
+  abstract root(): string |  undefined;
 
-  abstract topic(topic: Config.Topic): string;
+  abstract topic(topic: Config.Topic): string | undefined;
 
-  abstract topics(topics: Config.Topic[]): string | undefined
+  abstract topics(topics: Config.Topic[]): string | undefined;
+
+  abstract command(command: Config.Command): string | undefined;
 }
 
 export default class Help extends HelpBase {
+  render: (input: string) => string
+
   constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
     super(config, opts)
+    this.render = template(this)
   }
 
   showHelp(argv: string[]) {

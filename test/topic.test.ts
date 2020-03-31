@@ -56,4 +56,18 @@ USAGE
 DESCRIPTION
   Description that shows up in the DESCRIPTION section
 `))
+  test
+  .topicHelp({
+    name: 'topic',
+    hidden: false,
+    description: '<%= config.bin %>: This is the top level description\n<%= config.bin %>: Description that shows up in the DESCRIPTION section',
+  })
+  .it('shows topic descriptions split from \\n for top-level and description section descriptions', ctx => expect(ctx.commandHelp).to.equal(`oclif: This is the top level description
+
+USAGE
+  $ oclif topic:COMMAND
+
+DESCRIPTION
+  oclif: Description that shows up in the DESCRIPTION section
+`))
 })
