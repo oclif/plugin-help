@@ -49,7 +49,7 @@ multiline help`
         label: flags.string({char: 'l', helpLabel: '-l'}),
       }
   })
-  .it('handles multi-line outputs', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('handles multi-line help output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -79,29 +79,83 @@ ALIASES
   $ oclif app:init
   $ oclif create`))
 
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
+  describe('arg and flag multiline handling', () => {
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
 
-      static description = 'description of apps:create'
+        static description = 'description of apps:create'
 
-      static aliases = ['app:init', 'create']
+        static aliases = ['app:init', 'create']
 
-      static args = [{name: 'app_name', description: 'app to use'}]
+        static args = [{name: 'app_name', description: 'app to use'.repeat(35)}]
 
-      static flags = {
-        app: flags.string({char: 'a', hidden: true}),
-        foo: flags.string({char: 'f', description: 'foobar'.repeat(20)}),
-        force: flags.boolean({description: 'force  it '.repeat(29)}),
-        ss: flags.boolean({description: 'newliney\n'.repeat(5)}),
-        remote: flags.string({char: 'r'}),
-      }
-  })
-  .it('shows alternate output when many lines', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+        static flags = {
+          app: flags.string({char: 'a', hidden: true}),
+          foo: flags.string({char: 'f', description: 'foobar'.repeat(15)}),
+          force: flags.boolean({description: 'force  it '.repeat(15)}),
+          ss: flags.boolean({description: 'newliney\n'.repeat(4)}),
+          remote: flags.string({char: 'r'}),
+        }
+    })
+    .it('show args and flags side by side when their output do not exceed 4 lines ', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
-  APP_NAME  app to use
+  APP_NAME
+      app to useapp to useapp to useapp to useapp to useapp to useapp to useapp to
+      useapp to useapp to useapp to useapp to useapp to useapp to useapp to useapp
+      to useapp to useapp to useapp to useapp to useapp to useapp to useapp to
+      useapp to useapp to useapp to useapp to useapp to useapp to useapp to useapp
+      to useapp to useapp to useapp to useapp to use
+
+OPTIONS
+  -f, --foo=foo        foobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoobarfoo
+                       barfoobarfoobarfoobarfoobarfoobar
+
+  -r, --remote=remote
+
+  --force              force  it force  it force  it force  it force  it force
+                       it force  it force  it force  it force  it force  it
+                       force  it force  it force  it force  it
+
+  --ss                 newliney
+                       newliney
+                       newliney
+                       newliney
+
+ALIASES
+  $ oclif app:init
+  $ oclif create`))
+
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
+
+        static description = 'description of apps:create'
+
+        static aliases = ['app:init', 'create']
+
+        static args = [{name: 'app_name', description: 'app to use'.repeat(35)}]
+
+        static flags = {
+          app: flags.string({char: 'a', hidden: true}),
+          foo: flags.string({char: 'f', description: 'foobar'.repeat(20)}),
+          force: flags.boolean({description: 'force  it '.repeat(29)}),
+          ss: flags.boolean({description: 'newliney\n'.repeat(5)}),
+          remote: flags.string({char: 'r'}),
+        }
+    })
+    .it('shows stacked args and flags when the lines exceed 4', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif apps:create [APP_NAME]
+
+ARGUMENTS
+  APP_NAME
+      app to useapp to useapp to useapp to useapp to useapp to useapp to useapp to
+      useapp to useapp to useapp to useapp to useapp to useapp to useapp to useapp
+      to useapp to useapp to useapp to useapp to useapp to useapp to useapp to
+      useapp to useapp to useapp to useapp to useapp to useapp to useapp to useapp
+      to useapp to useapp to useapp to useapp to use
 
 OPTIONS
   -f, --foo=foo
@@ -126,12 +180,13 @@ OPTIONS
 ALIASES
   $ oclif app:init
   $ oclif create`))
+  })
 
   test
   .commandHelp(class extends Command {
       static id = 'apps:create'
 
-      static description = 'description of apps:create'
+      static description = 'description of apps:create\nthese values are after and will show up in the command description'
 
       static aliases = ['app:init', 'create']
 
@@ -141,7 +196,7 @@ ALIASES
         force: flags.boolean({description: 'forces'}),
       }
   })
-  .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('outputs command description with values after a \\n newline character', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -150,26 +205,30 @@ ARGUMENTS
 OPTIONS
   --force  forces
 
+DESCRIPTION
+  these values are after and will show up in the command description
+
 ALIASES
   $ oclif app:init
   $ oclif create`))
 
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
+  describe(('flags'), () => {
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
 
-      static flags = {
-        myenum: flags.string({options: ['a', 'b', 'c']}),
-      }
-  })
-  .it('outputs with description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+        static flags = {
+          myenum: flags.string({options: ['a', 'b', 'c']}),
+        }
+    })
+    .it('outputs flag enum', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create
 
 OPTIONS
   --myenum=a|b|c`))
 
-  test
-  .commandHelp(class extends Command {
+    test
+    .commandHelp(class extends Command {
       static id = 'apps:create'
 
       static args = [
@@ -183,8 +242,7 @@ OPTIONS
         flag2: flags.string({default: '.', description: 'flag2 desc'}),
         flag3: flags.string({description: 'flag3 desc'}),
       }
-  })
-  .it('outputs with default options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    }).it('outputs with default flag options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [ARG1] [ARG2] [ARG3]
 
 ARGUMENTS
@@ -197,50 +255,64 @@ OPTIONS
   --flag2=flag2  [default: .] flag2 desc
   --flag3=flag3  flag3 desc`))
 
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
 
-      static args = [
-        {name: 'arg1', description: 'Show the options', options: ['option1', 'option2']},
-      ]
-  })
-  .it('outputs with possible options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
-  $ oclif apps:create [ARG1]
-
-ARGUMENTS
-  ARG1  (option1|option2) Show the options`))
-
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
-
-      static flags = {
-        opt: flags.boolean({allowNo: true}),
-      }
-  })
-  .it('outputs with possible options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+        static flags = {
+          opt: flags.boolean({allowNo: true}),
+        }
+    })
+    .it('outputs with with no options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create
 
 OPTIONS
   --[no-]opt`))
-
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
-
-      static usage = '<%= config.bin %> <%= command.id %> usage'
   })
-  .it('outputs usage with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+
+  describe('args', () =>  {
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
+
+        static args = [
+          {name: 'arg1', description: 'Show the options', options: ['option1', 'option2']},
+        ]
+    })
+    .it('outputs with arg options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif apps:create [ARG1]
+
+ARGUMENTS
+  ARG1  (option1|option2) Show the options`))
+  })
+
+  describe('usage', () => {
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
+
+        static usage = '<%= config.bin %> <%= command.id %> usage'
+    })
+    .it('outputs usage with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif oclif apps:create usage`))
 
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
 
-      static usage = ['<%= config.bin %>', '<%= command.id %> usage']
-  })
-  .it('outputs usage arrays with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+        static usage = ['<%= config.bin %>', '<%= command.id %> usage']
+    })
+    .it('outputs usage arrays with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif oclif
   $ oclif apps:create usage`))
+
+    test
+    .commandHelp(class extends Command {
+      static id = 'apps:create'
+
+      static usage = undefined
+    })
+    .it('defaults usage when not specified', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif apps:create`))
+  })
 })
