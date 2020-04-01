@@ -63,6 +63,29 @@ DESCRIPTION
         ...config,
         pjson: {
           ...config.pjson,
+          description: 'This is the top-level description for <%= config.bin %>\nThis <%= config.bin %> appears in the description section after usage',
+        },
+      }
+    })
+    .it('shows description from a template', ctx => {
+      expect(ctx.commandHelp).to.equal(`This is the top-level description for oclif
+
+VERSION
+  ${UA}
+
+USAGE
+  $ oclif [COMMAND]
+
+DESCRIPTION
+  This oclif appears in the description section after usage`)
+    })
+
+    test
+    .rootHelp(config => {
+      return {
+        ...config,
+        pjson: {
+          ...config.pjson,
           description: 'THIS IS THE PJSON DESCRIPTION',
           oclif: {
             ...config.pjson?.oclif,
