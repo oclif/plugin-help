@@ -329,4 +329,40 @@ ARGUMENTS
     .it('defaults usage when not specified', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create`))
   })
+
+  describe('examples', () => {
+    test
+    .commandHelp(class extends Command {
+        static examples = ['it handles a list of examples', 'more example text']
+    })
+    .it('outputs multiple examples', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif
+
+EXAMPLES
+  it handles a list of examples
+  more example text`))
+
+    test
+    .commandHelp(class extends Command {
+        static examples = ['it handles a single example']
+    })
+    .it('outputs a single example', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif
+
+EXAMPLE
+  it handles a single example`))
+
+    test
+    .commandHelp(class extends Command {
+        static id = 'oclif:command'
+
+        static examples = ['the bin is <%= config.bin %>', 'the command id is <%= command.id %>']
+    })
+    .it('outputs examples using templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif oclif:command
+
+EXAMPLES
+  the bin is oclif
+  the command id is oclif:command`))
+  })
 })
