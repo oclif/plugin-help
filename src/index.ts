@@ -30,7 +30,7 @@ function getHelpSubject(args: string[]): string | undefined {
   }
 }
 
-abstract class HelpBase {
+export abstract class HelpBase {
   constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
     this.config = config
     this.opts = {maxWidth: stdtermwidth, ...opts}
