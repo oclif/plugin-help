@@ -182,21 +182,22 @@ ALIASES
   $ oclif create`))
   })
 
-  test
-  .commandHelp(class extends Command {
-      static id = 'apps:create'
+  describe('description', () => {
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
 
-      static description = 'description of apps:create\nthese values are after and will show up in the command description'
+        static description = 'description of apps:create\nthese values are after and will show up in the command description'
 
-      static aliases = ['app:init', 'create']
+        static aliases = ['app:init', 'create']
 
-      static args = [{name: 'app_name', description: 'app to use'}]
+        static args = [{name: 'app_name', description: 'app to use'}]
 
-      static flags = {
-        force: flags.boolean({description: 'forces'}),
-      }
-  })
-  .it('outputs command description with values after a \\n newline character', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+        static flags = {
+          force: flags.boolean({description: 'forces'}),
+        }
+    })
+    .it('outputs command description with values after a \\n newline character', ctx => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -211,6 +212,19 @@ DESCRIPTION
 ALIASES
   $ oclif app:init
   $ oclif create`))
+
+    test
+    .commandHelp(class extends Command {
+        static id = 'apps:create'
+
+        static description = 'root part of the description\nThe <%= config.bin %> CLI has <%= command.id %>'
+    })
+    .it('renders template string from description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  $ oclif apps:create
+
+DESCRIPTION
+  The oclif CLI has apps:create`))
+  })
 
   describe(('flags'), () => {
     test
