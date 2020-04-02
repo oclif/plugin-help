@@ -43,6 +43,8 @@ export abstract class HelpBase {
   abstract showHelp(argv: string[]): void;
 
   abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
+
+  abstract command(command: Config.Command): string;
 }
 
 export default class Help extends HelpBase {
