@@ -43,14 +43,6 @@ export abstract class HelpBase {
   abstract showHelp(argv: string[]): void;
 
   abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
-
-  abstract root(): string |  undefined;
-
-  abstract topic(topic: Config.Topic): string | undefined;
-
-  abstract topics(topics: Config.Topic[]): string | undefined;
-
-  abstract command(command: Config.Command): string | undefined;
 }
 
 export default class Help extends HelpBase {
