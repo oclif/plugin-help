@@ -16,9 +16,9 @@ const {
 } = chalk
 
 export interface HelpOptions {
+  all?: boolean;
   maxWidth: number;
   stripAnsi?: boolean;
-  all?: boolean;
 }
 
 function getHelpSubject(args: string[]): string | undefined {
