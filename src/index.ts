@@ -36,9 +36,9 @@ export abstract class HelpBase {
     this.opts = {maxWidth: stdtermwidth, ...opts}
   }
 
-  config: Config.IConfig
+  public config: Config.IConfig
 
-  opts: HelpOptions
+  public opts: HelpOptions
 
   public abstract showHelp(argv: string[]): void;
 
@@ -60,27 +60,29 @@ export default class Help extends HelpBase {
     topics = topics.filter(t => this.opts.all || !t.hidden)
     topics = sortBy(topics, t => t.name)
     topics = uniqBy(topics, t => t.name)
+
     const subject = getHelpSubject(argv)
-
-    let command: Config.Command | undefined
-    let topic: Config.Topic | undefined
-    if (subject) {
-      command = this.config.findCommand(subject)
-      topic = this.config.findTopic(subject)
-    }
-
     if (!subject) {
       this.showRootHelp(topics)
-    } else if (command) {
+      return
+    }
+
+    const command = this.config.findCommand(subject)
+    if (command) {
       this.showCommandHelp(command, topics)
-    } else if (topic) {
+      return
+    }
+
+    const topic = this.config.findTopic(subject)
+    if (topic)  {
       const name = topic.name
       const depth = name.split(':').length
       const siblingTopics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
       this.showTopicHelp(topic, siblingTopics)
-    } else {
-      error(`command ${subject} not found`)
+      return
     }
+
+    error(`command ${subject} not found`)
   }
 
   protected showRootHelp(topics: Config.Topic[]) {
