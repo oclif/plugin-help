@@ -8,12 +8,20 @@ import Help from '../src'
 const VERSION = require('../package.json').version
 const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} node-${process.version}`
 
+// extensions to expose method as public for testing
+class TestHelp extends Help {
+  public root() {
+    return super.root()
+  }
+}
+
 const test = base
 .loadConfig()
 .register('rootHelp', (ctxOverride?: (config: Config.IConfig) => Config.IConfig) => ({
   run(ctx: {config: Config.IConfig; help: Help; commandHelp: string; expectation: string}) {
     const config = ctxOverride ? ctxOverride(ctx.config) : ctx.config
-    const help = new Help(config)
+
+    const help = new TestHelp(config)
     const root = help.root()
     if (process.env.TEST_OUTPUT === '1') {
       console.log(help)

@@ -6,11 +6,18 @@ const g: any = global
 g.columns = 80
 import Help from '../src'
 
+// extensions to expose method as public for testing
+class TestHelp extends Help {
+  public topics(topics: Config.Topic[]) {
+    return super.topics(topics)
+  }
+}
+
 const test = base
 .loadConfig()
-.add('help', ctx => new Help(ctx.config))
+.add('help', ctx => new TestHelp(ctx.config))
 .register('topicsHelp', (topics: Config.Topic[]) => ({
-  run(ctx: {help: Help; commandHelp: string; expectation: string}) {
+  run(ctx: {help: TestHelp; commandHelp: string; expectation: string}) {
     const topicsHelpOutput = ctx.help.topics(topics) || ''
 
     if (process.env.TEST_OUTPUT === '1') {

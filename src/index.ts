@@ -40,11 +40,11 @@ export abstract class HelpBase {
 
   opts: HelpOptions
 
-  abstract showHelp(argv: string[]): void;
+  public abstract showHelp(argv: string[]): void;
 
-  abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
+  public abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
 
-  abstract command(command: Config.Command): string;
+  public abstract command(command: Config.Command): string;
 }
 
 export default class Help extends HelpBase {
@@ -55,7 +55,7 @@ export default class Help extends HelpBase {
     this.render = template(this)
   }
 
-  showHelp(argv: string[]) {
+  public showHelp(argv: string[]) {
     let topics = this.config.topics
     topics = topics.filter(t => this.opts.all || !t.hidden)
     topics = sortBy(topics, t => t.name)
@@ -70,30 +70,38 @@ export default class Help extends HelpBase {
     }
 
     if (!subject) {
-      console.log(this.root())
-      console.log('')
-      if (!this.opts.all) {
-        topics = topics.filter(t => !t.name.includes(':'))
-      }
-      console.log(this.topics(topics))
-      console.log('')
+      this.showRootHelp(topics)
     } else if (command) {
       this.showCommandHelp(command, topics)
     } else if (topic) {
       const name = topic.name
       const depth = name.split(':').length
-      topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-      console.log(this.topic(topic))
-      if (topics.length > 0) {
-        console.log(this.topics(topics))
-        console.log('')
-      }
+      const siblingTopics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+      this.showTopicHelp(topic, siblingTopics)
     } else {
       error(`command ${subject} not found`)
     }
   }
 
-  showCommandHelp(command: Config.Command, topics: Config.Topic[]) {
+  protected showRootHelp(topics: Config.Topic[]) {
+    console.log(this.root())
+    console.log('')
+    if (!this.opts.all) {
+      topics = topics.filter(t => !t.name.includes(':'))
+    }
+    console.log(this.topics(topics))
+    console.log('')
+  }
+
+  protected showTopicHelp(topic: Config.Topic, siblingTopics: Config.Topic[]) {
+    console.log(this.topic(topic))
+    if (siblingTopics.length > 0) {
+      console.log(this.topics(siblingTopics))
+      console.log('')
+    }
+  }
+
+  public showCommandHelp(command: Config.Command, topics: Config.Topic[]) {
     const name = command.id
     const depth = name.split(':').length
     topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
@@ -107,12 +115,12 @@ export default class Help extends HelpBase {
     }
   }
 
-  root(): string {
+  protected root(): string {
     const help = new RootHelp(this.config, this.opts)
     return help.root()
   }
 
-  topic(topic: Config.Topic): string {
+  protected topic(topic: Config.Topic): string {
     let description = this.render(topic.description || '')
     const title = description.split('\n')[0]
     description = description.split('\n').slice(1).join('\n')
@@ -131,12 +139,12 @@ export default class Help extends HelpBase {
     return output + '\n'
   }
 
-  command(command: Config.Command): string {
+  public command(command: Config.Command): string {
     const help = new CommandHelp(command, this.config, this.opts)
     return help.generate()
   }
 
-  topics(topics: Config.Topic[]): string | undefined {
+  protected topics(topics: Config.Topic[]): string | undefined {
     if (topics.length === 0) return
     const body = renderList(topics.map(c => [
       c.name,
