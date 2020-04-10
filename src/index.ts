@@ -40,11 +40,24 @@ export abstract class HelpBase {
 
   public opts: HelpOptions
 
+  /**
+   * Show help, used in multi-command CLIs
+   * @param args passed into your command, useful for determining which type of help to display
+   */
   public abstract showHelp(argv: string[]): void;
 
+  /**
+   * Show help for an individual command
+   * @param command
+   * @param topics
+   */
   public abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
 
-  public abstract command(command: Config.Command): string;
+  /**
+   * Returned string is used for given the command in readme generation
+   * @param command
+   */
+  public abstract getCommandHelpForReadme(command: Config.Command): string;
 }
 
 export default class Help extends HelpBase {
@@ -141,6 +154,15 @@ export default class Help extends HelpBase {
     return output + '\n'
   }
 
+  public getCommandHelpForReadme(command: Config.Command): string {
+    return this.command(command)
+  }
+
+  /**
+   * @deprecated replaced by getCommandHelpForReadme
+   * @param {Command} command to generate help for
+   * @returns {string} help string for the given c ommand
+   */
   public command(command: Config.Command): string {
     const help = new CommandHelp(command, this.config, this.opts)
     return help.generate()
