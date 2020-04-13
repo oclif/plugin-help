@@ -54,32 +54,32 @@ interface HelpBaseDerived {
   new(config: IConfig, opts?: Partial<HelpOptions>): HelpBase;
 }
 
-export function extractPlugin(config: IConfig, pluginPath: string): HelpBaseDerived {
-  const helpPlugin = tsPath(config.root, pluginPath)
-  return require(helpPlugin) as HelpBaseDerived
+export function extractClass(config: IConfig, classPath: string): HelpBaseDerived {
+  const helpClassPath = tsPath(config.root, classPath)
+  return require(helpClassPath) as HelpBaseDerived
 }
 
 export function extractExport(exported: any): HelpBaseDerived {
   return exported && exported.default ? exported.default : exported
 }
 
-export function getHelpPlugin(config: IConfig, defaultPlugin = '@oclif/plugin-help'): HelpBaseDerived {
+export function getHelpClass(config: IConfig, defaultClass = '@oclif/plugin-help'): HelpBaseDerived {
   const pjson = config.pjson
-  const configuredPlugin = pjson && pjson.oclif &&  pjson.oclif.helpPlugin
+  const configuredClass = pjson && pjson.oclif &&  pjson.oclif.helpClass
 
-  if (configuredPlugin) {
+  if (configuredClass) {
     try {
-      const exported = extractPlugin(config, configuredPlugin)
+      const exported = extractClass(config, configuredClass)
       return extractExport(exported) as HelpBaseDerived
     } catch (error) {
-      throw new Error(`Unable to load configured help plugin "${configuredPlugin}" from package.json, failed with message:\n${error.message}`)
+      throw new Error(`Unable to load configured help class "${configuredClass}", failed with message:\n${error.message}`)
     }
   }
 
   try {
-    const exported = require(defaultPlugin)
+    const exported = require(defaultClass)
     return extractExport(exported) as HelpBaseDerived
   } catch (error) {
-    throw new Error(`Could not load a help plugin, consider installing the @oclif/plugin-help package, failed with message:\n${error.message}`)
+    throw new Error(`Could not load a help class, consider installing the @oclif/plugin-help package, failed with message:\n${error.message}`)
   }
 }

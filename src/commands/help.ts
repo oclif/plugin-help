@@ -1,6 +1,6 @@
 import {Command, flags} from '@oclif/command'
 
-import {getHelpPlugin} from '..'
+import {getHelpClass} from '..'
 
 export default class HelpCommand extends Command {
   static description = 'display help for <%= config.bin %>'
@@ -17,7 +17,7 @@ export default class HelpCommand extends Command {
 
   async run() {
     const {flags, argv} = this.parse(HelpCommand)
-    const Help = getHelpPlugin(this.config)
+    const Help = getHelpClass(this.config)
     const help = new Help(this.config, {all: flags.all})
     help.showHelp(argv)
   }

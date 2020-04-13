@@ -9,7 +9,7 @@ import {renderList} from './list'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
 import {compact, sortBy, template, uniqBy} from './util'
-export {getHelpPlugin} from './util'
+export {getHelpClass} from './util'
 
 const wrap = require('wrap-ansi')
 const {
@@ -155,6 +155,10 @@ export default class Help extends HelpBase {
     return output + '\n'
   }
 
+  /**
+   * @param {Command} command to generate help for
+   * @returns {string} help string for the given command
+   */
   public getCommandHelpForReadme(command: Config.Command): string {
     return this.command(command)
   }
@@ -162,7 +166,7 @@ export default class Help extends HelpBase {
   /**
    * @deprecated replaced by getCommandHelpForReadme
    * @param {Command} command to generate help for
-   * @returns {string} help string for the given c ommand
+   * @returns {string} help string for the given command
    */
   public command(command: Config.Command): string {
     const help = new CommandHelp(command, this.config, this.opts)
