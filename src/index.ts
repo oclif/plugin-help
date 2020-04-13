@@ -9,6 +9,7 @@ import {renderList} from './list'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
 import {compact, sortBy, template, uniqBy} from './util'
+export {getHelpPlugin} from './util'
 
 const wrap = require('wrap-ansi')
 const {
