@@ -53,12 +53,6 @@ export abstract class HelpBase {
    * @param topics
    */
   public abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
-
-  /**
-   * Returned string is used for given the command in readme generation
-   * @param command
-   */
-  public abstract getCommandHelpForReadme(command: Config.Command): string;
 }
 
 export default class Help extends HelpBase {
@@ -155,19 +149,6 @@ export default class Help extends HelpBase {
     return output + '\n'
   }
 
-  /**
-   * @param {Command} command to generate help for
-   * @returns {string} help string for the given command
-   */
-  public getCommandHelpForReadme(command: Config.Command): string {
-    return this.command(command)
-  }
-
-  /**
-   * @deprecated replaced by getCommandHelpForReadme
-   * @param {Command} command to generate help for
-   * @returns {string} help string for the given command
-   */
   public command(command: Config.Command): string {
     const help = new CommandHelp(command, this.config, this.opts)
     return help.generate()
