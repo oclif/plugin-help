@@ -85,8 +85,8 @@ export default class Help extends HelpBase {
     if (topic)  {
       const name = topic.name
       const depth = name.split(':').length
-      const siblingTopics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-      this.showTopicHelp(topic, siblingTopics)
+      const subTopics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+      this.showTopicHelp(topic, subTopics)
       return
     }
 
@@ -117,10 +117,10 @@ export default class Help extends HelpBase {
     console.log('')
   }
 
-  protected showTopicHelp(topic: Config.Topic, siblingTopics: Config.Topic[]) {
+  protected showTopicHelp(topic: Config.Topic, subTopics: Config.Topic[]) {
     console.log(this.formatTopic(topic))
-    if (siblingTopics.length > 0) {
-      console.log(this.formatTopics(siblingTopics))
+    if (subTopics.length > 0) {
+      console.log(this.formatTopics(subTopics))
       console.log('')
     }
   }
