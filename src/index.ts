@@ -93,44 +93,49 @@ export default class Help extends HelpBase {
     error(`command ${subject} not found`)
   }
 
-  protected showRootHelp(topics: Config.Topic[]) {
-    console.log(this.root())
-    console.log('')
-    if (!this.opts.all) {
-      topics = topics.filter(t => !t.name.includes(':'))
-    }
-    console.log(this.topics(topics))
-    console.log('')
-  }
-
-  protected showTopicHelp(topic: Config.Topic, siblingTopics: Config.Topic[]) {
-    console.log(this.topic(topic))
-    if (siblingTopics.length > 0) {
-      console.log(this.topics(siblingTopics))
-      console.log('')
-    }
-  }
-
   public showCommandHelp(command: Config.Command, topics: Config.Topic[]) {
     const name = command.id
     const depth = name.split(':').length
     topics = topics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
     const title = command.description && this.render(command.description).split('\n')[0]
     if (title) console.log(title + '\n')
-    console.log(this.command(command))
+    console.log(this.formatCommand(command))
     console.log('')
     if (topics.length > 0) {
-      console.log(this.topics(topics))
+      console.log(this.formatTopics(topics))
       console.log('')
     }
   }
 
-  protected root(): string {
+  protected showRootHelp(topics: Config.Topic[]) {
+    console.log(this.formatRoot())
+    console.log('')
+    if (!this.opts.all) {
+      topics = topics.filter(t => !t.name.includes(':'))
+    }
+    console.log(this.formatTopics(topics))
+    console.log('')
+  }
+
+  protected showTopicHelp(topic: Config.Topic, siblingTopics: Config.Topic[]) {
+    console.log(this.formatTopic(topic))
+    if (siblingTopics.length > 0) {
+      console.log(this.formatTopics(siblingTopics))
+      console.log('')
+    }
+  }
+
+  protected formatRoot(): string {
     const help = new RootHelp(this.config, this.opts)
     return help.root()
   }
 
-  protected topic(topic: Config.Topic): string {
+  protected formatCommand(command: Config.Command): string {
+    const help = new CommandHelp(command, this.config, this.opts)
+    return help.generate()
+  }
+
+  protected formatTopic(topic: Config.Topic): string {
     let description = this.render(topic.description || '')
     const title = description.split('\n')[0]
     description = description.split('\n').slice(1).join('\n')
@@ -149,12 +154,7 @@ export default class Help extends HelpBase {
     return output + '\n'
   }
 
-  public command(command: Config.Command): string {
-    const help = new CommandHelp(command, this.config, this.opts)
-    return help.generate()
-  }
-
-  protected topics(topics: Config.Topic[]): string | undefined {
+  protected formatTopics(topics: Config.Topic[]): string | undefined {
     if (topics.length === 0) return
     const body = renderList(topics.map(c => [
       c.name,
