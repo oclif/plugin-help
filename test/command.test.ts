@@ -16,7 +16,7 @@ class Command extends Base {
 const test = base
 .loadConfig()
 .add('help', ctx => new Help(ctx.config))
-.register('commandHelp', (command?: Config.Command.Class) => ({
+.register('commandHelp', (command?: any) => ({
   run(ctx: {help: Help; commandHelp: string; expectation: string}) {
     const cached = Config.Command.toCached(command!, {} as any)
     const help = ctx.help.command(cached)
@@ -49,7 +49,7 @@ multiline help`
         label: flags.string({char: 'l', helpLabel: '-l'}),
       }
   })
-  .it('handles multi-line help output', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+  .it('handles multi-line help output', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -98,7 +98,7 @@ ALIASES
           remote: flags.string({char: 'r'}),
         }
     })
-    .it('show args and flags side by side when their output do not exceed 4 lines ', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('show args and flags side by side when their output do not exceed 4 lines ', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -146,7 +146,7 @@ ALIASES
           remote: flags.string({char: 'r'}),
         }
     })
-    .it('shows stacked args and flags when the lines exceed 4', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('shows stacked args and flags when the lines exceed 4', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -197,7 +197,7 @@ ALIASES
           force: flags.boolean({description: 'forces'}),
         }
     })
-    .it('outputs command description with values after a \\n newline character', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs command description with values after a \\n newline character', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [APP_NAME]
 
 ARGUMENTS
@@ -219,7 +219,7 @@ ALIASES
 
         static description = 'root part of the description\nThe <%= config.bin %> CLI has <%= command.id %>'
     })
-    .it('renders template string from description', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('renders template string from description', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create
 
 DESCRIPTION
@@ -235,7 +235,7 @@ DESCRIPTION
           myenum: flags.string({options: ['a', 'b', 'c']}),
         }
     })
-    .it('outputs flag enum', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs flag enum', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create
 
 OPTIONS
@@ -256,7 +256,7 @@ OPTIONS
         flag2: flags.string({default: '.', description: 'flag2 desc'}),
         flag3: flags.string({description: 'flag3 desc'}),
       }
-    }).it('outputs with default flag options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    }).it('outputs with default flag options', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [ARG1] [ARG2] [ARG3]
 
 ARGUMENTS
@@ -277,7 +277,7 @@ OPTIONS
           opt: flags.boolean({allowNo: true}),
         }
     })
-    .it('outputs with with no options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs with with no options', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create
 
 OPTIONS
@@ -293,7 +293,7 @@ OPTIONS
           {name: 'arg1', description: 'Show the options', options: ['option1', 'option2']},
         ]
     })
-    .it('outputs with arg options', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs with arg options', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create [ARG1]
 
 ARGUMENTS
@@ -307,7 +307,7 @@ ARGUMENTS
 
         static usage = '<%= config.bin %> <%= command.id %> usage'
     })
-    .it('outputs usage with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs usage with templates', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif oclif apps:create usage`))
 
     test
@@ -316,7 +316,7 @@ ARGUMENTS
 
         static usage = ['<%= config.bin %>', '<%= command.id %> usage']
     })
-    .it('outputs usage arrays with templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs usage arrays with templates', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif oclif
   $ oclif apps:create usage`))
 
@@ -326,7 +326,7 @@ ARGUMENTS
 
       static usage = undefined
     })
-    .it('defaults usage when not specified', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('defaults usage when not specified', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif apps:create`))
   })
 
@@ -335,7 +335,7 @@ ARGUMENTS
     .commandHelp(class extends Command {
         static examples = ['it handles a list of examples', 'more example text']
     })
-    .it('outputs multiple examples', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs multiple examples', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif
 
 EXAMPLES
@@ -346,7 +346,7 @@ EXAMPLES
     .commandHelp(class extends Command {
         static examples = ['it handles a single example']
     })
-    .it('outputs a single example', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs a single example', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif
 
 EXAMPLE
@@ -358,7 +358,7 @@ EXAMPLE
 
         static examples = ['the bin is <%= config.bin %>', 'the command id is <%= command.id %>']
     })
-    .it('outputs examples using templates', ctx => expect(ctx.commandHelp).to.equal(`USAGE
+    .it('outputs examples using templates', (ctx: any) => expect(ctx.commandHelp).to.equal(`USAGE
   $ oclif oclif:command
 
 EXAMPLES
