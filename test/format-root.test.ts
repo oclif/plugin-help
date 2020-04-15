@@ -10,8 +10,8 @@ const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} no
 
 // extensions to expose method as public for testing
 class TestHelp extends Help {
-  public root() {
-    return super.root()
+  public formatRoot() {
+    return super.formatRoot()
   }
 }
 
@@ -22,7 +22,7 @@ const test = base
     const config = ctxOverride ? ctxOverride(ctx.config) : ctx.config
 
     const help = new TestHelp(config)
-    const root = help.root()
+    const root = help.formatRoot()
     if (process.env.TEST_OUTPUT === '1') {
       console.log(help)
     }
@@ -30,7 +30,7 @@ const test = base
   },
 }))
 
-describe('root help', () => {
+describe('formatRoot', () => {
   test
   .rootHelp()
   .it('renders the root help', ctx => expect(ctx.commandHelp).to.equal(`standard help for oclif

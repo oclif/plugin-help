@@ -1,6 +1,7 @@
 import * as Config from '@oclif/config'
 import {expect, test as base} from '@oclif/test'
 import {stub, SinonStub} from 'sinon'
+import * as path from 'path'
 
 const g: any = global
 g.columns = 80
@@ -18,7 +19,6 @@ class TestHelp extends Help {
 }
 
 const test = base
-.loadConfig()
 .register('setupHelp', () => ({
   async run(ctx: { help: TestHelp; stubs: { [k: string]: SinonStub }}) {
     ctx.stubs = {
@@ -27,7 +27,8 @@ const test = base
       showCommandHelp: stub(TestHelp.prototype, 'showCommandHelp').returns(),
     }
 
-    const config = await Config.load()
+    // use devPlugins: true to bring in plugins-plugin with topic commands for testing
+    const config = await Config.load({devPlugins: true, root: path.resolve(__dirname, '..')})
     ctx.help = new TestHelp(config)
   },
   finally(ctx) {

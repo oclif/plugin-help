@@ -13,13 +13,20 @@ class Command extends Base {
   }
 }
 
+// extensions to expose method as public for testing
+class TestHelp extends Help {
+  public formatCommand(command: Config.Command) {
+    return super.formatCommand(command)
+  }
+}
+
 const test = base
 .loadConfig()
-.add('help', ctx => new Help(ctx.config))
+.add('help', ctx => new TestHelp(ctx.config))
 .register('commandHelp', (command?: any) => ({
-  run(ctx: {help: Help; commandHelp: string; expectation: string}) {
+  run(ctx: {help: TestHelp; commandHelp: string; expectation: string}) {
     const cached = Config.Command.toCached(command!, {} as any)
-    const help = ctx.help.command(cached)
+    const help = ctx.help.formatCommand(cached)
     if (process.env.TEST_OUTPUT === '1') {
       console.log(help)
     }
@@ -28,7 +35,7 @@ const test = base
   },
 }))
 
-describe('command help', () => {
+describe('formatCommand', () => {
   test
   .commandHelp(class extends Command {
       static id = 'apps:create'

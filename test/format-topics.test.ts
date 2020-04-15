@@ -8,8 +8,8 @@ import Help from '../src'
 
 // extensions to expose method as public for testing
 class TestHelp extends Help {
-  public topics(topics: Config.Topic[]) {
-    return super.topics(topics)
+  public formatTopics(topics: Config.Topic[]) {
+    return super.formatTopics(topics)
   }
 }
 
@@ -18,7 +18,7 @@ const test = base
 .add('help', ctx => new TestHelp(ctx.config))
 .register('topicsHelp', (topics: Config.Topic[]) => ({
   run(ctx: {help: TestHelp; commandHelp: string; expectation: string}) {
-    const topicsHelpOutput = ctx.help.topics(topics) || ''
+    const topicsHelpOutput = ctx.help.formatTopics(topics) || ''
 
     if (process.env.TEST_OUTPUT === '1') {
       console.log(topicsHelpOutput)
@@ -29,7 +29,7 @@ const test = base
   },
 }))
 
-describe('topics help', () => {
+describe('formatTopics', () => {
   test
   .topicsHelp([{
     name: 'topic',
