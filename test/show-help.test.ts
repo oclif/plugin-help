@@ -6,15 +6,16 @@ import * as path from 'path'
 const g: any = global
 g.columns = 80
 import Help from '../src'
+import { AppsDestroy, AppsCreate, AppsTopic, AppsAdminTopic, AppsAdminAdd, AppsAdminIndex, DbCreate, DbTopic } from './helpers/mocks'
 
 // extension makes previously protected methods public
 class TestHelp extends Help {
-  public showRootHelp(topics: Config.Topic[]) {
-    return super.showRootHelp(topics)
+  public showRootHelp() {
+    return super.showRootHelp()
   }
 
-  public showTopicHelp(topic: Config.Topic, siblingTopics: Config.Topic[]) {
-    return super.showTopicHelp(topic, siblingTopics)
+  public showTopicHelp(topic: Config.Topic) {
+    return super.showTopicHelp(topic)
   }
 }
 
@@ -45,6 +46,118 @@ const test = base
     ctx.makeTopicOnlyStub.restore()
   },
 }))
+
+describe('showHelp for a topic', () => {
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsCreate, AppsDestroy],
+      topics: [AppsTopic],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp(['apps'])
+  })
+  .it('shows topic help with commands', ({stdout}) => {
+    expect(stdout.trim()).to.equal(`This topic is for the apps topic
+
+USAGE
+  $ oclif apps:COMMAND
+
+COMMANDS
+  apps:create   Create an app
+  apps:destroy  Destroy an app`)
+  })
+
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsCreate, AppsDestroy, AppsAdminAdd],
+      topics: [AppsTopic, AppsAdminTopic],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp(['apps'])
+  })
+  .it('shows topic help with topic and commands', ({stdout}) => {
+    expect(stdout.trim()).to.equal(`This topic is for the apps topic
+
+USAGE
+  $ oclif apps:COMMAND
+
+TOPICS
+  apps:admin  This topic is for the apps topic
+
+COMMANDS
+  apps:create   Create an app
+  apps:destroy  Destroy an app`)
+  })
+
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsCreate, AppsDestroy, AppsAdminIndex, AppsAdminAdd],
+      topics: [AppsTopic, AppsAdminTopic],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp(['apps'])
+  })
+  .it('shows topic help with topic and commands and topic command', ({stdout}) => {
+    expect(stdout.trim()).to.equal(`This topic is for the apps topic
+
+USAGE
+  $ oclif apps:COMMAND
+
+TOPICS
+  apps:admin  This topic is for the apps topic
+
+COMMANDS
+  apps:admin    List of admins for an app
+  apps:create   Create an app
+  apps:destroy  Destroy an app`)
+  })
+
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsCreate, AppsDestroy, AppsAdminAdd, DbCreate],
+      topics: [AppsTopic, AppsAdminTopic, DbTopic],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp(['apps'])
+  })
+  .it('ignores other topics and commands', ({stdout}) => {
+    expect(stdout.trim()).to.equal(`This topic is for the apps topic
+
+USAGE
+  $ oclif apps:COMMAND
+
+TOPICS
+  apps:admin  This topic is for the apps topic
+
+COMMANDS
+  apps:create   Create an app
+  apps:destroy  Destroy an app`)
+  })
+})
 
 describe('showHelp routing', () => {
   describe('shows root help', () => {

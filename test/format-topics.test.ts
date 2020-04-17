@@ -35,7 +35,7 @@ describe('formatTopics', () => {
     name: 'topic',
     description: 'this is a description of my topic',
   }])
-  .it('shows ouputs a single topic in the list', ctx => expect(ctx.commandHelp).to.equal(`COMMANDS
+  .it('shows ouputs a single topic in the list', ctx => expect(ctx.commandHelp).to.equal(`TOPICS
   topic  this is a description of my topic`))
 
   test
@@ -49,7 +49,7 @@ describe('formatTopics', () => {
     name: 'thirdtopic',
     description: 'description for thirdtopic',
   }])
-  .it('shows ouputs a single topic in the list', ctx => expect(ctx.commandHelp).to.equal(`COMMANDS
+  .it('shows ouputs for multiple topics in the list', ctx => expect(ctx.commandHelp).to.equal(`TOPICS
   topic       this is a description of my topic
   othertopic  here we have a description for othertopic
   thirdtopic  description for thirdtopic`))
