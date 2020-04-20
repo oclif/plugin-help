@@ -111,45 +111,44 @@ export default class Help extends HelpBase {
   }
 
   protected showRootHelp() {
-    let topics = this.filteredTopics
+    let rootChildren = this.filteredTopics
 
     console.log(this.formatRoot())
     console.log('')
 
     if (!this.opts.all) {
-      topics = topics.filter(t => !t.name.includes(':'))
+      rootChildren = rootChildren.filter(t => !t.name.includes(':'))
     }
-    console.log(this.formatTopics(topics))
-    console.log('')
+
+    const {topics, commands} = this.categorizeTopicsAndCommands(rootChildren)
+
+    if (topics.length > 0) {
+      console.log(this.formatTopics(topics))
+      console.log('')
+    }
+
+    if (commands.length > 0) {
+      console.log(this.formatCommands(commands))
+      console.log('')
+    }
   }
 
   protected showTopicHelp(topic: Config.Topic) {
     const name = topic.name
     const depth = name.split(':').length
-    const topicsAndCommands = this.filteredTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-    const topicCommands: Config.Command[] = []
-    const subTopics: Config.Topic[] = []
 
-    topicsAndCommands.forEach((topic: Config.Topic) => {
-      const hasSubTopics = Boolean(this.filteredTopics.find(t => t.name.startsWith(topic.name + ':') && t.name.split(':').length > depth))
-      if (hasSubTopics) {
-        subTopics.push(topic)
-      }
-
-      const command = this.config.findCommand(topic.name)
-      if (command) {
-        topicCommands.push(command)
-      }
-    })
+    const topicChildren = this.filteredTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+    const {topics, commands} = this.categorizeTopicsAndCommands(topicChildren)
 
     console.log(this.formatTopic(topic))
-    if (subTopics.length > 0) {
-      console.log(this.formatTopics(subTopics))
+
+    if (topics.length > 0) {
+      console.log(this.formatTopics(topics))
       console.log('')
     }
 
-    if (topicCommands.length > 0) {
-      console.log(this.formatCommands(topicCommands))
+    if (commands.length > 0) {
+      console.log(this.formatCommands(commands))
       console.log('')
     }
   }
@@ -215,5 +214,33 @@ export default class Help extends HelpBase {
       bold('TOPICS'),
       indent(body, 2),
     ].join('\n')
+  }
+
+  /**
+   * @description config.topics are a list of commands and topics mixed.
+   * For the purposes of this help plugin, it's important to categorize
+   * which are categorized by a topic or a command. A topic has child
+   * commands. A topic may also be a command. A command is "runnable".
+   */
+  protected categorizeTopicsAndCommands(configTopics: Config.Topic[]) {
+    const commands: Config.Command[] = []
+    const topics: Config.Topic[] = []
+
+    configTopics.forEach((topic: Config.Topic) => {
+      // if the current topic can find children that include the same name with a ":"
+      // then it should have children, ie: "apps" has children if "apps:" exists in any
+      // config topic like "apps:create"
+      const hasChildren = Boolean(this.filteredTopics.find(t => t.name.startsWith(topic.name + ':')))
+      if (hasChildren) {
+        topics.push(topic)
+      }
+
+      const command = this.config.findCommand(topic.name)
+      if (command) {
+        commands.push(command)
+      }
+    })
+
+    return {topics, commands}
   }
 }
