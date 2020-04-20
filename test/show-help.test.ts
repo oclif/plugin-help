@@ -6,7 +6,7 @@ import * as path from 'path'
 const g: any = global
 g.columns = 80
 import Help from '../src'
-import { AppsDestroy, AppsCreate, AppsTopic, AppsAdminTopic, AppsAdminAdd, AppsAdminIndex, DbCreate, DbTopic } from './helpers/mocks'
+import {AppsDestroy, AppsCreate, AppsTopic, AppsAdminTopic, AppsAdminAdd, AppsAdminIndex, DbCreate, DbTopic} from './helpers/fixtures'
 
 // extension makes previously protected methods public
 class TestHelp extends Help {
