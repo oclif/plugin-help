@@ -217,6 +217,10 @@ export default class Help extends HelpBase {
   }
 
   /**
+   * @arg {array} configTopics an array of topics from Config, which is a
+   * mix of commands and topics
+   * @returns {object} with properties `topics` and `commands`, each are
+   * an array of the categorized based on the config topics given
    * @description config.topics are a list of commands and topics mixed.
    * For the purposes of this help plugin, it's important to categorize
    * which are categorized by a topic or a command. A topic has child
