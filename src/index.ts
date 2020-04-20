@@ -247,4 +247,13 @@ export default class Help extends HelpBase {
 
     return {topics, commands}
   }
+
+  /**
+   * @deprecated used for readme generation
+   * @param {object} command The command to generate readme help for
+   * @return {string} the readme help string for the given command
+   */
+  protected command(command: Config.Command) {
+    return this.formatCommand(command)
+  }
 }
