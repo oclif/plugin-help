@@ -10,6 +10,8 @@ import {AppsDestroy, AppsCreate, AppsTopic, AppsAdminTopic, AppsAdminAdd, AppsAd
 
 // extension makes previously protected methods public
 class TestHelp extends Help {
+  public config: any;
+
   public showRootHelp() {
     return super.showRootHelp()
   }

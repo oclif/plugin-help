@@ -37,9 +37,9 @@ export abstract class HelpBase {
     this.opts = {maxWidth: stdtermwidth, ...opts}
   }
 
-  public config: Config.IConfig
+  protected config: Config.IConfig
 
-  public opts: HelpOptions
+  protected opts: HelpOptions
 
   /**
    * Show help, used in multi-command CLIs
