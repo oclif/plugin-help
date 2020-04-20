@@ -5,7 +5,7 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/command": "^1.5.13",
+    "@oclif/command": "^1.5.20",
     "chalk": "^2.4.1",
     "indent-string": "^4.0.0",
     "lodash.template": "^4.4.0",
@@ -34,8 +34,8 @@
     "globby": "^9.0.0",
     "mocha": "^5.2.0",
     "sinon": "^9.0.1",
-    "ts-node": "^8.0.2",
-    "typescript": "^3.7.2"
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
   },
   "engines": {
     "node": ">=8.0.0"
