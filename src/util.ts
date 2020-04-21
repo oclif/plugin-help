@@ -1,4 +1,7 @@
+import {tsPath} from '@oclif/config/lib/ts-node'
 import lodashTemplate = require('lodash.template')
+import {IConfig} from '@oclif/config'
+import {HelpBase, HelpOptions} from '.'
 
 export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   return arr.filter((a, i) => {
@@ -45,4 +48,38 @@ export function template(context: any): (t: string) => string {
     return lodashTemplate(t)(context)
   }
   return render
+}
+
+interface HelpBaseDerived {
+  new(config: IConfig, opts?: Partial<HelpOptions>): HelpBase;
+}
+
+function extractExport(config: IConfig, classPath: string): HelpBaseDerived {
+  const helpClassPath = tsPath(config.root, classPath)
+  return require(helpClassPath) as HelpBaseDerived
+}
+
+function extractClass(exported: any): HelpBaseDerived {
+  return exported && exported.default ? exported.default : exported
+}
+
+export function getHelpClass(config: IConfig, defaultClass = '@oclif/plugin-help'): HelpBaseDerived {
+  const pjson = config.pjson
+  const configuredClass = pjson && pjson.oclif &&  pjson.oclif.helpClass
+
+  if (configuredClass) {
+    try {
+      const exported = extractExport(config, configuredClass)
+      return extractClass(exported) as HelpBaseDerived
+    } catch (error) {
+      throw new Error(`Unable to load configured help class "${configuredClass}", failed with message:\n${error.message}`)
+    }
+  }
+
+  try {
+    const exported = require(defaultClass)
+    return extractClass(exported) as HelpBaseDerived
+  } catch (error) {
+    throw new Error(`Could not load a help class, consider installing the @oclif/plugin-help package, failed with message:\n${error.message}`)
+  }
 }

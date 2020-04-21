@@ -64,7 +64,6 @@ export default class CommandHelp {
     return compact([
       this.command.id,
       this.command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
-      // flags.length && '[OPTIONS]',
     ]).join(' ')
   }
 
