@@ -74,7 +74,6 @@ export default class Help extends HelpBase {
 
   public showHelp(argv: string[]) {
     const subject = getHelpSubject(argv)
-
     if (!subject) {
       this.showRootHelp()
       return
@@ -98,14 +97,21 @@ export default class Help extends HelpBase {
   public showCommandHelp(command: Config.Command) {
     const name = command.id
     const depth = name.split(':').length
-    const topics = this.filteredTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+    const rootChildren = this.filteredTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
     const title = command.description && this.render(command.description).split('\n')[0]
     if (title) console.log(title + '\n')
     console.log(this.formatCommand(command))
     console.log('')
 
+    const {topics, commands} = this.categorizeTopicsAndCommands(rootChildren)
+
     if (topics.length > 0) {
       console.log(this.formatTopics(topics))
+      console.log('')
+    }
+
+    if (commands.length > 0) {
+      console.log(this.formatCommands(commands))
       console.log('')
     }
   }

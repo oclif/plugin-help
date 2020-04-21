@@ -6,7 +6,7 @@ import * as path from 'path'
 const g: any = global
 g.columns = 80
 import Help from '../src'
-import {AppsDestroy, AppsCreate, AppsTopic, AppsAdminTopic, AppsAdminAdd, AppsAdminIndex, DbCreate, DbTopic} from './helpers/fixtures'
+import {AppsIndex, AppsDestroy, AppsCreate, AppsTopic, AppsAdminTopic, AppsAdminAdd, AppsAdminIndex, DbCreate, DbTopic} from './helpers/fixtures'
 
 // extension makes previously protected methods public
 class TestHelp extends Help {
@@ -48,6 +48,65 @@ const test = base
     ctx.makeTopicOnlyStub.restore()
   },
 }))
+
+describe('showHelp for root', () => {
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsIndex, AppsCreate, AppsDestroy],
+      topics: [],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp([])
+  })
+  .it('shows a command and topic when the index has siblings', ({stdout, config}) => {
+    expect(stdout.trim()).to.equal(`standard help for oclif
+
+VERSION
+  ${config.userAgent}
+
+USAGE
+  $ oclif [COMMAND]
+
+TOPICS
+  apps  List all apps (app index command)
+
+COMMANDS
+  apps  List all apps (app index command)`)
+  })
+
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsIndex],
+      topics: [],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp([])
+  })
+  .it('shows a command only when the topic only contains an index', ({stdout, config}) => {
+    expect(stdout.trim()).to.equal(`standard help for oclif
+
+VERSION
+  ${config.userAgent}
+
+USAGE
+  $ oclif [COMMAND]
+
+COMMANDS
+  apps  List all apps (app index command)`)
+  })
+})
 
 describe('showHelp for a topic', () => {
   test
@@ -158,6 +217,62 @@ TOPICS
 COMMANDS
   apps:create   Create an app
   apps:destroy  Destroy an app`)
+  })
+})
+
+describe('showHelp for a command', () => {
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsCreate],
+      topics: [AppsTopic],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp(['apps:create'])
+  })
+  .it('shows help for a leaf (or childless) command', ({stdout}) => {
+    expect(stdout.trim()).to.equal(`Create an app
+
+USAGE
+  $ oclif apps:create
+
+DESCRIPTION
+  this only shows up in command help under DESCRIPTION`)
+  })
+
+  test
+  .loadConfig()
+  .stdout()
+  .do(ctx => {
+    const config = ctx.config;
+
+    (config as any).plugins = [{
+      commands: [AppsIndex, AppsCreate, AppsAdminAdd],
+      topics: [AppsTopic, AppsAdminTopic],
+    }]
+
+    const help = new TestHelp(config)
+    help.showHelp(['apps'])
+  })
+  .it('shows help for a command that has children topics and commands', ({stdout}) => {
+    expect(stdout.trim()).to.equal(`List all apps (app index command)
+
+USAGE
+  $ oclif apps
+
+DESCRIPTION
+  this only shows up in command help under DESCRIPTION
+
+TOPICS
+  apps:admin  This topic is for the apps topic
+
+COMMANDS
+  apps:create  Create an app`)
   })
 })
 
