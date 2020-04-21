@@ -64,7 +64,7 @@ export default class Help extends HelpBase {
    * this is fixed upstream config.topics should return *only* topics with children,
    * and this can be removed.
    */
-  protected get _topics(): Config.Topic[] {
+  private get _topics(): Config.Topic[] {
     return this.config.topics.filter((topic: Config.Topic) => {
       // it is assumed a topic has a child if it has children
       const hasChild = this.config.topics.some(subTopic => subTopic.name.includes(`${topic.name}:`))
@@ -72,7 +72,7 @@ export default class Help extends HelpBase {
     })
   }
 
-  protected get filteredCommands() {
+  protected get sortedCommands() {
     let commands = this.config.commands
 
     commands = commands.filter(c => this.opts.all || !c.hidden)
@@ -82,7 +82,7 @@ export default class Help extends HelpBase {
     return commands
   }
 
-  protected get filteredTopics() {
+  protected get sortedTopics() {
     let topics = this._topics
     topics = topics.filter(t => this.opts.all || !t.hidden)
     topics = sortBy(topics, t => t.name)
@@ -122,8 +122,8 @@ export default class Help extends HelpBase {
     const name = command.id
     const depth = name.split(':').length
 
-    const subTopics = this.filteredTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-    const subCommands = this.filteredCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
+    const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+    const subCommands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
 
     const title = command.description && this.render(command.description).split('\n')[0]
     if (title) console.log(title + '\n')
@@ -142,8 +142,8 @@ export default class Help extends HelpBase {
   }
 
   protected showRootHelp() {
-    let rootTopics = this.filteredTopics
-    let rootCommands = this.filteredCommands
+    let rootTopics = this.sortedTopics
+    let rootCommands = this.sortedCommands
 
     console.log(this.formatRoot())
     console.log('')
@@ -168,8 +168,8 @@ export default class Help extends HelpBase {
     const name = topic.name
     const depth = name.split(':').length
 
-    const subTopics = this.filteredTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-    const commands = this.filteredCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
+    const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+    const commands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
 
     console.log(this.formatTopic(topic))
 
