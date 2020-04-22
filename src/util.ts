@@ -77,7 +77,8 @@ export function getHelpClass(config: IConfig, defaultClass = '@oclif/plugin-help
   }
 
   try {
-    const exported = require(defaultClass)
+    const defaultModulePath = require.resolve(defaultClass, {paths: [config.root]})
+    const exported = require(defaultModulePath)
     return extractClass(exported) as HelpBaseDerived
   } catch (error) {
     throw new Error(`Could not load a help class, consider installing the @oclif/plugin-help package, failed with message:\n${error.message}`)
