@@ -6,30 +6,6 @@ const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} no
 describe('help command', () => {
   test
   .stdout()
-  .command(['help', 'plugins'])
-  .it('shows plugins command help', ctx => {
-    expect(ctx.stdout).to.equal(`list installed plugins
-
-USAGE
-  $ oclif plugins
-
-OPTIONS
-  --core  show core plugins
-
-EXAMPLE
-  $ oclif plugins
-
-COMMANDS
-  plugins:install    installs a plugin into the CLI
-  plugins:link       links a plugin into the CLI for development
-  plugins:uninstall  removes a plugin from the CLI
-  plugins:update     update installed plugins
-
-`)
-  })
-
-  test
-  .stdout()
   .command(['help', 'help'])
   .skip()
   .it('shows help command help', ctx => {
