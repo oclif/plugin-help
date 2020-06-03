@@ -9,7 +9,7 @@ import {renderList} from './list'
 import RootHelp from './root'
 import {stdtermwidth} from './screen'
 import {compact, sortBy, template, uniqBy} from './util'
-export {getHelpClass} from './util'
+import {getHelpClass} from './util'
 
 const wrap = require('wrap-ansi')
 const {
@@ -255,4 +255,9 @@ export default class Help extends HelpBase {
   protected command(command: Config.Command) {
     return this.formatCommand(command)
   }
+}
+
+export {
+  Help,
+  getHelpClass,
 }
