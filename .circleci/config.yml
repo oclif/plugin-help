@@ -50,7 +50,7 @@ jobs:
 
 workflows:
   version: 2
-  "@oclif/plugin-foo":
+  "@oclif/plugin-help":
     jobs:
       - node-latest
       - node-12
