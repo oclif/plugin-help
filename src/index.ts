@@ -25,7 +25,7 @@ export interface HelpOptions {
 function getHelpSubject(args: string[]): string | undefined {
   for (const arg of args) {
     if (arg === '--') return
-    if (arg.startsWith('-')) continue
+    if (arg.startsWith('-')) return
     if (arg === 'help') continue
     return arg
   }
@@ -98,6 +98,13 @@ export default class Help extends HelpBase {
 
   public showHelp(argv: string[]) {
     const subject = getHelpSubject(argv)
+    const rootCmd = this.config.findCommand('')
+    if (!subject && rootCmd) {
+      this.showCommandHelp(rootCmd)
+      this.showRootHelp()
+      return
+    }
+
     if (!subject) {
       this.showRootHelp()
       return
@@ -159,6 +166,7 @@ export default class Help extends HelpBase {
     }
 
     if (rootCommands.length > 0) {
+      rootCommands = rootCommands.filter(c => c.id)
       console.log(this.formatCommands(rootCommands))
       console.log('')
     }
