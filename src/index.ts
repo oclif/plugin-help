@@ -100,9 +100,9 @@ export default class Help extends HelpBase {
 
   public showHelp(argv: string[]) {
     const subject = getHelpSubject(argv)
-    const rootCmd = this.config.findCommand(ROOT_INDEX_CMD_ID)
-    if (!subject && rootCmd) {
-      this.showCommandHelp(rootCmd)
+    if (!subject) {
+      const rootCmd = this.config.findCommand(ROOT_INDEX_CMD_ID)
+      if (rootCmd) this.showCommandHelp(rootCmd)
       this.showRootHelp()
       return
     }
