@@ -16,6 +16,8 @@ const {
   bold,
 } = chalk
 
+const ROOT_INDEX_CMD_ID = ''
+
 export interface HelpOptions {
   all?: boolean;
   maxWidth: number;
@@ -98,7 +100,7 @@ export default class Help extends HelpBase {
 
   public showHelp(argv: string[]) {
     const subject = getHelpSubject(argv)
-    const rootCmd = this.config.findCommand('')
+    const rootCmd = this.config.findCommand(ROOT_INDEX_CMD_ID)
     if (!subject && rootCmd) {
       this.showCommandHelp(rootCmd)
       this.showRootHelp()
