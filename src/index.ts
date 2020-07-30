@@ -107,11 +107,6 @@ export default class Help extends HelpBase {
       return
     }
 
-    if (!subject) {
-      this.showRootHelp()
-      return
-    }
-
     const command = this.config.findCommand(subject)
     if (command) {
       this.showCommandHelp(command)
