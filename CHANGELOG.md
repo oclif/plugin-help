@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/oclif/plugin-help/compare/v3.2.0...v3.2.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* move oclif/errors to dependencies ([#179](https://github.com/oclif/plugin-help/issues/179)) ([a5e8320](https://github.com/oclif/plugin-help/commit/a5e8320ce480c55ba7800a8a9f444e681dee7a76))
+
 # [3.2.0](https://github.com/oclif/plugin-help/compare/v3.1.0...v3.2.0) (2020-08-03)
 
 
