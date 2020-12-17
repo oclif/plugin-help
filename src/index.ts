@@ -1,6 +1,6 @@
 import * as Config from '@oclif/config'
 import {error} from '@oclif/errors'
-import chalk from 'chalk'
+import * as chalk from 'chalk'
 import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
 
