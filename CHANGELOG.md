@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/oclif/plugin-help/compare/v3.2.1...v3.2.2) (2021-02-03)
+
+
+### Bug Fixes
+
+* avoid recomputing topics in loop ([#189](https://github.com/oclif/plugin-help/issues/189)) ([eccb862](https://github.com/oclif/plugin-help/commit/eccb862e725f28d305de5cccde109c15abbb5f98)), closes [#101](https://github.com/oclif/plugin-help/issues/101)
+
 ## [3.2.1](https://github.com/oclif/plugin-help/compare/v3.2.0...v3.2.1) (2020-12-14)
 
 
