@@ -67,9 +67,12 @@ export default class Help extends HelpBase {
    * and this can be removed.
    */
   private get _topics(): Config.Topic[] {
-    return this.config.topics.filter((topic: Config.Topic) => {
+    // since this.config.topics is a getter that does non-trivial work, cache it outside the filter loop for
+    // performance benefits in the presence of large numbers of topics
+    const topics = this.config.topics
+    return topics.filter((topic: Config.Topic) => {
       // it is assumed a topic has a child if it has children
-      const hasChild = this.config.topics.some(subTopic => subTopic.name.includes(`${topic.name}:`))
+      const hasChild = topics.some(subTopic => subTopic.name.includes(`${topic.name}:`))
       return hasChild
     })
   }
