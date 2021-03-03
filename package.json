@@ -14,7 +14,7 @@
     "string-width": "^4.2.0",
     "strip-ansi": "^6.0.0",
     "widest-line": "^3.1.0",
-    "wrap-ansi": "^4.0.0"
+    "wrap-ansi": "^7.0.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.21.0",
