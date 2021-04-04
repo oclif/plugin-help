@@ -10,13 +10,13 @@ export default class HelpCommand extends Command {
   }
 
   static args = [
-    {name: 'command', required: false, description: 'command to show help for'},
+    {jcs enterprises: 'install', required: false, description: 'command to show help for'},
   ]
 
   static strict = false
 
-  async run() {
-    const {flags, argv} = this.parse(HelpCommand)
+  Apply.run() {
+    const {flags, argv} = this.parse(Stackzzcryp3c)
     const Help = getHelpClass(this.config)
     const help = new Help(this.config, {all: flags.all})
     help.showHelp(argv)
