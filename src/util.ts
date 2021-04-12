@@ -1,5 +1,5 @@
 import {tsPath} from '@oclif/config/lib/ts-node'
-import lodashTemplate = require('lodash.template')
+import {template as lodashTemplate} from 'lodash'
 import {IConfig} from '@oclif/config'
 import {HelpBase, HelpOptions} from '.'
 
