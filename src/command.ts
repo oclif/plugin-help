@@ -100,7 +100,7 @@ export default class CommandHelp {
     const body = renderList(args.map(a => {
       const name = a.name.toUpperCase()
       let description = a.description || ''
-      if (a.default) description = `[default: ${a.default}] ${description}`
+      if (a.default !== '' && a.default !== undefined) description = `[default: ${a.default}] ${description}`
       if (a.options) description = `(${a.options.join('|')}) ${description}`
       return [name, description ? dim(description) : undefined]
     }), {stripAnsi: this.opts.stripAnsi, maxWidth: this.opts.maxWidth - 2})
@@ -144,7 +144,7 @@ export default class CommandHelp {
       }
 
       let right = flag.description || ''
-      if (flag.type === 'option' && flag.default) {
+      if (flag.type === 'option' && flag.default !== '' && flag.default !== undefined) {
         right = `[default: ${flag.default}] ${right}`
       }
       if (flag.required) right = `(required) ${right}`
