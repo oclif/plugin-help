@@ -1,4 +1,4 @@
-import * as Config from '@oclif/config'
+import {Interfaces} from '@oclif/core'
 import * as chalk from 'chalk'
 import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
@@ -14,7 +14,7 @@ const {
 export default class RootHelp {
   render: (input: string) => string
 
-  constructor(public config: Config.IConfig, public opts: HelpOptions) {
+  constructor(public config: Interfaces.Config, public opts: HelpOptions) {
     this.render = template(this)
   }
 

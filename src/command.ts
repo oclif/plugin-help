@@ -1,4 +1,4 @@
-import * as Config from '@oclif/config'
+import {Interfaces} from '@oclif/core'
 import * as chalk from 'chalk'
 import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
@@ -24,7 +24,7 @@ const wrap = require('wrap-ansi')
 export default class CommandHelp {
   render: (input: string) => string
 
-  constructor(public command: Config.Command, public config: Config.IConfig, public opts: HelpOptions) {
+  constructor(public command: Interfaces.Command, public config: Interfaces.Config, public opts: HelpOptions) {
     this.render = template(this)
   }
 
@@ -49,7 +49,7 @@ export default class CommandHelp {
     return output
   }
 
-  protected usage(flags: Config.Command.Flag[]): string {
+  protected usage(flags: Interfaces.Command.Flag[]): string {
     const usage = this.command.usage
     const body = (usage ? castArray(usage) : [this.defaultUsage(flags)])
     .map(u => `$ ${this.config.bin} ${u}`.trim())
@@ -60,7 +60,7 @@ export default class CommandHelp {
     ].join('\n')
   }
 
-  protected defaultUsage(_: Config.Command.Flag[]): string {
+  protected defaultUsage(_: Interfaces.Command.Flag[]): string {
     return compact([
       this.command.id,
       this.command.args.filter(a => !a.hidden).map(a => this.arg(a)).join(' '),
@@ -95,7 +95,7 @@ export default class CommandHelp {
     ].join('\n')
   }
 
-  protected args(args: Config.Command['args']): string | undefined {
+  protected args(args: Interfaces.Command['args']): string | undefined {
     if (args.filter(a => a.description).length === 0) return
     const body = renderList(args.map(a => {
       const name = a.name.toUpperCase()
@@ -110,13 +110,13 @@ export default class CommandHelp {
     ].join('\n')
   }
 
-  protected arg(arg: Config.Command['args'][0]): string {
+  protected arg(arg: Interfaces.Command['args'][0]): string {
     const name = arg.name.toUpperCase()
     if (arg.required) return `${name}`
     return `[${name}]`
   }
 
-  protected flags(flags: Config.Command.Flag[]): string | undefined {
+  protected flags(flags: Interfaces.Command.Flag[]): string | undefined {
     if (flags.length === 0) return
     const body = renderList(flags.map(flag => {
       let left = flag.helpLabel

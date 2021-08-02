@@ -5,9 +5,7 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/command": "^1.5.20",
-    "@oclif/config": "^1.15.1",
-    "@oclif/errors": "^1.2.2",
+    "@oclif/core": "^0.5.27",
     "chalk": "^4.1.0",
     "indent-string": "^4.0.0",
     "lodash.template": "^4.4.0",
@@ -34,6 +32,7 @@
     "globby": "^11.0.1",
     "mocha": "^8.2.1",
     "nock": "^13.0.0",
+    "shx": "^0.3.3",
     "sinon": "^10.0.0",
     "ts-node": "^9.1.1",
     "typescript": "3.8.3"
@@ -53,6 +52,7 @@
   "main": "./lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
+    "topicSeparator": " ",
     "bin": "oclif",
     "devPlugins": [
       "@oclif/plugin-plugins",
@@ -61,13 +61,13 @@
   },
   "repository": "oclif/plugin-help",
   "scripts": {
-    "build": "rm -rf lib && tsc",
+    "build": "shx rm -rf lib && tsc",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "pretest": "yarn build --noEmit && tsc -p test --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "yarn lint",
     "prepack": "yarn run build && oclif-dev manifest",
-    "postpack": "rm oclif.manifest.json"
+    "postpack": "shx rm oclif.manifest.json"
   },
   "types": "./lib/index.d.ts"
 }

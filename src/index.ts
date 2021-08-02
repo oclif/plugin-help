@@ -1,5 +1,4 @@
-import * as Config from '@oclif/config'
-import {error} from '@oclif/errors'
+import {Errors, Config, Interfaces} from '@oclif/core'
 import * as chalk from 'chalk'
 import indent = require('indent-string')
 import stripAnsi = require('strip-ansi')
@@ -34,12 +33,12 @@ function getHelpSubject(args: string[]): string | undefined {
 }
 
 export abstract class HelpBase {
-  constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
+  constructor(config: Interfaces.Config, opts: Partial<HelpOptions> = {}) {
     this.config = config
     this.opts = {maxWidth: stdtermwidth, ...opts}
   }
 
-  protected config: Config.IConfig
+  protected config: Interfaces.Config
 
   protected opts: HelpOptions
 
@@ -54,23 +53,23 @@ export abstract class HelpBase {
    * @param command
    * @param topics
    */
-  public abstract showCommandHelp(command: Config.Command, topics: Config.Topic[]): void;
+  public abstract showCommandHelp(command: Interfaces.Command, topics: Interfaces.Topic[]): void;
 }
 
 export default class Help extends HelpBase {
   render: (input: string) => string
 
   /*
-   * _topics is to work around Config.topics mistakenly including commands that do
+   * _topics is to work around Interfaces.topics mistakenly including commands that do
    * not have children, as well as topics. A topic has children, either commands or other topics. When
    * this is fixed upstream config.topics should return *only* topics with children,
    * and this can be removed.
    */
-  private get _topics(): Config.Topic[] {
+  private get _topics(): Interfaces.Topic[] {
     // since this.config.topics is a getter that does non-trivial work, cache it outside the filter loop for
     // performance benefits in the presence of large numbers of topics
     const topics = this.config.topics
-    return topics.filter((topic: Config.Topic) => {
+    return topics.filter((topic: Interfaces.Topic) => {
       // it is assumed a topic has a child if it has children
       const hasChild = topics.some(subTopic => subTopic.name.includes(`${topic.name}:`))
       return hasChild
@@ -96,7 +95,7 @@ export default class Help extends HelpBase {
     return topics
   }
 
-  constructor(config: Config.IConfig, opts: Partial<HelpOptions> = {}) {
+  constructor(config: Interfaces.Config, opts: Partial<HelpOptions> = {}) {
     super(config, opts)
     this.render = template(this)
   }
@@ -122,10 +121,10 @@ export default class Help extends HelpBase {
       return
     }
 
-    error(`command ${subject} not found`)
+    Errors.error(`command ${subject} not found`)
   }
 
-  public showCommandHelp(command: Config.Command) {
+  public showCommandHelp(command: Interfaces.Command) {
     const name = command.id
     const depth = name.split(':').length
 
@@ -148,11 +147,11 @@ export default class Help extends HelpBase {
     }
   }
 
-  protected showRootHelp() {
+  protected async showRootHelp() {
     let rootTopics = this.sortedTopics
     let rootCommands = this.sortedCommands
 
-    console.log(this.formatRoot())
+    console.log(await this.formatRoot())
     console.log('')
 
     if (!this.opts.all) {
@@ -172,7 +171,7 @@ export default class Help extends HelpBase {
     }
   }
 
-  protected showTopicHelp(topic: Config.Topic) {
+  protected showTopicHelp(topic: Interfaces.Topic) {
     const name = topic.name
     const depth = name.split(':').length
 
@@ -192,17 +191,17 @@ export default class Help extends HelpBase {
     }
   }
 
-  protected formatRoot(): string {
-    const help = new RootHelp(this.config, this.opts)
+  protected async formatRoot(): Promise<string> {
+    const help = new RootHelp(await Config.load(), this.opts)
     return help.root()
   }
 
-  protected formatCommand(command: Config.Command): string {
+  protected formatCommand(command: Interfaces.Command): string {
     const help = new CommandHelp(command, this.config, this.opts)
     return help.generate()
   }
 
-  protected formatCommands(commands: Config.Command[]): string {
+  protected formatCommands(commands: Interfaces.Command[]): string {
     if (commands.length === 0) return ''
 
     const body = renderList(commands.map(c => [
@@ -220,7 +219,7 @@ export default class Help extends HelpBase {
     ].join('\n')
   }
 
-  protected formatTopic(topic: Config.Topic): string {
+  protected formatTopic(topic: Interfaces.Topic): string {
     let description = this.render(topic.description || '')
     const title = description.split('\n')[0]
     description = description.split('\n').slice(1).join('\n')
@@ -239,7 +238,7 @@ export default class Help extends HelpBase {
     return output + '\n'
   }
 
-  protected formatTopics(topics: Config.Topic[]): string {
+  protected formatTopics(topics: Interfaces.Topic[]): string {
     if (topics.length === 0) return ''
     const body = renderList(topics.map(c => [
       c.name,
@@ -260,7 +259,7 @@ export default class Help extends HelpBase {
    * @param {object} command The command to generate readme help for
    * @return {string} the readme help string for the given command
    */
-  protected command(command: Config.Command) {
+  protected command(command: Interfaces.Command) {
     return this.formatCommand(command)
   }
 }

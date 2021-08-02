@@ -1,7 +1,6 @@
-import {tsPath} from '@oclif/config/lib/ts-node'
 import lodashTemplate = require('lodash.template')
-import {IConfig} from '@oclif/config'
 import {HelpBase, HelpOptions} from '.'
+import {Interfaces, tsPath} from '@oclif/core'
 
 export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   return arr.filter((a, i) => {
@@ -51,10 +50,10 @@ export function template(context: any): (t: string) => string {
 }
 
 interface HelpBaseDerived {
-  new(config: IConfig, opts?: Partial<HelpOptions>): HelpBase;
+  new(config: Interfaces.Config, opts?: Partial<HelpOptions>): HelpBase;
 }
 
-function extractExport(config: IConfig, classPath: string): HelpBaseDerived {
+function extractExport(config: Interfaces.Config, classPath: string): HelpBaseDerived {
   const helpClassPath = tsPath(config.root, classPath)
   return require(helpClassPath) as HelpBaseDerived
 }
@@ -63,7 +62,7 @@ function extractClass(exported: any): HelpBaseDerived {
   return exported && exported.default ? exported.default : exported
 }
 
-export function getHelpClass(config: IConfig, defaultClass = '@oclif/plugin-help'): HelpBaseDerived {
+export function getHelpClass(config: Interfaces.Config, defaultClass = '@oclif/plugin-help'): HelpBaseDerived {
   const pjson = config.pjson
   const configuredClass = pjson && pjson.oclif &&  pjson.oclif.helpClass
 
