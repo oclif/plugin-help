@@ -151,10 +151,10 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
-"@oclif/core@^0.5.27":
-  version "0.5.27"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-0.5.27.tgz#d06630d915c746076d34473d6e4772580811dd72"
-  integrity sha512-BfS4REDHx1mr7RnitYkznIQ5fzLBCf0fRbyB/dqgMNPhAVsdzQpjobn5x+dMdcsLhO+2iXisfoMl+x0j9AB9bw==
+"@oclif/core@^0.5.28":
+  version "0.5.28"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-0.5.28.tgz#bb4c32f8f7cb0661db0aa8960c68e0f6d9c60e6a"
+  integrity sha512-t9jaGLRP5yJKwiMIzKmzYyP1eRxltWAY02lduUDp3d6cE+Dt2pcIGd7KtsOImKUWv+ClLI7O/CVHnMkOfNJvYA==
   dependencies:
     "@oclif/linewrap" "^1.0.0"
     chalk "^4.1.0"
@@ -326,9 +326,9 @@
     "@types/node" "*"
 
 "@types/json-schema@^7.0.3":
-  version "7.0.8"
-  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.8.tgz#edf1bf1dbf4e04413ca8e5b17b3b7d7d54b59818"
-  integrity sha512-YSBPTLTVm2e2OoQIDYx8HaeWJ5tTToLH67kXR7zYNGupXMEHa2++G8k+DczX2cFVgalypqtyZIcU19AFcmOpmg==
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
+  integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
 "@types/lodash.template@^4.4.4":
   version "4.5.0"
@@ -338,9 +338,9 @@
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.14.171"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.171.tgz#f01b3a5fe3499e34b622c362a46a609fdb23573b"
-  integrity sha512-7eQ2xYLLI/LsicL2nejW9Wyko3lcpN6O/z0ZLHrEQsg280zIdCv1t/0m6UtBjUHokCGBQ3gYTbHzDkZ1xOBwwg==
+  version "4.14.172"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.172.tgz#aad774c28e7bfd7a67de25408e03ee5a8c3d028a"
+  integrity sha512-/BHF5HAx3em7/KkzVKm3LrsD6HZAXuXO1AJZQ3cRRBZj4oHZDviWPYu0aEplAqDFNHZPW6d3G7KN+ONcCCC7pw==
 
 "@types/minimatch@*":
   version "3.0.5"

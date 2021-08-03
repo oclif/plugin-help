@@ -1,7 +1,7 @@
 @oclif/plugin-help
 ===================
 
-standard help for oclif
+A CLI command to invoke the standard help functionality from [oclif/core](https://github.com/oclif/core).
 
 [![Version](https://img.shields.io/npm/v/@oclif/plugin-help.svg)](https://npmjs.org/package/@oclif/plugin-help)
 [![CircleCI](https://circleci.com/gh/oclif/plugin-help/tree/master.svg?style=svg)](https://circleci.com/gh/oclif/plugin-help/tree/master)
