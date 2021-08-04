@@ -36,7 +36,6 @@
   "main": "./lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "topicSeparator": " ",
     "bin": "oclif",
     "devPlugins": [
       "@oclif/plugin-plugins"
