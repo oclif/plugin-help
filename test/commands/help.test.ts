@@ -35,12 +35,8 @@ VERSION
 USAGE
   $ oclif [COMMAND]
 
-TOPICS
-  plugins  list installed plugins
-
 COMMANDS
-  help     display help for oclif
-  plugins  list installed plugins
+  help  display help for oclif
 
 `)
   })
