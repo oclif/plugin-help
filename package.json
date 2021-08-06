@@ -8,6 +8,7 @@
     "@oclif/core": "^0.5.28"
   },
   "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
     "@oclif/plugin-plugins": "^1.7.6",
     "@oclif/test": "core-v1",
     "@types/chai": "^4.1.7",
