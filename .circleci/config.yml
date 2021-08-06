@@ -23,10 +23,11 @@ workflows:
               - os: windows
                 node_version: maintenance
       - release-management/release-package:
-          github-release: true
-          tag: core-v1
-          requires:
-            - release-management/test-package
+          context: SF-CLI-RELEASE-PROCESS
           filters:
             branches:
               only: main
+          github-release: true
+          requires:
+            - release-management/test-package
+          tag: core-v1
