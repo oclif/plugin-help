@@ -36,8 +36,7 @@ USAGE
   $ oclif [COMMAND]
 
 COMMANDS
-  help     display help for oclif
-  plugins  list installed plugins
+  help  display help for oclif
 
 `)
   })
