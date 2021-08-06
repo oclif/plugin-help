@@ -33,9 +33,9 @@
     "oclif-plugin"
   ],
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "./lib/help.js",
   "oclif": {
-    "commands": "./lib/commands",
+    "commands": "./lib",
     "bin": "oclif",
     "devPlugins": [
       "@oclif/plugin-plugins"
@@ -51,5 +51,5 @@
     "prepack": "yarn run build && oclif-dev manifest",
     "postpack": "shx rm oclif.manifest.json"
   },
-  "types": "./lib/index.d.ts"
+  "types": "./lib/help.d.ts"
 }
