@@ -30,3 +30,4 @@ workflows:
           github-release: true
           requires:
             - release-management/test-package
+          tag: core-v1
