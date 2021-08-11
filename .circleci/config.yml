@@ -56,7 +56,7 @@ workflows:
       - node-12
       - node-10
       - release:
-          context: org-global
+          context: SF-CLI-RELEASE-PROCESS
           filters:
             branches: {only: master}
           requires:
