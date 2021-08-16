@@ -6,15 +6,11 @@
     "module": "commonjs",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "./lib",
+    "outDir": "lib",
     "pretty": true,
-    "rootDirs": [
-      "./src"
-    ],
+    "rootDir": "src",
     "strict": true,
     "target": "es2017"
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*.ts"]
 }
