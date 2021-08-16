@@ -5,7 +5,7 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^0.5.28"
+    "@oclif/core": "^0.5.29"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
@@ -37,7 +37,7 @@
   "license": "MIT",
   "main": "./lib/help.js",
   "oclif": {
-    "commands": "./lib",
+    "commands": "./lib/commands/",
     "bin": "oclif",
     "devPlugins": [
       "@oclif/plugin-plugins"
