@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/oclif/plugin-help/compare/v4.0.0...v4.0.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* failing tests ([775ad5e](https://github.com/oclif/plugin-help/commit/775ad5efb7a71db2ed1f20b4462e8365cf90cc53))
+* use correct path for oclif.commands ([08bc9f2](https://github.com/oclif/plugin-help/commit/08bc9f20c1f8b98cb708ecb5a75fbcc0b4667f4b))
+
 ## [4.0.0](https://github.com/oclif/plugin-help/compare/v3.2.2...v4.0.0) (2021-08-06)
 
 
