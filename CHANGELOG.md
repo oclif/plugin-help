@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/oclif/plugin-help/compare/v4.0.2...v4.0.3) (2021-08-18)
+
+
+### Bug Fixes
+
+* bump oclif/core and @salesforce/core ([#270](https://github.com/oclif/plugin-help/issues/270)) ([037bbc3](https://github.com/oclif/plugin-help/commit/037bbc37270b4615d93aa4ae6e1d02b99d074d90))
+
 ### [4.0.2](https://github.com/oclif/plugin-help/compare/v4.0.1...v4.0.2) (2021-08-17)
 
 

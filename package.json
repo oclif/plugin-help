@@ -1,7 +1,7 @@
 {
   "name": "@oclif/plugin-help",
   "description": "standard help for oclif",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
