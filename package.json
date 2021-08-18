@@ -5,11 +5,11 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^0.5.29"
+    "@oclif/core": "^0.5.31"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
-    "@oclif/plugin-plugins": "^1.7.6",
+    "@oclif/plugin-plugins": "^1.10.1",
     "@oclif/test": "core-v1",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^8.0.0",
