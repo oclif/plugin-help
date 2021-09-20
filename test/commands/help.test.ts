@@ -18,7 +18,7 @@ ARGUMENTS
   COMMAND  command to show help for
 
 OPTIONS
-  --all  see all commands in CLI
+  --include-nested, -i  include all nested commands in the output
 
 `)
   })

@@ -4,7 +4,10 @@ export default class HelpCommand extends Command {
   static description = 'display help for <%= config.bin %>'
 
   static flags = {
-    all: Flags.boolean({description: 'see all commands in CLI'}),
+    'include-nested': Flags.boolean({
+      description: 'include all nested commands in the output',
+      char: 'i',
+    }),
   }
 
   static args = [
@@ -15,7 +18,7 @@ export default class HelpCommand extends Command {
 
   async run() {
     const {flags, argv} = await this.parse(HelpCommand)
-    const help = new Help(this.config, {all: flags.all})
+    const help = new Help(this.config, {all: flags['include-nested']})
     await help.showHelp(argv)
   }
 }
