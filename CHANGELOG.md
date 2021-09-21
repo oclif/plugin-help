@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/oclif/plugin-help/compare/v4.0.3...v5.0.0) (2021-09-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* require node 12+ (#278)
+
+### build
+
+* require node 12+ ([#278](https://github.com/oclif/plugin-help/issues/278)) ([78b0ddb](https://github.com/oclif/plugin-help/commit/78b0ddb346cbedb47735eb99a82c2626dbcde6af))
+
 ### [4.0.3](https://github.com/oclif/plugin-help/compare/v4.0.2...v4.0.3) (2021-08-18)
 
 
