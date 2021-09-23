@@ -6,7 +6,7 @@ export default class HelpCommand extends Command {
   static flags = {
     'nested-commands': Flags.boolean({
       description: 'include all nested commands in the output',
-      char: 'i',
+      char: 'n',
     }),
   }
 
