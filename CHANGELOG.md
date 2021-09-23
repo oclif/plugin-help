@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/oclif/plugin-help/compare/v5.0.1...v5.1.0) (2021-09-23)
+
+
+### Features
+
+* rename help cmd flag --all to --nested-commands ([#279](https://github.com/oclif/plugin-help/issues/279)) ([27772d2](https://github.com/oclif/plugin-help/commit/27772d2e947e5ff4cc668f6d3cf81b54c46ca62a))
+
 ### [5.0.1](https://github.com/oclif/plugin-help/compare/v5.0.0...v5.0.1) (2021-09-21)
 
 ## [5.0.0](https://github.com/oclif/plugin-help/compare/v4.0.3...v5.0.0) (2021-09-21)
