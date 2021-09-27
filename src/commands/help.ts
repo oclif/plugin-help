@@ -1,17 +1,17 @@
 import {Command, Flags, Help} from '@oclif/core'
 
 export default class HelpCommand extends Command {
-  static description = 'display help for <%= config.bin %>'
+  static description = 'Display help for <%= config.bin %>.'
 
   static flags = {
     'nested-commands': Flags.boolean({
-      description: 'include all nested commands in the output',
+      description: 'Include all nested commands in the output.',
       char: 'n',
     }),
   }
 
   static args = [
-    {name: 'command', required: false, description: 'command to show help for'},
+    {name: 'command', required: false, description: 'Command to show help for.'},
   ]
 
   static strict = false

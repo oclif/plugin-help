@@ -7,27 +7,9 @@ describe('help command', () => {
   test
   .stdout()
   .command(['help', 'help'])
-  .skip()
+  // .skip()
   .it('shows help command help', ctx => {
-    expect(ctx.stdout).to.equal(`display help for oclif
-
-USAGE
-  $ oclif help [COMMAND]
-
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --include-nested, -i  include all nested commands in the output
-
-`)
-  })
-
-  test
-  .stdout()
-  .command(['help'])
-  .it('shows root help', ctx => {
-    expect(ctx.stdout).to.equal(`standard help for oclif
+    expect(ctx.stdout).to.equal(`Standard help for oclif.
 
 VERSION
   ${UA}
@@ -36,7 +18,25 @@ USAGE
   $ oclif [COMMAND]
 
 COMMANDS
-  help  display help for oclif
+  help  Display help for oclif.
+
+`)
+  })
+
+  test
+  .stdout()
+  .command(['help'])
+  .it('shows root help', ctx => {
+    expect(ctx.stdout).to.equal(`Standard help for oclif.
+
+VERSION
+  ${UA}
+
+USAGE
+  $ oclif [COMMAND]
+
+COMMANDS
+  help  Display help for oclif.
 
 `)
   })
