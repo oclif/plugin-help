@@ -1,3 +1,4 @@
+---
 version: 2.1
 
 orbs:
@@ -12,7 +13,7 @@ workflows:
             parameters:
               os:
                 - linux
-                # - windows
+                - windows
               node_version:
                 - latest
                 - lts
