@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/oclif/plugin-help/compare/v3.2.2...v3.2.3) (2021-08-11)
+
+
+### Bug Fixes
+
+* render default arg/opt if equal to 0 ([#264](https://github.com/oclif/plugin-help/issues/264)) ([ca0af19](https://github.com/oclif/plugin-help/commit/ca0af1908af4746479fe703866e2888b9e8b1672))
+
 ## [3.2.2](https://github.com/oclif/plugin-help/compare/v3.2.1...v3.2.2) (2021-02-03)
 
 
