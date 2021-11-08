@@ -1,5 +1,5 @@
 import {tsPath} from '@oclif/config/lib/ts-node'
-import lodashTemplate = require('lodash.template')
+import * as _ from 'lodash'
 import {IConfig} from '@oclif/config'
 import {HelpBase, HelpOptions} from '.'
 
@@ -45,7 +45,7 @@ export namespace sort {
 
 export function template(context: any): (t: string) => string {
   function render(t: string): string {
-    return lodashTemplate(t)(context)
+    return _.template(t)(context)
   }
   return render
 }
