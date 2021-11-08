@@ -1,3 +1,10 @@
+## [3.2.4](https://github.com/oclif/plugin-help/compare/v3.2.3...v3.2.4) (2021-11-08)
+
+
+### Bug Fixes
+
+* remove dep on lodash.template module ([#305](https://github.com/oclif/plugin-help/issues/305)) ([6926f17](https://github.com/oclif/plugin-help/commit/6926f17087b8754a5a82e98bd95d7d72aacf459f))
+
 ## [3.2.3](https://github.com/oclif/plugin-help/compare/v3.2.2...v3.2.3) (2021-08-11)
 
 
