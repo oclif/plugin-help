@@ -5,7 +5,7 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^0.5.39"
+    "@oclif/core": "^1.0.2"
   },
   "devDependencies": {
     "@oclif/plugin-plugins": "^1.10.1",
@@ -17,7 +17,7 @@
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
     "mocha": "^8.2.1",
-    "oclif": "^2.0.0-main.5",
+    "oclif": "^2.0.0-main.9",
     "shx": "^0.3.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.3.5"
