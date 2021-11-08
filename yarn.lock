@@ -128,7 +128,7 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
-"@oclif/core@^1.0.0", "@oclif/core@^1.0.2":
+"@oclif/core@^1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.0.2.tgz#f8f4eb12ff5adceb0a7ed262e9f5d46bbef1bf4f"
   integrity sha512-5Qd4D+OkhCPLNML8S/LEu78CPbnd4hfsF+/7fzAnyUD4U3P+F+/Lnx/b/AnaXw6U8CPjSNO+sod0C+QpqTN13A==
@@ -144,6 +144,29 @@
     indent-string "^4.0.0"
     is-wsl "^2.1.1"
     lodash.template "^4.4.0"
+    semver "^7.3.2"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    tslib "^2.0.0"
+    widest-line "^3.1.0"
+    wrap-ansi "^7.0.0"
+
+"@oclif/core@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-1.0.3.tgz#5c906ef27afe1f5585b87982cffe7f72a7ef1bc5"
+  integrity sha512-ghQ/p06Ybsa832JIJiFTxUknApm6RnJK1MaptYSxx55GLOGiFv7+I6B4roQov9f6Zj5SQCVYjRYwmJlX0PV0XA==
+  dependencies:
+    "@oclif/linewrap" "^1.0.0"
+    chalk "^4.1.0"
+    clean-stack "^3.0.0"
+    cli-ux "^5.1.0"
+    debug "^4.1.1"
+    fs-extra "^9.0.1"
+    get-package-type "^0.1.0"
+    globby "^11.0.1"
+    indent-string "^4.0.0"
+    is-wsl "^2.1.1"
+    lodash "^4.17.21"
     semver "^7.3.2"
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
@@ -3024,7 +3047,7 @@ lodash.zip@^4.2.0:
   resolved "https://registry.npmjs.org/lodash.zip/-/lodash.zip-4.2.0.tgz#ec6662e4896408ed4ab6c542a3990b72cc080020"
   integrity sha1-7GZi5IlkCO1KtsVCo5kLcswIACA=
 
-lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.5.1:
+lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.21, lodash@^4.5.1:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
