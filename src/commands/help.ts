@@ -5,7 +5,7 @@ import {getHelpClass} from '..'
 export default class HelpCommand extends Command {
   static description = 'display help for <%= config.bin %>'
 
-  static flags = {
+  static flags: flags.Input<any> = {
     all: flags.boolean({description: 'see all commands in CLI'}),
   }
 
