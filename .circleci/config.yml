@@ -17,11 +17,11 @@ jobs:
       - run:
           name: Run tests
           command: yarn test
-  node-12:
+  node-14:
     <<: *test
     docker:
       - image: node:14
-  node-10:
+  node-12:
     <<: *test
     docker:
       - image: node:12
