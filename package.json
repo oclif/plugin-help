@@ -17,9 +17,9 @@
     "wrap-ansi": "^4.0.0"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/dev-cli": "^1.26.1",
     "@oclif/plugin-legacy": "^1.2.0",
-    "@oclif/plugin-plugins": "^1.10.1",
+    "@oclif/plugin-plugins": "^1.10.2",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.1.7",
     "@types/lodash": "^4.14.176",
