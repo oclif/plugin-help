@@ -1,3 +1,10 @@
+## [3.2.6](https://github.com/oclif/plugin-help/compare/v3.2.5...v3.2.6) (2021-11-23)
+
+
+### Bug Fixes
+
+* force publish ([fed4ea5](https://github.com/oclif/plugin-help/commit/fed4ea564fbfd68695ce974629860e36ec5c5d35))
+
 ## [3.2.5](https://github.com/oclif/plugin-help/compare/v3.2.4...v3.2.5) (2021-11-18)
 
 
