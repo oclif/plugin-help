@@ -1,3 +1,10 @@
+## [3.2.9](https://github.com/oclif/plugin-help/compare/v3.2.8...v3.2.9) (2021-11-29)
+
+
+### Bug Fixes
+
+* bump dev-cli ([#323](https://github.com/oclif/plugin-help/issues/323)) ([91dec9c](https://github.com/oclif/plugin-help/commit/91dec9cfd829b429858aee0985843e40abb9c4a5))
+
 ## [3.2.8](https://github.com/oclif/plugin-help/compare/v3.2.7...v3.2.8) (2021-11-29)
 
 
