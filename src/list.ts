@@ -16,12 +16,12 @@ export function renderList(input: (string | undefined)[][], opts: {maxWidth: num
       if (!left && !right) continue
       if (left) {
         if (opts.stripAnsi) left = stripAnsi(left)
-        output += wrap(left.trim(), opts.maxWidth, {hard: true, trim: false})
+        output += wrap(left.trim(), opts.maxWidth, {hard: true, trim: true})
       }
       if (right) {
         if (opts.stripAnsi) right = stripAnsi(right)
         output += '\n'
-        output += indent(wrap(right.trim(), opts.maxWidth - 2, {hard: true, trim: false}), 4)
+        output += indent(wrap(right.trim(), opts.maxWidth - 2, {hard: true, trim: true}), 4)
       }
       output += '\n\n'
     }
@@ -45,7 +45,7 @@ export function renderList(input: (string | undefined)[][], opts: {maxWidth: num
       continue
     }
     if (opts.stripAnsi) right = stripAnsi(right)
-    right = wrap(right.trim(), opts.maxWidth - (maxLength + 2), {hard: true, trim: false})
+    right = wrap(right.trim(), opts.maxWidth - (maxLength + 2), {hard: true, trim: true})
     // right = wrap(right.trim(), screen.stdtermwidth - (maxLength + 4), {hard: true, trim: false})
     const [first, ...lines] = right!.split('\n').map(s => s.trim())
     cur += ' '.repeat(maxLength - width(cur) + 2)
