@@ -28,7 +28,7 @@
     "@types/strip-ansi": "^5.2.1",
     "@types/wrap-ansi": "^8.0.1",
     "chai": "^4.2.0",
-    "eslint": "^7.3.1",
+    "eslint": "^8.3.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
     "globby": "^11.0.1",
