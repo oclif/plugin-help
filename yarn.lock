@@ -181,6 +181,18 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
+"@oclif/config@^1.18.1":
+  version "1.18.1"
+  resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.18.1.tgz#81207d3682fa967bcd6981954fcfe414a29dcc77"
+  integrity sha512-twRJO5RRl3CCDaAASb6LiynfFQl/SbkWWOQy1l0kJZSMPysEhz+fk3BKfmlCCm451Btkp4UezHUwI1JtH+/zYg==
+  dependencies:
+    "@oclif/errors" "^1.3.3"
+    "@oclif/parser" "^3.8.0"
+    debug "^4.1.1"
+    globby "^11.0.1"
+    is-wsl "^2.1.1"
+    tslib "^2.0.0"
+
 "@oclif/dev-cli@^1.26.5":
   version "1.26.5"
   resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.26.5.tgz#25c242dfb8d397691cfde138d4c3cd7fafd85349"
@@ -339,13 +351,13 @@
     semver "^7.3.2"
     tslib "^2.0.0"
 
-"@oclif/plugin-plugins@^1.10.4":
-  version "1.10.4"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.10.4.tgz#07af68feb3e9a595ca25a0294b90d090eb0a9320"
-  integrity sha512-Nkps/GeHu1DmTK1Mmn0YRk8DYNc5SF9G1friRCVYw6Xqqps1iqeCYbC+zaGmgLLFF2jZmR0xdALXsu47oLIj1A==
+"@oclif/plugin-plugins@^1.10.6":
+  version "1.10.6"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-1.10.6.tgz#f8b2212d7e9f70729dcab9eb0a0ddb88039c1586"
+  integrity sha512-+u+tW66ujnn+bu9+h9bbJDvAsjYXeu7CFbO9pHpxNrV1wWPgkhaiC3cHMxhTQlofCOjzTxYHGQI4dGXCwZiBIA==
   dependencies:
     "@oclif/color" "^0.1.2"
-    "@oclif/command" "^1.8.5"
+    "@oclif/command" "^1.8.6"
     "@oclif/errors" "^1.3.5"
     chalk "^4.1.0"
     cli-ux "^5.6.4"
