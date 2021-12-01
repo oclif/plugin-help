@@ -16,7 +16,7 @@ export default class HelpCommand extends Command {
 
   static strict = false
 
-  async run() {
+  async run(): Promise<void> {
     const {flags, argv} = await this.parse(HelpCommand)
     const help = new Help(this.config, {all: flags['nested-commands']})
     await help.showHelp(argv)
