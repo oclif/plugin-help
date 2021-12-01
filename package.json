@@ -5,17 +5,17 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^1.0.3"
+    "@oclif/core": "^1.0.4"
   },
   "devDependencies": {
-    "@oclif/plugin-plugins": "^1.10.1",
+    "@oclif/plugin-plugins": "^2.0.2",
     "@oclif/test": "core-v1",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^8.0.0",
     "chai": "^4.2.0",
     "eslint": "^7.3.1",
-    "eslint-config-oclif": "^3.1.0",
-    "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint-config-oclif": "^4.0.0",
+    "eslint-config-oclif-typescript": "^1.0.2",
     "mocha": "^8.2.1",
     "oclif": "^2.0.0-main.10",
     "shx": "^0.3.3",
