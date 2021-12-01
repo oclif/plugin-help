@@ -1,7 +1,7 @@
 {
   "name": "@oclif/plugin-help",
   "description": "Standard help for oclif.",
-  "version": "5.1.3",
+  "version": "5.1.4",
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
@@ -11,7 +11,7 @@
     "@oclif/plugin-plugins": "^2.0.2",
     "@oclif/test": "core-v1",
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^9.0.0",
+    "@types/mocha": "^8.0.0",
     "chai": "^4.2.0",
     "eslint": "^7.3.1",
     "eslint-config-oclif": "^4.0.0",
