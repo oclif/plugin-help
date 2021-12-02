@@ -418,6 +418,29 @@
     widest-line "^3.1.0"
     wrap-ansi "^7.0.0"
 
+"@oclif/core@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@oclif/core/-/core-1.0.6.tgz#6ccd6d7794f10123129941dc4406ff18e1eb0854"
+  integrity sha512-j6dtBPQMZjqrm9IID4A9IfMv5PY2y/beCC35e3PGzPHH9g39GXXcR1hyRmok8prRrvJWPx05OeJfj3OcxObk8w==
+  dependencies:
+    "@oclif/linewrap" "^1.0.0"
+    chalk "^4.1.2"
+    clean-stack "^3.0.1"
+    cli-ux "^6.0.2"
+    debug "^4.3.3"
+    fs-extra "^9.1.0"
+    get-package-type "^0.1.0"
+    globby "^11.0.4"
+    indent-string "^4.0.0"
+    is-wsl "^2.2.0"
+    lodash "^4.17.21"
+    semver "^7.3.5"
+    string-width "^4.2.3"
+    strip-ansi "^6.0.1"
+    tslib "^2.3.1"
+    widest-line "^3.1.0"
+    wrap-ansi "^7.0.0"
+
 "@oclif/errors@^1.2.1", "@oclif/errors@^1.2.2", "@oclif/errors@^1.3.3", "@oclif/errors@^1.3.5":
   version "1.3.5"
   resolved "https://registry.npmjs.org/@oclif/errors/-/errors-1.3.5.tgz#a1e9694dbeccab10fe2fe15acb7113991bed636c"
@@ -1273,6 +1296,14 @@ cli-progress@^3.4.0:
     colors "^1.1.2"
     string-width "^4.2.0"
 
+cli-progress@^3.9.1:
+  version "3.9.1"
+  resolved "https://registry.npmjs.org/cli-progress/-/cli-progress-3.9.1.tgz#a22eba6a20f53289fdd05d5ee8cb2cc8c28f866e"
+  integrity sha512-AXxiCe2a0Lm0VN+9L0jzmfQSkcZm5EYspfqXKaSIQKqIk+0hnkZ3/v1E9B39mkD6vYhKih3c/RPsJBSwq9O99Q==
+  dependencies:
+    colors "^1.1.2"
+    string-width "^4.2.0"
+
 cli-table@^0.3.1:
   version "0.3.6"
   resolved "https://registry.npmjs.org/cli-table/-/cli-table-0.3.6.tgz#e9d6aa859c7fe636981fd3787378c2a20bce92fc"
@@ -1417,6 +1448,37 @@ cli-ux@^6.0.1:
     chalk "^4.1.0"
     clean-stack "^3.0.0"
     cli-progress "^3.4.0"
+    extract-stack "^2.0.0"
+    fs-extra "^8.1"
+    hyperlinker "^1.0.0"
+    indent-string "^4.0.0"
+    is-wsl "^2.2.0"
+    js-yaml "^3.13.1"
+    lodash "^4.17.21"
+    natural-orderby "^2.0.1"
+    object-treeify "^1.1.4"
+    password-prompt "^1.1.2"
+    semver "^7.3.2"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    supports-color "^8.1.0"
+    supports-hyperlinks "^2.1.0"
+    tslib "^2.0.0"
+
+cli-ux@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/cli-ux/-/cli-ux-6.0.2.tgz#58d97a2e597698fc8652bd3b6846dbdd3be4a966"
+  integrity sha512-uLVfxABvq0mSoTbMWXrZwcq87Lj1nz3w8mbZaJSx0VPltmTZi5M16qTbr27Rjka/02x6WCWVMwU9dGp1GLp4dg==
+  dependencies:
+    "@oclif/core" "^1.0.5"
+    "@oclif/linewrap" "^1.0.0"
+    "@oclif/screen" "^1.0.3"
+    ansi-escapes "^4.3.0"
+    ansi-styles "^4.2.0"
+    cardinal "^2.1.1"
+    chalk "^4.1.0"
+    clean-stack "^3.0.0"
+    cli-progress "^3.9.1"
     extract-stack "^2.0.0"
     fs-extra "^8.1"
     hyperlinker "^1.0.0"
