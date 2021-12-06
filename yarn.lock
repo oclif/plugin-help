@@ -217,16 +217,16 @@
     is-wsl "^2.1.1"
     tslib "^2.0.0"
 
-"@oclif/dev-cli@^1.26.6":
-  version "1.26.6"
-  resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.26.6.tgz#a18a6eef7753c9cba02421e3c770c872edfb0b8a"
-  integrity sha512-C+bRSmhPXVZj/NpJgtRORm85TapAgMdpWpNtOE62Gwio1ci77h8iMgbwtAQyK/pv6gcbv8JXihEd7/KllLy/tQ==
+"@oclif/dev-cli@^1.26.7":
+  version "1.26.7"
+  resolved "https://registry.yarnpkg.com/@oclif/dev-cli/-/dev-cli-1.26.7.tgz#90647b94df3da3a3f8b971ed17a622985ed060a2"
+  integrity sha512-4J0v7aSQG4gqMMcgEf/9IqKOqmCKAkzrDgAbJPB65kDtmYGbE+msmTzVVsJOnEGR4TFJ19q8unTjU/SKmWAeVQ==
   dependencies:
-    "@oclif/command" "^1.8.6"
-    "@oclif/config" "^1.18.1"
+    "@oclif/command" "^1.8.7"
+    "@oclif/config" "^1.18.2"
     "@oclif/errors" "^1.3.5"
-    "@oclif/plugin-help" "^3.2.10"
-    cli-ux "^5.6.4"
+    "@oclif/plugin-help" "^3.2.11"
+    cli-ux "^5.6.5"
     debug "^4.1.1"
     find-yarn-workspace-root "^2.0.0"
     fs-extra "^8.1"
@@ -314,6 +314,22 @@
     widest-line "^3.1.0"
     wrap-ansi "^6.2.0"
 
+"@oclif/plugin-help@^3.2.11":
+  version "3.2.11"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.11.tgz#241f1d9bb4e7bf89d24f490b54ab9af5846e59c3"
+  integrity sha512-SSLvVMk3WZ23kFfDvKrotCZUcPUdGuPdYjtlIACaIoEmjtgCO9IqdQA5xmMzWozv9MHTqOdWwoJdU0qxD+MwNg==
+  dependencies:
+    "@oclif/command" "^1.8.7"
+    "@oclif/config" "^1.18.2"
+    "@oclif/errors" "^1.3.5"
+    chalk "^4.1.2"
+    indent-string "^4.0.0"
+    lodash "^4.17.21"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    widest-line "^3.1.0"
+    wrap-ansi "^6.2.0"
+
 "@oclif/plugin-help@^3.2.4":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.4.tgz#100e0e09d806e20595096609f2220d009ee096e2"
@@ -378,14 +394,14 @@
     widest-line "^3.1.0"
     wrap-ansi "^4.0.0"
 
-"@oclif/plugin-legacy@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-legacy/-/plugin-legacy-1.2.4.tgz#bf6e580ee7fb6f7e556de440c73ed30f5c59e8ea"
-  integrity sha512-ztbT8WJwK1MjEirv6WKCpdRFqVZXxxryCPZw5hcmfWZZVsu52bz7G/dzhS+RaToF1Y5FocHwt9XQXqOs8HOzFw==
+"@oclif/plugin-legacy@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-legacy/-/plugin-legacy-1.2.5.tgz#fd2ce011acbddb05df2e1ab761b804d226f7737e"
+  integrity sha512-CqkjVJhu1zPNS7coS93pXe22/6M+/Jo2JmSr33Fv0GH683RiSt0KBGwbyoDkYojpbSGWA5poCxKx/QgySlSCtw==
   dependencies:
     "@heroku-cli/command" "^8.5.0"
     "@oclif/color" "^0.1.2"
-    "@oclif/command" "^1.8.6"
+    "@oclif/command" "^1.8.7"
     ansi-escapes "^4.3.1"
     debug "^4.1.0"
     semver "^7.3.2"
@@ -910,38 +926,6 @@ cli-ux@^4.9.3:
     supports-hyperlinks "^1.0.1"
     treeify "^1.1.0"
     tslib "^1.9.3"
-
-cli-ux@^5.6.4:
-  version "5.6.4"
-  resolved "https://registry.yarnpkg.com/cli-ux/-/cli-ux-5.6.4.tgz#fd930fd175111aab2aa11b21c9da58b305a8d7cc"
-  integrity sha512-jW2oROKZdb3NlIHCMjjtaanuElHB/IhYPE5kgsbhmNtiBcUg/4L5QYyDbJ0n/wF+LAb/tl+Bh30lAHq5bmsbMA==
-  dependencies:
-    "@oclif/command" "^1.8.4"
-    "@oclif/errors" "^1.3.5"
-    "@oclif/linewrap" "^1.0.0"
-    "@oclif/screen" "^1.0.3"
-    ansi-escapes "^4.3.0"
-    ansi-styles "^4.2.0"
-    cardinal "^2.1.1"
-    chalk "^4.1.0"
-    clean-stack "^3.0.0"
-    cli-progress "^3.4.0"
-    extract-stack "^2.0.0"
-    fs-extra "^8.1"
-    hyperlinker "^1.0.0"
-    indent-string "^4.0.0"
-    is-wsl "^2.2.0"
-    js-yaml "^3.13.1"
-    lodash "^4.17.11"
-    natural-orderby "^2.0.1"
-    object-treeify "^1.1.4"
-    password-prompt "^1.1.2"
-    semver "^7.3.2"
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    supports-color "^8.1.0"
-    supports-hyperlinks "^2.1.0"
-    tslib "^2.0.0"
 
 cli-ux@^5.6.5:
   version "5.6.5"
