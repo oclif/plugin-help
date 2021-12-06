@@ -12,7 +12,7 @@
     "indent-string": "^4.0.0",
     "lodash": "^4.17.21",
     "string-width": "^4.2.0",
-    "strip-ansi": "^6.0.0",
+    "strip-ansi": "^7.0.1",
     "widest-line": "^3.1.0",
     "wrap-ansi": "^6.2.0"
   },
