@@ -35,7 +35,7 @@
     "mocha": "^8.2.1",
     "nock": "^13.0.0",
     "sinon": "^10.0.0",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.4.0",
     "typescript": "3.8.3"
   },
   "engines": {
