@@ -169,6 +169,18 @@
     debug "^4.1.1"
     semver "^7.3.2"
 
+"@oclif/command@^1.8.8":
+  version "1.8.8"
+  resolved "https://registry.yarnpkg.com/@oclif/command/-/command-1.8.8.tgz#ce330e37694a3f5246a21b205527a679c09f9baa"
+  integrity sha512-Gr7gnybrDfEu/50U/xxBtx9DLMi6hAgIeN/0gR4N1rTYYXMXmvt6GuQVsYHeTBcWlSWxwnS4nZa7ObzZObmW8A==
+  dependencies:
+    "@oclif/config" "^1.18.2"
+    "@oclif/errors" "^1.3.5"
+    "@oclif/parser" "^3.8.6"
+    "@oclif/plugin-help" "^3.2.12"
+    debug "^4.1.1"
+    semver "^7.3.2"
+
 "@oclif/config@^1.15.1":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@oclif/config/-/config-1.17.0.tgz#ba8639118633102a7e481760c50054623d09fcab"
@@ -318,6 +330,22 @@
   version "3.2.11"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.11.tgz#241f1d9bb4e7bf89d24f490b54ab9af5846e59c3"
   integrity sha512-SSLvVMk3WZ23kFfDvKrotCZUcPUdGuPdYjtlIACaIoEmjtgCO9IqdQA5xmMzWozv9MHTqOdWwoJdU0qxD+MwNg==
+  dependencies:
+    "@oclif/command" "^1.8.7"
+    "@oclif/config" "^1.18.2"
+    "@oclif/errors" "^1.3.5"
+    chalk "^4.1.2"
+    indent-string "^4.0.0"
+    lodash "^4.17.21"
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    widest-line "^3.1.0"
+    wrap-ansi "^6.2.0"
+
+"@oclif/plugin-help@^3.2.12":
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-3.2.12.tgz#cd38236e0169c3aad514366407155c856eac837f"
+  integrity sha512-Rw//rW6ld2T7S8TB82h1crA9HkWUynxtzBb3aplgmC2Jr0DO2AIUiLVo/bQSmt33vairPsDJgRIc2OMTannrhA==
   dependencies:
     "@oclif/command" "^1.8.7"
     "@oclif/config" "^1.18.2"
