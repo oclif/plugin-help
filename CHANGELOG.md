@@ -1,3 +1,10 @@
+## [3.2.13](https://github.com/oclif/plugin-help/compare/v3.2.12...v3.2.13) (2021-12-06)
+
+
+### Bug Fixes
+
+* bumps ([#335](https://github.com/oclif/plugin-help/issues/335)) ([343881e](https://github.com/oclif/plugin-help/commit/343881ea5014b9a49340f7bfeea82b3a1d516b3c))
+
 ## [3.2.12](https://github.com/oclif/plugin-help/compare/v3.2.11...v3.2.12) (2021-12-06)
 
 
