@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.8](https://github.com/oclif/plugin-help/compare/v5.1.7...v5.1.8) (2021-12-07)
+
+
+### Bug Fixes
+
+* create index.ts ([#337](https://github.com/oclif/plugin-help/issues/337)) ([f58b32c](https://github.com/oclif/plugin-help/commit/f58b32cc1f42d440a95503dd26b6487cdb0d736e))
+
 ### [5.1.7](https://github.com/oclif/plugin-help/compare/v5.1.6...v5.1.7) (2021-12-02)
 
 
