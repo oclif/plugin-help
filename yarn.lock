@@ -384,12 +384,12 @@
   resolved "https://registry.npmjs.org/@oclif/linewrap/-/linewrap-1.0.0.tgz#aedcb64b479d4db7be24196384897b5000901d91"
   integrity sha512-Ups2dShK52xXa8w6iBWLgcjPJWjais6KPJQq3gQ/88AY6BXoTX+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==
 
-"@oclif/plugin-help@^5.1.7":
-  version "5.1.8"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.8.tgz#f2c1aa253ba4dcb196bb7ff66061b7c358259c5a"
-  integrity sha512-aG0YvXQLGcXkvV7HHivWNiDtpzNjNiCT+vP75O9A18ZLF/uKf41mqCOuKciARvmJ7wMSjX37WZugfv5LcZfV+g==
+"@oclif/plugin-help@5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-help/-/plugin-help-5.1.9.tgz#1365fd76d5382a1a217e6b5c247251211c300d7b"
+  integrity sha512-CDMu5zPEkszr9cPzk75XRn/P4ly6xzCbfVr2i1isu2B5+2JZGMYuJM+JCXUauCCx4d2Gb3JTSszP+nfkjaxGkg==
   dependencies:
-    "@oclif/core" "^1.0.8"
+    "@oclif/core" "^1.0.10"
 
 "@oclif/plugin-not-found@^2.2.2":
   version "2.2.2"
@@ -402,10 +402,10 @@
     fast-levenshtein "^3.0.0"
     lodash "^4.17.21"
 
-"@oclif/plugin-plugins@2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-2.0.9.tgz#39a24ecb8e20e687fef27da3f95f2da96470a9bf"
-  integrity sha512-tJdCd4LajWvFPSK8oIJNwR0sGaJrsulYTKeRUF7dWgc9liP+EasHDKB0MNDywQbh02KXzQ/rjP5noqHvhOBhrg==
+"@oclif/plugin-plugins@2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-2.0.10.tgz#0a012398e9bc81b856e47f312cb77cf7ce6367d0"
+  integrity sha512-9EQxWRKIEjoZgy7kZH1TZ4nNYJ1wVWQoOa099QXSoHLpCB3N2II6vlHDKMa08kw5LsL8Gj8wKpeB/Aftg+Gfyg==
   dependencies:
     "@oclif/color" "^0.1.2"
     "@oclif/core" "1.0.10"
@@ -420,7 +420,7 @@
     tslib "^2.0.0"
     yarn "^1.21.1"
 
-"@oclif/plugin-warn-if-update-available@^2.0.1":
+"@oclif/plugin-warn-if-update-available@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-warn-if-update-available/-/plugin-warn-if-update-available-2.0.2.tgz#ab30956495483fd2eb55ce8c3549c74f260d23fd"
   integrity sha512-lg4eesMxjCTaz6PgwC1j7VuyW6tzYWO85eSCz6pwjxmCCW8T6bHxLiIHO3TXTfYJTj1YVUL1fOFVc1Gelc0neQ==
@@ -3759,17 +3759,17 @@ object.pick@^1.3.0:
   dependencies:
     isobject "^3.0.1"
 
-oclif@2.0.0-main.18:
-  version "2.0.0-main.18"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-main.18.tgz#bb1c47cb77f99fe85990608cac327eaeafd9dc54"
-  integrity sha512-XCcO2g+JpQXDh7ltJgdt9YrK8tag4pTBHaw6/QxiIv2jNQvqYEG+HyzENc023N4tFFeYXatacWEUT2weLTpi3g==
+oclif@2.0.0-main.19:
+  version "2.0.0-main.19"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-2.0.0-main.19.tgz#e8a5bd6379b2f6c08aed0ad6d033c8a377b9e066"
+  integrity sha512-tewVdwEITaddQgkZOVNaS7oxr+f+K8bAkK7Dg4pf7CjYoje+Uy9a9rJdrpVJNAl++ZletXM0NtDEtOdAxh+6pQ==
   dependencies:
-    "@oclif/core" "^1.0.8"
+    "@oclif/core" "1.0.10"
     "@oclif/fixpack" "^2.3.0"
-    "@oclif/plugin-help" "^5.1.7"
+    "@oclif/plugin-help" "5.1.9"
     "@oclif/plugin-not-found" "^2.2.2"
-    "@oclif/plugin-warn-if-update-available" "^2.0.1"
-    cli-ux "^6.0.5"
+    "@oclif/plugin-warn-if-update-available" "^2.0.2"
+    cli-ux "6.0.6"
     debug "^4.1.1"
     find-yarn-workspace-root "^2.0.0"
     fs-extra "^8.1"
