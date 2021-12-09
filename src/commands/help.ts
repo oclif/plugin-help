@@ -1,5 +1,5 @@
-import Command from '@oclif/command/lib/command'
-import * as flags from '@oclif/command/lib/flags'
+import Command from '@oclif/cmd/lib/command'
+import * as flags from '@oclif/cmd/lib/flags'
 
 import {getHelpClass} from '..'
 
