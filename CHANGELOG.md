@@ -1,3 +1,10 @@
+## [3.2.17](https://github.com/oclif/plugin-help/compare/v3.2.16...v3.2.17) (2021-12-09)
+
+
+### Bug Fixes
+
+* tweak imports to break cycle ([#348](https://github.com/oclif/plugin-help/issues/348)) ([d2c24ad](https://github.com/oclif/plugin-help/commit/d2c24ad4ab22e0cc6edfcedbe9e61b9cde659ad4))
+
 ## [3.2.16](https://github.com/oclif/plugin-help/compare/v3.2.15...v3.2.16) (2021-12-09)
 
 
