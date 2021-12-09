@@ -1,3 +1,10 @@
+## [3.2.16](https://github.com/oclif/plugin-help/compare/v3.2.15...v3.2.16) (2021-12-09)
+
+
+### Bug Fixes
+
+* tweak imports of entries from oclif/command ([#347](https://github.com/oclif/plugin-help/issues/347)) ([7ea043d](https://github.com/oclif/plugin-help/commit/7ea043da5b457e8d2b5f0ff53eb0c8a676cc6c63))
+
 ## [3.2.15](https://github.com/oclif/plugin-help/compare/v3.2.14...v3.2.15) (2021-12-09)
 
 
