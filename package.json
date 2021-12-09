@@ -5,9 +5,9 @@
   "author": "Jeff Dickey @jdxcode",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/command": "^1.8.9",
-    "@oclif/config": "^1.18.2",
-    "@oclif/errors": "^1.3.5",
+    "@oclif/command": "1.8.11",
+    "@oclif/config": "1.18.2",
+    "@oclif/errors": "1.3.5",
     "chalk": "^4.1.2",
     "indent-string": "^4.0.0",
     "lodash": "^4.17.21",
@@ -17,10 +17,10 @@
     "wrap-ansi": "^6.2.0"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.8",
-    "@oclif/plugin-legacy": "^1.2.5",
-    "@oclif/plugin-plugins": "^1.10.10",
-    "@oclif/test": "^1.2.8",
+    "@oclif/dev-cli": "1.26.9",
+    "@oclif/plugin-legacy": "1.2.6",
+    "@oclif/plugin-plugins": "1.10.10",
+    "@oclif/test": "1.2.9",
     "@types/chai": "^4.1.7",
     "@types/lodash": "^4.14.176",
     "@types/mocha": "^8.0.0",
