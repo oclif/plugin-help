@@ -1,7 +1,5 @@
-import Command from '@oclif/cmd/lib/command'
-import * as flags from '@oclif/cmd/lib/flags'
-
-import {getHelpClass} from '..'
+import Command, {flags} from '@oclif/command'
+import {getHelpClass} from '@oclif/help'
 
 export default class HelpCommand extends Command {
   static description = 'display help for <%= config.bin %>'
