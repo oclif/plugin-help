@@ -58,7 +58,7 @@ workflows:
       - release:
           context: SF-CLI-RELEASE-PROCESS
           filters:
-            branches: {only: master}
+            branches: {only: v3}
           requires:
             - node-latest
             - node-14
