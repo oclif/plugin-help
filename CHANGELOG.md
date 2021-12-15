@@ -1,3 +1,10 @@
+## [3.2.19](https://github.com/oclif/plugin-help/compare/v3.2.18...v3.2.19) (2021-12-15)
+
+
+### Bug Fixes
+
+* remove transitive dep on lodash.template ([#353](https://github.com/oclif/plugin-help/issues/353)) ([c258d76](https://github.com/oclif/plugin-help/commit/c258d76fd76e7388079a76a9b1e6b67bdb0bd27e))
+
 ## [3.2.18](https://github.com/oclif/plugin-help/compare/v3.2.17...v3.2.18) (2021-12-14)
 
 
