@@ -1,3 +1,10 @@
+## [3.2.20](https://github.com/oclif/plugin-help/compare/v3.2.19...v3.2.20) (2021-12-16)
+
+
+### Bug Fixes
+
+* force to v3.3.1 so yarn picks a better v3 ([11534f0](https://github.com/oclif/plugin-help/commit/11534f034c0502dada5aaa8b96bb0b6a8de8bc96))
+
 ## [3.2.19](https://github.com/oclif/plugin-help/compare/v3.2.18...v3.2.19) (2021-12-15)
 
 
