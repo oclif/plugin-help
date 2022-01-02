@@ -402,10 +402,10 @@
     fast-levenshtein "^3.0.0"
     lodash "^4.17.21"
 
-"@oclif/plugin-plugins@2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-2.0.10.tgz#0a012398e9bc81b856e47f312cb77cf7ce6367d0"
-  integrity sha512-9EQxWRKIEjoZgy7kZH1TZ4nNYJ1wVWQoOa099QXSoHLpCB3N2II6vlHDKMa08kw5LsL8Gj8wKpeB/Aftg+Gfyg==
+"@oclif/plugin-plugins@2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@oclif/plugin-plugins/-/plugin-plugins-2.0.11.tgz#b45c0299db40c84b3506240f47c24756791f1f21"
+  integrity sha512-GvBawBPRxaAO48aWTtrseClhbPjyLaB6rNSQIHyQcSOL/cg7TLT1JaffZURkCOsD817t5SMm97I+OIbhI4R5zQ==
   dependencies:
     "@oclif/color" "^0.1.2"
     "@oclif/core" "1.0.10"
