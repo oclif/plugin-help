@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.11](https://github.com/oclif/plugin-help/compare/v5.1.10...v5.1.11) (2022-02-01)
+
+
+### Bug Fixes
+
+* bump dependencies ([3c346fd](https://github.com/oclif/plugin-help/commit/3c346fdb3a9ee8bb5db1b2059ffaad9d97fc9bc0))
+
 ### [5.1.10](https://github.com/oclif/plugin-help/compare/v5.1.9...v5.1.10) (2021-12-08)
 
 
