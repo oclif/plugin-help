@@ -52,5 +52,5 @@
     "prepack": "yarn run build && oclif manifest .",
     "postpack": "shx rm oclif.manifest.json"
   },
-  "types": "./lib/help.d.ts"
+  "types": "./lib/index.d.ts"
 }
