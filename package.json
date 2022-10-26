@@ -1,5 +1,5 @@
 {
-  "name": "@oclif/plugin-help",
+  "name": "@expo/plugin-help",
   "description": "Standard help for oclif.",
   "version": "5.1.22",
   "author": "Salesforce",
@@ -29,7 +29,7 @@
     "oclif.manifest.json",
     "/lib"
   ],
-  "homepage": "https://github.com/oclif/plugin-help",
+  "homepage": "https://github.com/expo/oclif-plugin-help",
   "keywords": [
     "oclif-plugin"
   ],
@@ -42,7 +42,7 @@
       "@oclif/plugin-plugins"
     ]
   },
-  "repository": "oclif/plugin-help",
+  "repository": "expo/oclif-plugin-help",
   "scripts": {
     "build": "shx rm -rf lib && tsc",
     "lint": "eslint . --ext .ts --config .eslintrc",
