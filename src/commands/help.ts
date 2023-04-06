@@ -1,4 +1,4 @@
-import {Args, Command, Flags, Help} from '@oclif/core'
+import {Args, Command, Flags, loadHelpClass} from '@oclif/core'
 
 export default class HelpCommand extends Command {
   static description = 'Display help for <%= config.bin %>.'
@@ -18,6 +18,7 @@ export default class HelpCommand extends Command {
 
   async run(): Promise<void> {
     const {flags, argv} = await this.parse(HelpCommand)
+    const Help = await loadHelpClass(this.config)
     const help = new Help(this.config, {all: flags['nested-commands']})
     await help.showHelp(argv as string[])
   }
