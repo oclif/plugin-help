@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@oclif/plugin-plugins": "^2.4.7",
-    "@oclif/test": "^2.1.0",
+    "@oclif/test": "^2.3.21",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^9.1.0",
     "chai": "^4.3.7",
