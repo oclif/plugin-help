@@ -11,7 +11,7 @@ export default class HelpCommand extends Command {
   }
 
   static args = {
-    commands: Args.string({required: false, description: 'Command to show help for.'}),
+    command: Args.string({required: false, description: 'Command to show help for.'}),
   }
 
   static strict = false
