@@ -1,3 +1,12 @@
+## [5.2.12](https://github.com/oclif/plugin-help/compare/5.2.11...5.2.12) (2023-07-11)
+
+
+### Bug Fixes
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([8e04960](https://github.com/oclif/plugin-help/commit/8e04960e5189fc80a758ba9a7e46e886f3b53174))
+
+
+
 ## [5.2.11](https://github.com/oclif/plugin-help/compare/5.2.10...5.2.11) (2023-07-01)
 
 
