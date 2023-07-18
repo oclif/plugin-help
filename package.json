@@ -1,11 +1,11 @@
 {
   "name": "@oclif/plugin-help",
   "description": "Standard help for oclif.",
-  "version": "5.2.12",
+  "version": "5.2.13",
   "author": "Salesforce",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^2.8.11"
+    "@oclif/core": "^2.9.3"
   },
   "devDependencies": {
     "@oclif/plugin-plugins": "^2.4.7",
