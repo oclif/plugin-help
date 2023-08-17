@@ -1,7 +1,7 @@
-import {Command, Flags, Help} from '@oclif/core'
+import {Args, Command, Flags, Help} from '@oclif/core'
 
 export default class HelpCommand extends Command {
-  static description = 'display help for <%= config.bin %>-cli'
+  static description = 'Display help for <%= config.bin %>.'
 
   static flags = {
     'nested-commands': Flags.boolean({
@@ -10,15 +10,14 @@ export default class HelpCommand extends Command {
     }),
   }
 
-  static args = [
-    {name: 'command', required: false, description: 'Command to show help for.'},
-  ]
+  static args = {command: Args.string({name: 'command', required: false, description: 'Command to show help for.'})}
 
   static strict = false
 
   async run(): Promise<void> {
     const {flags, argv} = await this.parse(HelpCommand)
     const help = new Help(this.config, {all: flags['nested-commands']})
-    await help.showHelp(argv)
+    const argvStr = argv.map(arg => String(arg))
+    await help.showHelp(argvStr)
   }
 }

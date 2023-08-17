@@ -1,7 +1,7 @@
 import {expect, test} from '@oclif/test'
 
 const VERSION = require('../../package.json').version
-const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} node-${process.version}`
+const UA = `@expo/plugin-help/${VERSION} ${process.platform}-${process.arch} node-${process.version}`
 
 describe('help command', () => {
   test
@@ -17,8 +17,12 @@ VERSION
 USAGE
   $ oclif [COMMAND]
 
+TOPICS
+  plugins  List installed plugins.
+
 COMMANDS
-  help  Display help for oclif.
+  help     Display help for oclif.
+  plugins  List installed plugins.
 
 `)
   })
@@ -35,8 +39,12 @@ VERSION
 USAGE
   $ oclif [COMMAND]
 
+TOPICS
+  plugins  List installed plugins.
+
 COMMANDS
-  help  Display help for oclif.
+  help     Display help for oclif.
+  plugins  List installed plugins.
 
 `)
   })
