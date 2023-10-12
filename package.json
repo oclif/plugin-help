@@ -53,9 +53,9 @@
   "scripts": {
     "build": "shx rm -rf lib && tsc",
     "lint": "eslint . --ext .ts",
-    "postpack": "shx rm oclif.manifest.json",
+    "postpack": "shx rm oclif.manifest.json oclif.lock",
     "posttest": "yarn lint",
-    "prepack": "yarn run build && oclif manifest .",
+    "prepack": "yarn run build && oclif manifest . && oclif lock",
     "prepare": "husky install",
     "pretest": "yarn build && tsc --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\""
