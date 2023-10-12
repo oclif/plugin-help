@@ -1,3 +1,9 @@
+## [6.0.2](https://github.com/oclif/plugin-help/compare/6.0.1...6.0.2) (2023-10-12)
+
+### Bug Fixes
+
+- bump @oclif/core ([#560](https://github.com/oclif/plugin-help/issues/560)) ([8a5046c](https://github.com/oclif/plugin-help/commit/8a5046c079277d1606eb5b9e4a5066e0ff317d74))
+
 ## [6.0.1](https://github.com/oclif/plugin-help/compare/5.2.20...6.0.1) (2023-10-12)
 
 ### Bug Fixes
