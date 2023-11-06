@@ -56,7 +56,7 @@
     "postpack": "shx rm oclif.manifest.json oclif.lock",
     "posttest": "yarn lint",
     "prepack": "yarn run build && oclif manifest . && oclif lock",
-    "prepare": "husky install",
+    "prepare": "husky install && yarn build && oclif manifest",
     "pretest": "yarn build && tsc --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\""
   },
