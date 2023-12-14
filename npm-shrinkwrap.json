@@ -1,12 +1,12 @@
 {
   "name": "@oclif/plugin-help",
-  "version": "6.0.8",
+  "version": "6.0.9-dev.0",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "@oclif/plugin-help",
-      "version": "6.0.8",
+      "version": "6.0.9-dev.0",
       "license": "MIT",
       "dependencies": {
         "@oclif/core": "^3.13.1"
@@ -929,28 +929,10 @@
         "read-package-json-fast": "^2.0.1"
       }
     },
-    "node_modules/@oclif/color": {
-      "version": "1.0.9",
-      "resolved": "https://registry.npmjs.org/@oclif/color/-/color-1.0.9.tgz",
-      "integrity": "sha512-ntc/fZwuf4NRfYbXVoUNFyMB9IxVx/ls/WbSLKbkD9UpsmwY1I3J4DJKKRFRpenmTuxGQW8Lyzm7X3vhzHpDQA==",
-      "extraneous": true,
-      "license": "MIT",
-      "dependencies": {
-        "ansi-styles": "^4.2.1",
-        "chalk": "^4.1.0",
-        "strip-ansi": "^6.0.1",
-        "supports-color": "^8.1.1",
-        "tslib": "^2"
-      },
-      "engines": {
-        "node": ">=12.0.0"
-      }
-    },
     "node_modules/@oclif/core": {
-      "version": "3.14.1",
-      "resolved": "https://registry.npmjs.org/@oclif/core/-/core-3.14.1.tgz",
-      "integrity": "sha512-HLFL2s45DFdqYI2CFjVS/CIQ4cQ4yZqH0XqO9nnwcRWYboz2rEW/vLmidjIYGDjh6xA/k5psiAL3O1KEjqSHuQ==",
-      "license": "MIT",
+      "version": "3.13.1",
+      "resolved": "https://registry.npmjs.org/@oclif/core/-/core-3.13.1.tgz",
+      "integrity": "sha512-bpnF6BL+j7D0k0T+dZ4g7LwcZzctCoKjIYm8zcSNgrItS2pgIlvsRf8SdkGNu6djzRD7vzM657ZO9fWU6goz0g==",
       "dependencies": {
         "ansi-escapes": "^4.3.2",
         "ansi-styles": "^4.3.0",

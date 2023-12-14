@@ -36,7 +36,6 @@
   "files": [
     "oclif.manifest.json",
     "/lib",
-    "/oclif.lock",
     "npm-shrinkwrap.json"
   ],
   "homepage": "https://github.com/oclif/plugin-help",
@@ -53,12 +52,14 @@
   "repository": "oclif/plugin-help",
   "scripts": {
     "build": "shx rm -rf lib && tsc",
+    "commitlint": "commitlint --edit $1",
     "lint": "eslint . --ext .ts",
-    "postpack": "shx rm oclif.manifest.json oclif.lock",
-    "posttest": "yarn lint",
-    "prepack": "yarn run build && oclif manifest . && oclif lock",
-    "prepare": "husky install && yarn build",
-    "pretest": "yarn build && tsc --noEmit",
+    "lint-staged": "lint-staged",
+    "postpack": "shx rm oclif.manifest.json",
+    "posttest": "npm run lint",
+    "prepack": "npm run build && oclif manifest .",
+    "prepare": "husky install && npm run build",
+    "pretest": "npm build && tsc --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\""
   },
   "type": "module",
