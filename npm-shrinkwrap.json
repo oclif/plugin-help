@@ -9,7 +9,7 @@
       "version": "6.0.8",
       "license": "MIT",
       "dependencies": {
-        "@oclif/core": "^3.14.1"
+        "@oclif/core": "^3.13.1"
       },
       "devDependencies": {
         "@commitlint/config-conventional": "^17.8.1",
