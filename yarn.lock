@@ -476,10 +476,10 @@
     wordwrap "^1.0.0"
     wrap-ansi "^7.0.0"
 
-"@oclif/core@^3.0.4", "@oclif/core@^3.15.0", "@oclif/core@^3.3.1":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-3.15.0.tgz#28405012137fa92efcc5a2c4d61336dd64c697cb"
-  integrity sha512-A1EVh4gv7mqAJ9OGVxLugaLcHvQnGwvOnPToP8OT9AldJ0LwVExOwhhlnOstYca33MIpGH00twYxWMS5nxMuDQ==
+"@oclif/core@^3.0.4", "@oclif/core@^3.15.0", "@oclif/core@^3.15.1", "@oclif/core@^3.3.1":
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/@oclif/core/-/core-3.15.1.tgz#e03fa775d658e76056150ac0c7b8097b6f51ab9c"
+  integrity sha512-d4457zVo2agLoJG97CmdY6M3BeP5sogBP3BtP65hUvJH6wA6Us1hdY3UiPPtD/ZzZImq7cATVMABuCF9tM+rWA==
   dependencies:
     ansi-escapes "^4.3.2"
     ansi-styles "^4.3.0"
@@ -498,7 +498,7 @@
     js-yaml "^3.14.1"
     natural-orderby "^2.0.3"
     object-treeify "^1.1.33"
-    password-prompt "^1.1.2"
+    password-prompt "^1.1.3"
     slice-ansi "^4.0.0"
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
@@ -541,14 +541,14 @@
   resolved "https://registry.yarnpkg.com/@oclif/prettier-config/-/prettier-config-0.2.1.tgz#1def9f38134f9bfb229257f48a35f7d0d183dc78"
   integrity sha512-XB8kwQj8zynXjIIWRm+6gO/r8Qft2xKtwBMSmq1JRqtA6TpwpqECqiu8LosBCyg2JBXuUy2lU23/L98KIR7FrQ==
 
-"@oclif/test@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@oclif/test/-/test-3.1.5.tgz#4b4486b7478e6407c56e6d6acc54f073664bb839"
-  integrity sha512-SYA44is3O/2BRQKBmp/6M1VgqRXnYQpsnBIxljICrrPLhEUQh14Ev/8IuL11ULijZMZDeWM+9sPMsj06jsJyBA==
+"@oclif/test@^3.1.7":
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/@oclif/test/-/test-3.1.7.tgz#614a101a880b6a8f7ef7439686495a5a6d64b051"
+  integrity sha512-lEKq/VKqxwSribfvxXu112KTrgo/WsHzoFnUZRv9YJe7Ho6FCkmKs6n362KHWJgSnBMc4rXMJNJQe62HzHbeoA==
   dependencies:
-    "@oclif/core" "^3.15.0"
+    "@oclif/core" "^3.15.1"
     chai "^4.3.10"
-    fancy-test "^3.0.4"
+    fancy-test "^3.0.7"
 
 "@octokit/auth-token@^2.4.4":
   version "2.5.0"
@@ -2557,10 +2557,10 @@ external-editor@^3.0.3:
     iconv-lite "^0.4.24"
     tmp "^0.0.33"
 
-fancy-test@^3.0.4:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-3.0.6.tgz#b41900894cda8ce94e9e51ef1897b096afa46111"
-  integrity sha512-Js1ixKwDXU92yDhpCP5cG5IRKBUIaAO5ka11a7Kdpv0IbN4DSp8a9P/12oFiOSGJiiumHH1WgcTsA5f4V65OyQ==
+fancy-test@^3.0.7:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/fancy-test/-/fancy-test-3.0.8.tgz#ca3919ebb07c1c0e5fb8e8953e02e2ed48600ef8"
+  integrity sha512-vHkT59Kf0Byiqzwc2My1fD9VDYsAPkT+jVqdMqqtwtdLwz19x+hHI2oAxNwfyfEDSK+VrLB4+B96sZbOLVEHdA==
   dependencies:
     "@types/chai" "*"
     "@types/lodash" "*"
@@ -2569,7 +2569,7 @@ fancy-test@^3.0.4:
     lodash "^4.17.13"
     mock-stdin "^1.0.0"
     nock "^13.4.0"
-    sinon "^16.0.0"
+    sinon "^16.1.3"
     stdout-stderr "^0.1.9"
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
@@ -4819,6 +4819,14 @@ password-prompt@^1.1.2:
     ansi-escapes "^3.1.0"
     cross-spawn "^6.0.5"
 
+password-prompt@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/password-prompt/-/password-prompt-1.1.3.tgz#05e539f4e7ca4d6c865d479313f10eb9db63ee5f"
+  integrity sha512-HkrjG2aJlvF0t2BMH0e2LB/EHf3Lcq3fNMzy4GYHcQblAvOl+QQji1Lx7WRBMqpVK8p+KR7bCg7oqAMXtdgqyw==
+  dependencies:
+    ansi-escapes "^4.3.2"
+    cross-spawn "^7.0.3"
+
 path-case@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/path-case/-/path-case-3.0.4.tgz#9168645334eb942658375c56f80b4c0cb5f82c6f"
@@ -5462,10 +5470,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sinon@^16.0.0:
-  version "16.1.0"
-  resolved "https://registry.yarnpkg.com/sinon/-/sinon-16.1.0.tgz#645b836563c9bedb21defdbe48831cb2afb687f2"
-  integrity sha512-ZSgzF0vwmoa8pq0GEynqfdnpEDyP1PkYmEChnkjW0Vyh8IDlyFEJ+fkMhCP0il6d5cJjPl2PUsnUSAuP5sttOQ==
+sinon@^16.1.3:
+  version "16.1.3"
+  resolved "https://registry.yarnpkg.com/sinon/-/sinon-16.1.3.tgz#b760ddafe785356e2847502657b4a0da5501fba8"
+  integrity sha512-mjnWWeyxcAf9nC0bXcPmiDut+oE8HYridTNzBbF98AYVLmWwGRp2ISEpyhYflG1ifILT+eNn3BmKUJPxjXUPlA==
   dependencies:
     "@sinonjs/commons" "^3.0.0"
     "@sinonjs/fake-timers" "^10.3.0"
