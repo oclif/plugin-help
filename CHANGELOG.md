@@ -1,3 +1,5 @@
+## [6.0.11](https://github.com/oclif/plugin-help/compare/6.0.10...6.0.11) (2024-01-10)
+
 ## [6.0.10](https://github.com/oclif/plugin-help/compare/6.0.9...6.0.10) (2024-01-07)
 
 ### Bug Fixes
