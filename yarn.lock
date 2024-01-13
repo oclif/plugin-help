@@ -1095,7 +1095,7 @@
   dependencies:
     "@oclif/core" "^3.16.0"
 
-"@oclif/plugin-not-found@^3.0.7":
+"@oclif/plugin-not-found@^3.0.8":
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/@oclif/plugin-not-found/-/plugin-not-found-3.0.8.tgz#d694a9308993703a1cbacbab7f5625315f0169ea"
   integrity sha512-sfh7jFc+1vFsF/+9ghF3pVul9xFJ4Hu1JI+KzkDjgWkfVSyPSEE+s6Hfn2z6lCXkwSKQ5lJATuZmafnGes7NGg==
@@ -5566,16 +5566,16 @@ object.values@^1.1.7:
     define-properties "^1.2.0"
     es-abstract "^1.22.1"
 
-oclif@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/oclif/-/oclif-4.3.0.tgz#be054e1d8ab9294dfe3365c5aaab27f5685ac200"
-  integrity sha512-b8qsOGvK8epwjbK44uKPaAXz/ljkoWf1fsHwQljLKTpop6sJAWJ2fcWnrCx1HU6kMq5xdlbqrmXXaDsC2/FtbA==
+oclif@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/oclif/-/oclif-4.3.1.tgz#21820f5fc5c1ec0fa301229257079fe319291c06"
+  integrity sha512-a3Jv6DrliNgvyfqezpPog4hh51qgvrZAUdtFFeXoy5rEiqLsUVzR+iZmIwNUKJlRAaPJ/giNr9YlJswMpPa7CQ==
   dependencies:
     "@aws-sdk/client-cloudfront" "^3.468.0"
     "@aws-sdk/client-s3" "^3.468.0"
     "@oclif/core" "^3.16.0"
     "@oclif/plugin-help" "^6.0.9"
-    "@oclif/plugin-not-found" "^3.0.7"
+    "@oclif/plugin-not-found" "^3.0.8"
     "@oclif/plugin-warn-if-update-available" "^3.0.8"
     async-retry "^1.3.3"
     change-case "^4"
