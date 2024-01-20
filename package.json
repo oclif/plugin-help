@@ -10,7 +10,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^17.8.1",
     "@oclif/prettier-config": "^0.2.1",
-    "@oclif/test": "^3.1.8",
+    "@oclif/test": "^3.1.12",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
     "@types/node": "^18",
