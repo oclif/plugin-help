@@ -58,7 +58,7 @@
     "lint-staged": "lint-staged",
     "postpack": "shx rm oclif.manifest.json",
     "posttest": "yarn lint",
-    "prepack": "yarn build && oclif manifest . && oclif lock",
+    "prepack": "yarn build && oclif manifest . && oclif lock && npm shrinkwrap",
     "prepare": "husky install && yarn build",
     "pretest": "npm build && tsc --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\""
