@@ -5,7 +5,7 @@
   "author": "Salesforce",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^3.20.0"
+    "@oclif/core": "^3.21.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^18",
@@ -36,7 +36,8 @@
   "files": [
     "oclif.manifest.json",
     "/lib",
-    "npm-shrinkwrap.json"
+    "npm-shrinkwrap.json",
+    "oclif.lock"
   ],
   "homepage": "https://github.com/oclif/plugin-help",
   "keywords": [
@@ -52,12 +53,12 @@
   "repository": "oclif/plugin-help",
   "scripts": {
     "build": "shx rm -rf lib && tsc",
-    "clean": "shx rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "clean": "shx rm -f oclif.manifest.json npm-shrinkwrap.json oclif.lock",
     "compile": "tsc",
     "lint": "eslint . --ext .ts",
     "postpack": "yarn run clean",
     "posttest": "yarn lint",
-    "prepack": "yarn build && oclif manifest && oclif readme && npm shrinkwrap",
+    "prepack": "yarn build && oclif manifest && oclif readme && npm shrinkwrap && oclif lock",
     "prepare": "husky && yarn build",
     "pretest": "yarn build --noEmit && tsc -p test --noEmit",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
