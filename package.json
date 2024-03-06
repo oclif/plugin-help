@@ -5,23 +5,23 @@
   "author": "Salesforce",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
-    "@oclif/core": "^3.20.0"
+    "@oclif/core": "^3.21.0"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.8.1",
+    "@commitlint/config-conventional": "^18",
     "@oclif/prettier-config": "^0.2.1",
     "@oclif/test": "^3.2.1",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
     "@types/node": "^18",
     "chai": "^4.4.1",
-    "commitlint": "^17.8.1",
+    "commitlint": "^18",
     "eslint": "^8.57.0",
     "eslint-config-oclif": "^5.0.3",
     "eslint-config-oclif-typescript": "^3.0.48",
     "eslint-config-prettier": "^9.1.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
+    "husky": "^9",
+    "lint-staged": "^15",
     "mocha": "^10.3.0",
     "oclif": "^4.4.19",
     "prettier": "^3.2.5",
@@ -36,7 +36,8 @@
   "files": [
     "oclif.manifest.json",
     "/lib",
-    "/oclif.lock"
+    "npm-shrinkwrap.json",
+    "oclif.lock"
   ],
   "homepage": "https://github.com/oclif/plugin-help",
   "keywords": [
@@ -52,13 +53,16 @@
   "repository": "oclif/plugin-help",
   "scripts": {
     "build": "shx rm -rf lib && tsc",
+    "clean": "shx rm -f oclif.manifest.json npm-shrinkwrap.json oclif.lock",
+    "compile": "tsc",
     "lint": "eslint . --ext .ts",
-    "postpack": "shx rm oclif.manifest.json oclif.lock",
+    "postpack": "yarn run clean",
     "posttest": "yarn lint",
-    "prepack": "yarn run build && oclif manifest . && oclif lock",
-    "prepare": "husky install && yarn build",
-    "pretest": "yarn build && tsc --noEmit",
-    "test": "mocha --forbid-only \"test/**/*.test.ts\""
+    "prepack": "yarn build && oclif manifest && oclif readme && npm shrinkwrap && oclif lock",
+    "prepare": "husky && yarn build",
+    "pretest": "yarn build --noEmit && tsc -p test --noEmit",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
   },
   "type": "module",
   "types": "./lib/index.d.ts"
