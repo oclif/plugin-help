@@ -1,3 +1,9 @@
+## [6.0.17](https://github.com/oclif/plugin-help/compare/6.0.16...6.0.17) (2024-03-06)
+
+### Bug Fixes
+
+- publish npm-shrinkwrap.json ([ebbd508](https://github.com/oclif/plugin-help/commit/ebbd508eed8ae4dddfaed7782ecb8362946175fe))
+
 ## [6.0.16](https://github.com/oclif/plugin-help/compare/6.0.15...6.0.16) (2024-03-06)
 
 ## [6.0.15](https://github.com/oclif/plugin-help/compare/6.0.14...6.0.15) (2024-03-03)
