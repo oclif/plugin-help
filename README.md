@@ -8,9 +8,27 @@ A CLI command to invoke the standard help functionality from [oclif/core](https:
 
 <!-- commands -->
 
-# Command Topics
+- [`oclif help [COMMAND]`](#oclif-help-command)
 
-- [`oclif help`](docs/help.md) - Display help for oclif.
+## `oclif help [COMMAND]`
+
+Display help for oclif.
+
+```
+USAGE
+  $ oclif help [COMMAND...] [-n]
+
+ARGUMENTS
+  COMMAND...  Command to show help for.
+
+FLAGS
+  -n, --nested-commands  Include all nested commands in the output.
+
+DESCRIPTION
+  Display help for oclif.
+```
+
+_See code: [src/commands/help.ts](https://github.com/oclif/plugin-help/blob/6.0.20/src/commands/help.ts)_
 
 <!-- commandsstop -->
 

@@ -1,3 +1,9 @@
+## [6.0.20](https://github.com/oclif/plugin-help/compare/6.0.19...6.0.20) (2024-03-25)
+
+### Bug Fixes
+
+- remove docs directory ([4ed65ca](https://github.com/oclif/plugin-help/commit/4ed65cad3fe06b9aae472ae36f84d3b92a11dd55))
+
 ## [6.0.19](https://github.com/oclif/plugin-help/compare/6.0.18...6.0.19) (2024-03-24)
 
 ### Bug Fixes
