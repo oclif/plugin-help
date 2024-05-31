@@ -28,7 +28,7 @@ DESCRIPTION
   Display help for oclif.
 ```
 
-_See code: [src/commands/help.ts](https://github.com/oclif/plugin-help/blob/6.0.22/src/commands/help.ts)_
+_See code: [src/commands/help.ts](https://github.com/oclif/plugin-help/blob/6.1.0/src/commands/help.ts)_
 
 <!-- commandsstop -->
 

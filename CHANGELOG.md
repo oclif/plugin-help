@@ -1,3 +1,9 @@
+# [6.1.0](https://github.com/oclif/plugin-help/compare/6.0.22...6.1.0) (2024-05-31)
+
+### Features
+
+- use @oclif/core v4 ([2270677](https://github.com/oclif/plugin-help/commit/2270677eb2dacd780328227f02c9dd079f010e87))
+
 ## [6.0.22](https://github.com/oclif/plugin-help/compare/6.0.21...6.0.22) (2024-05-12)
 
 ### Bug Fixes
