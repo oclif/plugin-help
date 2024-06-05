@@ -1,3 +1,9 @@
+# [6.2.0](https://github.com/oclif/plugin-help/compare/6.1.0...6.2.0) (2024-06-05)
+
+### Features
+
+- export help command ([#728](https://github.com/oclif/plugin-help/issues/728)) ([2992082](https://github.com/oclif/plugin-help/commit/2992082b4e86e82bf444181f87872d036dfaff05))
+
 # [6.1.0](https://github.com/oclif/plugin-help/compare/6.0.22...6.1.0) (2024-05-31)
 
 ### Features
