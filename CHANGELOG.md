@@ -1,3 +1,9 @@
+## [6.2.7](https://github.com/oclif/plugin-help/compare/6.2.6...6.2.7) (2024-07-23)
+
+### Bug Fixes
+
+- husky 9.1.1 fix ([#762](https://github.com/oclif/plugin-help/issues/762)) ([1d3a7cb](https://github.com/oclif/plugin-help/commit/1d3a7cb2e86c43bb63265299fa3244347d9a6ea2))
+
 ## [6.2.6](https://github.com/oclif/plugin-help/compare/6.2.5...6.2.6) (2024-07-13)
 
 ### Bug Fixes
