@@ -12,7 +12,7 @@
     "@oclif/prettier-config": "^0.2.1",
     "@oclif/test": "^4",
     "@types/chai": "^4.3.16",
-    "@types/mocha": "^10.0.9",
+    "@types/mocha": "^10.0.10",
     "@types/node": "^18",
     "chai": "^4.5.0",
     "commitlint": "^19",
