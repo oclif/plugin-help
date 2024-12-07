@@ -27,7 +27,7 @@
     "prettier": "^3.4.1",
     "shx": "^0.3.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "engines": {
     "node": ">=18.0.0"
