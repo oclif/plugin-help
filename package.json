@@ -1,7 +1,7 @@
 {
   "name": "@oclif/plugin-help",
   "description": "Standard help for oclif.",
-  "version": "6.2.27",
+  "version": "6.2.28",
   "author": "Salesforce",
   "bugs": "https://github.com/oclif/plugin-help/issues",
   "dependencies": {
