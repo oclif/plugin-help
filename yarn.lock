@@ -3910,10 +3910,10 @@ eslint-config-oclif@^5.2.2:
     eslint-plugin-n "^15.1.0"
     eslint-plugin-unicorn "^48.0.1"
 
-eslint-config-oclif@^6.0.88:
-  version "6.0.88"
-  resolved "https://registry.yarnpkg.com/eslint-config-oclif/-/eslint-config-oclif-6.0.88.tgz#59a44f1f477e1fbfc8a3b95233073fa853901c74"
-  integrity sha512-47rNF2PNlLhlzn+YOIInQywM3d1PBoqA5NsZ1SyYgkpg4vghdikJVP+hBJ43b0pmUlJm3Xx7VPL1kQYxrH0OkQ==
+eslint-config-oclif@^6.0.89:
+  version "6.0.89"
+  resolved "https://registry.yarnpkg.com/eslint-config-oclif/-/eslint-config-oclif-6.0.89.tgz#a25ead791207f21642073f861c305711e8c38cd5"
+  integrity sha512-c4SRbD8WyTzdRkLOwrimz72DxmZfjLVo1Yklsmgd2JdZiFOjtdRfqoTeefFnzxUEZQ8Ws2QijpHicYMOpbjhpg==
   dependencies:
     "@eslint/compat" "^1.3.1"
     "@eslint/eslintrc" "^3.3.1"
@@ -3922,7 +3922,7 @@ eslint-config-oclif@^6.0.88:
     "@typescript-eslint/eslint-plugin" "^8"
     "@typescript-eslint/parser" "^8"
     eslint-config-oclif "^5.2.2"
-    eslint-config-xo "^0.47.0"
+    eslint-config-xo "^0.48.0"
     eslint-config-xo-space "^0.35.0"
     eslint-import-resolver-typescript "^3.10.1"
     eslint-plugin-import "^2.32.0"
@@ -3952,10 +3952,10 @@ eslint-config-xo@^0.44.0:
   dependencies:
     confusing-browser-globals "1.0.11"
 
-eslint-config-xo@^0.47.0:
-  version "0.47.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo/-/eslint-config-xo-0.47.0.tgz#57425c4c7afcc0c63e38ab4021211f6c4607d5b0"
-  integrity sha512-LWB0VXFI3EzZ5jJLH/F/Ph0XVnEe5Imqd1gEMWZqvdnQfHAPDs1E+v3WMZysmpOd57a1qUMeT/LCdkkwJlo3Dw==
+eslint-config-xo@^0.48.0:
+  version "0.48.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo/-/eslint-config-xo-0.48.0.tgz#c23028b4b10d56f8f55ed241a43afda3b699180b"
+  integrity sha512-zINsjr18HJQtTRfod95Vz5wAwcIuN1ss8tRqFdSqj8fvXxJNYLrnEpE+Vderxu4Ydm3yIhYNyEUuP/c4wZerWA==
   dependencies:
     "@eslint/css" "^0.7.0"
     "@eslint/json" "^0.12.0"
