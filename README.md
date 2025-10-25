@@ -19,7 +19,7 @@ USAGE
   $ oclif help [COMMAND...] [-n]
 
 ARGUMENTS
-  COMMAND...  Command to show help for.
+  [COMMAND...]  Command to show help for.
 
 FLAGS
   -n, --nested-commands  Include all nested commands in the output.
@@ -28,7 +28,7 @@ DESCRIPTION
   Display help for oclif.
 ```
 
-_See code: [src/commands/help.ts](https://github.com/oclif/plugin-help/blob/6.2.33/src/commands/help.ts)_
+_See code: [src/commands/help.ts](https://github.com/oclif/plugin-help/blob/6.2.34/src/commands/help.ts)_
 
 <!-- commandsstop -->
 
