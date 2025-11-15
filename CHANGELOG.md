@@ -1,3 +1,9 @@
+## [6.2.36](https://github.com/oclif/plugin-help/compare/6.2.35...6.2.36) (2025-11-15)
+
+### Bug Fixes
+
+- **deps:** bump js-yaml from 4.1.0 to 4.1.1 ([#1058](https://github.com/oclif/plugin-help/issues/1058)) ([9a87922](https://github.com/oclif/plugin-help/commit/9a8792216995252a78674f425f6cbad46dcbb1e1))
+
 ## [6.2.35](https://github.com/oclif/plugin-help/compare/6.2.34...6.2.35) (2025-11-01)
 
 ### Bug Fixes
