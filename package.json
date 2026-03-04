@@ -43,6 +43,7 @@
   ],
   "license": "MIT",
   "oclif": {
+    "repositoryPrefix": "<%- repo %>/blob/<%- version %>/<%- commandPath %>",
     "commands": "./lib/commands",
     "bin": "oclif",
     "flexibleTaxonomy": true,
