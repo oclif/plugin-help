@@ -22,7 +22,7 @@
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "lint-staged": "^15",
-    "mocha": "^10.8.2",
+    "mocha": "^11",
     "oclif": "^4.22.79",
     "prettier": "^3.8.1",
     "shx": "^0.4.0",
@@ -43,6 +43,7 @@
   ],
   "license": "MIT",
   "oclif": {
+    "repositoryPrefix": "<%- repo %>/blob/<%- version %>/<%- commandPath %>",
     "commands": "./lib/commands",
     "bin": "oclif",
     "flexibleTaxonomy": true,
