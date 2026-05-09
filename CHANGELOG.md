@@ -1,3 +1,9 @@
+## [6.2.47](https://github.com/oclif/plugin-help/compare/6.2.46...6.2.47) (2026-05-09)
+
+### Bug Fixes
+
+- **deps:** bump fast-xml-builder from 1.0.0 to 1.2.0 ([#1126](https://github.com/oclif/plugin-help/issues/1126)) ([ff96a94](https://github.com/oclif/plugin-help/commit/ff96a9402004ce7035c6939903c2399473228f20))
+
 ## [6.2.46](https://github.com/oclif/plugin-help/compare/6.2.45...6.2.46) (2026-05-03)
 
 ### Bug Fixes
