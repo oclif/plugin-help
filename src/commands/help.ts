@@ -4,6 +4,7 @@ export default class HelpCommand extends Command {
   static args = {
     command: Args.string({description: 'Command to show help for.', required: false}),
   }
+
   static description = 'Display help for <%= config.bin %>.'
   static flags = {
     'nested-commands': Flags.boolean({
@@ -11,6 +12,7 @@ export default class HelpCommand extends Command {
       description: 'Include all nested commands in the output.',
     }),
   }
+
   static strict = false
 
   async run(): Promise<void> {
