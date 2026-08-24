@@ -2,7 +2,7 @@ import {runCommand} from '@oclif/test'
 import {expect} from 'chai'
 import {readFileSync} from 'node:fs'
 
-const {version: VERSION} = JSON.parse(readFileSync('package.json', 'utf8'))
+const {version: VERSION} = JSON.parse(readFileSync('package.json', 'utf8')) as {version: string}
 const UA = `@oclif/plugin-help/${VERSION} ${process.platform}-${process.arch} node-${process.version}`
 
 describe('help command', () => {
