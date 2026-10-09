@@ -1,3 +1,9 @@
+## [7.0.3](https://github.com/oclif/plugin-help/compare/7.0.2...7.0.3) (2026-10-09)
+
+### Bug Fixes
+
+- **deps:** bump source-map-js from 1.2.1 to 1.2.2 ([#1191](https://github.com/oclif/plugin-help/issues/1191)) ([6865a72](https://github.com/oclif/plugin-help/commit/6865a727ecf082afd0f5bea14268a04993ce5b06))
+
 ## [7.0.2](https://github.com/oclif/plugin-help/compare/7.0.1...7.0.2) (2026-09-25)
 
 ### Bug Fixes
