@@ -1,3 +1,9 @@
+## [7.0.10](https://github.com/oclif/plugin-help/compare/7.0.9...7.0.10) (2026-11-15)
+
+### Bug Fixes
+
+- **deps:** bump picomatch from 2.3.1 to 2.3.2 ([#1203](https://github.com/oclif/plugin-help/issues/1203)) ([9930a26](https://github.com/oclif/plugin-help/commit/9930a268c4179b7d066bace8b853ef17a1f4add7))
+
 ## [7.0.9](https://github.com/oclif/plugin-help/compare/7.0.8...7.0.9) (2026-11-15)
 
 ### Bug Fixes
